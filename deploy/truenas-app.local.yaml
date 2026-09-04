@@ -1,0 +1,32 @@
+# LienStore on TrueNAS SCALE — Variant B: image built ON the NAS (no registry / GitHub needed).
+#
+# 1. Copy the source to the NAS (see deploy/push-source-to-truenas.ps1) or `git clone` it there.
+# 2. SSH into TrueNAS and build:   sh /mnt/<pool>/apps/lienstore/src/deploy/truenas-build.sh /mnt/<pool>/apps/lienstore/src
+#    → produces the local image  lienstore:local
+# 3. Apps → Discover Apps → ⋮ → "Install via YAML" → paste this file (edit <pool>, passwords).
+# 4. Open http://<truenas-ip>:30080  (admin at /admin/).
+#
+# To upgrade: copy new source, run the build script again, then Apps → LienStore → ⋮ → Update / Restart.
+services:
+  lienstore:
+    image: lienstore:local
+    pull_policy: never          # use the image built locally, never try to pull
+    container_name: lienstore
+    restart: unless-stopped
+    ports:
+      - "30080:3000"
+    environment:
+      NODE_ENV: production
+      LIEN_DB_PATH: /app/data/lienstore.db
+      NEXT_PUBLIC_SITE_URL: http://192.168.1.10:30080   # change to the NAS IP or https://dev.linconnn.io.vn
+      ADMIN_USER: admin
+      ADMIN_PASSWORD: CHANGE_ME_STRONG_PASSWORD
+      ADMIN_SESSION_SECRET: CHANGE_ME_LONG_RANDOM_STRING
+    volumes:
+      - /mnt/<pool>/apps/lienstore/data:/app/data
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/api/health/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s

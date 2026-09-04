@@ -1,0 +1,1362 @@
+{
+ "title": "ĐẸP MỖI GIÂY – KHỎE MỖI NGÀY",
+ "lang": "vi",
+ "desc": null,
+ "bodyBg": "rgb(255, 249, 249)",
+ "bodyFont": "\"Google Sans\", \"sans serif\"",
+ "bodyFontSize": "16px",
+ "bodyColor": "rgb(25, 25, 25)",
+ "bodyLineHeight": "24px",
+ "docHeight": 8634,
+ "imgs": [
+  {
+   "src": "https://j86store.com/wp-content/uploads/2022/06/cropped-cropped-cropped-j86-2.png",
+   "srcset": "https://j86store.com/wp-content/uploads/2022/06/cropped-cropped-cropped-j86-2.png 453w, https://j86store.com/wp-content/uploads/2022/06/cropped-cropped-cropped-j86-2-300x150.png 300w, https://j86store.com/wp-content/uploads/2022/06/cropped-cropped-cropped-j86-2-200x100.png 200w",
+   "alt": "",
+   "w": 453,
+   "h": 227,
+   "rw": 196,
+   "rh": 98,
+   "top": 70,
+   "parentClasses": "custom-logo-link",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2023/05/uvsld-1280x520.png",
+   "srcset": null,
+   "alt": "",
+   "w": 1280,
+   "h": 520,
+   "rw": 470,
+   "rh": 191,
+   "top": 317,
+   "parentClasses": "",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2023/05/vitamin-1280x520.png",
+   "srcset": null,
+   "alt": "",
+   "w": 1280,
+   "h": 520,
+   "rw": 470,
+   "rh": 191,
+   "top": 317,
+   "parentClasses": "",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2022/01/son-1.png",
+   "srcset": null,
+   "alt": "",
+   "w": 1280,
+   "h": 520,
+   "rw": 470,
+   "rh": 191,
+   "top": 317,
+   "parentClasses": "",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2023/05/kids-1280x520.png",
+   "srcset": null,
+   "alt": "",
+   "w": 1280,
+   "h": 520,
+   "rw": 470,
+   "rh": 191,
+   "top": 317,
+   "parentClasses": "",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2023/04/uv-1.png",
+   "srcset": "https://j86store.com/wp-content/uploads/2023/04/uv-1-300x300.png 300w, https://j86store.com/wp-content/uploads/2023/04/uv-1-150x150.png 150w, https://j86store.com/wp-content/uploads/2023/04/uv-1-200x200.png 200w, https://j86store.com/wp-content/uploads/2023/04/uv-1-100x100.png 100w, https://j86store.com/wp-content/uploads/2023/04/uv-1.png 500w",
+   "alt": "CHỐNG NẮNG ( UV )",
+   "w": 300,
+   "h": 300,
+   "rw": 226,
+   "rh": 226,
+   "top": 606,
+   "parentClasses": "",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2023/04/body-1.png",
+   "srcset": "https://j86store.com/wp-content/uploads/2023/04/body-1-300x300.png 300w, https://j86store.com/wp-content/uploads/2023/04/body-1-150x150.png 150w, https://j86store.com/wp-content/uploads/2023/04/body-1-200x200.png 200w, https://j86store.com/wp-content/uploads/2023/04/body-1-100x100.png 100w, https://j86store.com/wp-content/uploads/2023/04/body-1.png 500w",
+   "alt": "DƯỠNG THỂ ( BODY )",
+   "w": 300,
+   "h": 300,
+   "rw": 226,
+   "rh": 226,
+   "top": 606,
+   "parentClasses": "",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2023/04/diet-1.png",
+   "srcset": "https://j86store.com/wp-content/uploads/2023/04/diet-1-300x300.png 300w, https://j86store.com/wp-content/uploads/2023/04/diet-1-150x150.png 150w, https://j86store.com/wp-content/uploads/2023/04/diet-1-200x200.png 200w, https://j86store.com/wp-content/uploads/2023/04/diet-1-100x100.png 100w, https://j86store.com/wp-content/uploads/2023/04/diet-1.png 500w",
+   "alt": "GIẢM CÂN ( DIET )",
+   "w": 300,
+   "h": 300,
+   "rw": 226,
+   "rh": 226,
+   "top": 949,
+   "parentClasses": "",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2023/04/women-1.png",
+   "srcset": "https://j86store.com/wp-content/uploads/2023/04/women-1-300x300.png 300w, https://j86store.com/wp-content/uploads/2023/04/women-1-150x150.png 150w, https://j86store.com/wp-content/uploads/2023/04/women-1-200x200.png 200w, https://j86store.com/wp-content/uploads/2023/04/women-1-100x100.png 100w, https://j86store.com/wp-content/uploads/2023/04/women-1.png 500w",
+   "alt": "GỐC CHỊ EM CHÚNG MÌNH ( WOMEN )",
+   "w": 300,
+   "h": 300,
+   "rw": 226,
+   "rh": 226,
+   "top": 949,
+   "parentClasses": "",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2023/04/face-cream-1.png",
+   "srcset": "https://j86store.com/wp-content/uploads/2023/04/face-cream-1-300x300.png 300w, https://j86store.com/wp-content/uploads/2023/04/face-cream-1-150x150.png 150w, https://j86store.com/wp-content/uploads/2023/04/face-cream-1-200x200.png 200w, https://j86store.com/wp-content/uploads/2023/04/face-cream-1-100x100.png 100w, https://j86store.com/wp-content/uploads/2023/04/face-cream-1.png 500w",
+   "alt": "KEM DƯỠNG DÀNH CHO MẶT ( FACE CREAM )",
+   "w": 300,
+   "h": 300,
+   "rw": 226,
+   "rh": 226,
+   "top": 1314,
+   "parentClasses": "",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2023/04/giam-tham-mat-hieu-qua-300x300.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2023/04/giam-tham-mat-hieu-qua-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2023/04/giam-tham-mat-hieu-qua-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2023/04/giam-tham-mat-hieu-qua-100x100.jpg 100w",
+   "alt": "MẮT ( EYES )",
+   "w": 300,
+   "h": 300,
+   "rw": 226,
+   "rh": 226,
+   "top": 1314,
+   "parentClasses": "",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2023/04/mask-1.png",
+   "srcset": "https://j86store.com/wp-content/uploads/2023/04/mask-1-300x300.png 300w, https://j86store.com/wp-content/uploads/2023/04/mask-1-150x150.png 150w, https://j86store.com/wp-content/uploads/2023/04/mask-1-200x200.png 200w, https://j86store.com/wp-content/uploads/2023/04/mask-1-100x100.png 100w, https://j86store.com/wp-content/uploads/2023/04/mask-1.png 500w",
+   "alt": "MẶT NẠ ( MASK )",
+   "w": 300,
+   "h": 300,
+   "rw": 226,
+   "rh": 226,
+   "top": 1679,
+   "parentClasses": "",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2020/06/babeskin-600x600.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2020/06/babeskin-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2020/06/babeskin-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2020/06/babeskin-768x768.jpg 768w, https://j86store.com/wp-content/uploads/2020/06/babeskin-100x100.jpg 100w, https://j86store.com/wp-content/uploads/2020/06/babeskin-600x600.jpg 600w, https://j86store.com/wp-content/uploads/2020/06/babeskin.jpg 960w",
+   "alt": "MOM AND BABY",
+   "w": 300,
+   "h": 300,
+   "rw": 226,
+   "rh": 226,
+   "top": 1679,
+   "parentClasses": "",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2023/04/Lotion.png",
+   "srcset": "https://j86store.com/wp-content/uploads/2023/04/Lotion-300x300.png 300w, https://j86store.com/wp-content/uploads/2023/04/Lotion-150x150.png 150w, https://j86store.com/wp-content/uploads/2023/04/Lotion-200x200.png 200w, https://j86store.com/wp-content/uploads/2023/04/Lotion-100x100.png 100w, https://j86store.com/wp-content/uploads/2023/04/Lotion.png 500w",
+   "alt": "NƯỚC HOA HỒNG ( LOTION )",
+   "w": 300,
+   "h": 300,
+   "rw": 226,
+   "rh": 226,
+   "top": 2022,
+   "parentClasses": "",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2023/04/hair.png",
+   "srcset": "https://j86store.com/wp-content/uploads/2023/04/hair-300x300.png 300w, https://j86store.com/wp-content/uploads/2023/04/hair-150x150.png 150w, https://j86store.com/wp-content/uploads/2023/04/hair-200x200.png 200w, https://j86store.com/wp-content/uploads/2023/04/hair-100x100.png 100w, https://j86store.com/wp-content/uploads/2023/04/hair.png 500w",
+   "alt": "PHỤC HỒI TÓC TẠI NHÀ ( HAIR )",
+   "w": 300,
+   "h": 300,
+   "rw": 226,
+   "rh": 226,
+   "top": 2022,
+   "parentClasses": "",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2023/04/men-1.png",
+   "srcset": "https://j86store.com/wp-content/uploads/2023/04/men-1-300x300.png 300w, https://j86store.com/wp-content/uploads/2023/04/men-1-150x150.png 150w, https://j86store.com/wp-content/uploads/2023/04/men-1-200x200.png 200w, https://j86store.com/wp-content/uploads/2023/04/men-1-100x100.png 100w, https://j86store.com/wp-content/uploads/2023/04/men-1.png 500w",
+   "alt": "SẢN PHẨM DÀNH CHO NAM ( MEN )",
+   "w": 300,
+   "h": 300,
+   "rw": 226,
+   "rh": 226,
+   "top": 2365,
+   "parentClasses": "",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2021/10/son-300x300.png",
+   "srcset": "https://j86store.com/wp-content/uploads/2021/10/son-300x300.png 300w, https://j86store.com/wp-content/uploads/2021/10/son-150x150.png 150w, https://j86store.com/wp-content/uploads/2021/10/son-100x100.png 100w",
+   "alt": "SON MÔI ( LIPSTICK )",
+   "w": 300,
+   "h": 300,
+   "rw": 226,
+   "rh": 226,
+   "top": 2365,
+   "parentClasses": "",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2020/10/z2123472900570_c4e2de5c553e7b388c485fb6545afdf4-300x300.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2020/10/z2123472900570_c4e2de5c553e7b388c485fb6545afdf4-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2020/10/z2123472900570_c4e2de5c553e7b388c485fb6545afdf4-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2020/10/z2123472900570_c4e2de5c553e7b388c485fb6545afdf4-100x100.jpg 100w",
+   "alt": "SỮA RỬA MẶT",
+   "w": 300,
+   "h": 300,
+   "rw": 226,
+   "rh": 226,
+   "top": 2708,
+   "parentClasses": "",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2022/03/sua-tam-hatomugi-moisturizing-washing-800ml-nhat-ban.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2022/03/sua-tam-hatomugi-moisturizing-washing-800ml-nhat-ban-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2022/03/sua-tam-hatomugi-moisturizing-washing-800ml-nhat-ban-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2022/03/sua-tam-hatomugi-moisturizing-washing-800ml-nhat-ban-200x200.jpg 200w, https://j86store.com/wp-content/uploads/2022/03/sua-tam-hatomugi-moisturizing-washing-800ml-nhat-ban-100x100.jpg 100w, https://j86store.com/wp-content/uploads/2022/03/sua-tam-hatomugi-moisturizing-washing-800ml-nhat-ban.jpg 600w",
+   "alt": "SỮA TẮM ( SHOWER GEL )",
+   "w": 300,
+   "h": 300,
+   "rw": 226,
+   "rh": 226,
+   "top": 2708,
+   "parentClasses": "",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2023/04/taydachet-300x300.png",
+   "srcset": "https://j86store.com/wp-content/uploads/2023/04/taydachet-300x300.png 300w, https://j86store.com/wp-content/uploads/2023/04/taydachet-150x150.png 150w, https://j86store.com/wp-content/uploads/2023/04/taydachet-100x100.png 100w",
+   "alt": "TÂY TẾ BÀO CHẾT ( EXFOLIATE DEAD SKIN )",
+   "w": 300,
+   "h": 300,
+   "rw": 226,
+   "rh": 226,
+   "top": 3051,
+   "parentClasses": "",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2021/10/taytrang-300x300.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2021/10/taytrang-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2021/10/taytrang-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2021/10/taytrang-100x100.jpg 100w",
+   "alt": "TẨY TRANG ( CLEANSING )",
+   "w": 300,
+   "h": 300,
+   "rw": 226,
+   "rh": 226,
+   "top": 3051,
+   "parentClasses": "",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2020/09/m%E1%BA%A1t-n%E1%BA%A1-g%E1%BA%A1o-1.png",
+   "srcset": "https://j86store.com/wp-content/uploads/2020/09/mạt-nạ-gạo-1-300x300.png 300w, https://j86store.com/wp-content/uploads/2020/09/mạt-nạ-gạo-1-150x150.png 150w, https://j86store.com/wp-content/uploads/2020/09/mạt-nạ-gạo-1-100x100.png 100w, https://j86store.com/wp-content/uploads/2020/09/mạt-nạ-gạo-1.png 600w",
+   "alt": "THỰC PHẨM CHỨC NĂNG ( FUNCTIONAL FOODS )",
+   "w": 300,
+   "h": 300,
+   "rw": 226,
+   "rh": 226,
+   "top": 3416,
+   "parentClasses": "",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2020/10/vien-uong-tri-mun-pair-120-vien-nhat-ban-9-700x700-1-600x600.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2020/10/vien-uong-tri-mun-pair-120-vien-nhat-ban-9-700x700-1-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2020/10/vien-uong-tri-mun-pair-120-vien-nhat-ban-9-700x700-1-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2020/10/vien-uong-tri-mun-pair-120-vien-nhat-ban-9-700x700-1-100x100.jpg 100w, https://j86store.com/wp-content/uploads/2020/10/vien-uong-tri-mun-pair-120-vien-nhat-ban-9-700x700-1-600x600.jpg 600w, https://j86store.com/wp-content/uploads/2020/10/vien-uong-tri-mun-pair-120-vien-nhat-ban-9-700x700-1.jpg 700w",
+   "alt": "TRỊ MỤN ( ACNE TREATRMENT )",
+   "w": 300,
+   "h": 300,
+   "rw": 226,
+   "rh": 226,
+   "top": 3416,
+   "parentClasses": "",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2021/10/trinam-300x300.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2021/10/trinam-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2021/10/trinam-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2021/10/trinam-100x100.jpg 100w",
+   "alt": "TRỊ NÁM - TÀN NHANG ( TREAT MELASMA FRECKLES )",
+   "w": 300,
+   "h": 300,
+   "rw": 226,
+   "rh": 226,
+   "top": 3781,
+   "parentClasses": "",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2022/03/thuoc-cam.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2022/03/thuoc-cam-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2022/03/thuoc-cam-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2022/03/thuoc-cam-200x200.jpg 200w, https://j86store.com/wp-content/uploads/2022/03/thuoc-cam-100x100.jpg 100w, https://j86store.com/wp-content/uploads/2022/03/thuoc-cam.jpg 600w",
+   "alt": "TỦ THUỐC GIA ĐÌNH ( FAMILY MEDICINE )",
+   "w": 300,
+   "h": 300,
+   "rw": 226,
+   "rh": 226,
+   "top": 3781,
+   "parentClasses": "",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2024/08/transinorepari-600x600.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2024/08/transinorepari-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2024/08/transinorepari-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2024/08/transinorepari-768x768.jpg 768w, https://j86store.com/wp-content/uploads/2024/08/transinorepari-200x200.jpg 200w, https://j86store.com/wp-content/uploads/2024/08/transinorepari-600x600.jpg 600w, https://j86store.com/wp-content/uploads/2024/08/transinorepari-100x100.jpg 100w, https://j86store.com/wp-content/uploads/2024/08/transinorepari.jpg 900w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 4310,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2024/08/transino50g-300x300.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2024/08/transino50g-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2024/08/transino50g-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2024/08/transino50g-100x100.jpg 100w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 4310,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2024/08/nuocnghe-300x300.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2024/08/nuocnghe-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2024/08/nuocnghe-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2024/08/nuocnghe-100x100.jpg 100w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 4310,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2024/08/da-day-kowa-300x300.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2024/08/da-day-kowa-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2024/08/da-day-kowa-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2024/08/da-day-kowa-100x100.jpg 100w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 4676,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2024/08/gelnach.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2024/08/gelnach-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2024/08/gelnach-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2024/08/gelnach-200x200.jpg 200w, https://j86store.com/wp-content/uploads/2024/08/gelnach-100x100.jpg 100w, https://j86store.com/wp-content/uploads/2024/08/gelnach.jpg 600w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 4676,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2024/08/DearNatural-600x600.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2024/08/DearNatural-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2024/08/DearNatural-1024x1024.jpg 1024w, https://j86store.com/wp-content/uploads/2024/08/DearNatural-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2024/08/DearNatural-768x768.jpg 768w, https://j86store.com/wp-content/uploads/2024/08/DearNatural-200x200.jpg 200w, https://j86store.com/wp-content/uploads/2024/08/DearNatural-600x600.jpg 600w, https://j86store.com/wp-content/uploads/2024/08/DearNatural-100x100.jpg 100w, https://j86store.com/wp-content/uploads/2024/08/DearNatural.jpg 1281w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 4676,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2024/08/Bomat-300x300.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2024/08/Bomat-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2024/08/Bomat-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2024/08/Bomat-100x100.jpg 100w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 5003,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2024/08/thuocxitxoang-300x300.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2024/08/thuocxitxoang-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2024/08/thuocxitxoang-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2024/08/thuocxitxoang-100x100.jpg 100w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 5003,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2023/10/taovang-300x300.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2023/10/taovang-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2023/10/taovang-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2023/10/taovang-100x100.jpg 100w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 5003,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2023/10/tra-oi-orihiro-60-goi-300x300.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2023/10/tra-oi-orihiro-60-goi-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2023/10/tra-oi-orihiro-60-goi-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2023/10/tra-oi-orihiro-60-goi-100x100.jpg 100w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 5350,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2023/07/gel3mau-600x600.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2023/07/gel3mau-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2023/07/gel3mau-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2023/07/gel3mau-200x200.jpg 200w, https://j86store.com/wp-content/uploads/2023/07/gel3mau-600x600.jpg 600w, https://j86store.com/wp-content/uploads/2023/07/gel3mau-100x100.jpg 100w, https://j86store.com/wp-content/uploads/2023/07/gel3mau.jpg 640w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 5350,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2023/07/taydachecure-600x600.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2023/07/taydachecure-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2023/07/taydachecure-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2023/07/taydachecure-768x768.jpg 768w, https://j86store.com/wp-content/uploads/2023/07/taydachecure-200x200.jpg 200w, https://j86store.com/wp-content/uploads/2023/07/taydachecure-600x600.jpg 600w, https://j86store.com/wp-content/uploads/2023/07/taydachecure-100x100.jpg 100w, https://j86store.com/wp-content/uploads/2023/07/taydachecure.jpg 800w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 5350,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2022/03/ngu-coc-calbee-800g-nhat-ban-531b28bf-2779-40f7-9ada-93f23bf3f5dd-600x600.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2022/03/ngu-coc-calbee-800g-nhat-ban-531b28bf-2779-40f7-9ada-93f23bf3f5dd-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2022/03/ngu-coc-calbee-800g-nhat-ban-531b28bf-2779-40f7-9ada-93f23bf3f5dd-1024x1024.jpg 1024w, https://j86store.com/wp-content/uploads/2022/03/ngu-coc-calbee-800g-nhat-ban-531b28bf-2779-40f7-9ada-93f23bf3f5dd-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2022/03/ngu-coc-calbee-800g-nhat-ban-531b28bf-2779-40f7-9ada-93f23bf3f5dd-768x768.jpg 768w, https://j86store.com/wp-content/uploads/2022/03/ngu-coc-calbee-800g-nhat-ban-531b28bf-2779-40f7-9ada-93f23bf3f5dd-200x200.jpg 200w, https://j86store.com/wp-content/uploads/2022/03/ngu-coc-calbee-800g-nhat-ban-531b28bf-2779-40f7-9ada-93f23bf3f5dd-600x600.jpg 600w, https://j86store.com/wp-content/uploads/2022/03/ngu-coc-calbee-800g-nhat-ban-531b28bf-2779-40f7-9ada-93f23bf3f5dd-100x100.jpg 100w, https://j86store.com/wp-content/uploads/2022/03/ngu-coc-calbee-800g-nhat-ban-531b28bf-2779-40f7-9ada-93f23bf3f5dd.jpg 1200w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 5879,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2022/03/ngu_coc_trang1_801be01f12a84e2b8dc61b23d829ac87_grande.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2022/03/ngu_coc_trang1_801be01f12a84e2b8dc61b23d829ac87_grande-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2022/03/ngu_coc_trang1_801be01f12a84e2b8dc61b23d829ac87_grande-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2022/03/ngu_coc_trang1_801be01f12a84e2b8dc61b23d829ac87_grande-200x200.jpg 200w, https://j86store.com/wp-content/uploads/2022/03/ngu_coc_trang1_801be01f12a84e2b8dc61b23d829ac87_grande-100x100.jpg 100w, https://j86store.com/wp-content/uploads/2022/03/ngu_coc_trang1_801be01f12a84e2b8dc61b23d829ac87_grande.jpg 500w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 5879,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2024/08/nuocnghe-300x300.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2024/08/nuocnghe-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2024/08/nuocnghe-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2024/08/nuocnghe-100x100.jpg 100w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 5879,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2023/03/bot-lua-non-300x300.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2023/03/bot-lua-non-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2023/03/bot-lua-non-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2023/03/bot-lua-non-100x100.jpg 100w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 6245,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2024/08/DearNatural-600x600.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2024/08/DearNatural-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2024/08/DearNatural-1024x1024.jpg 1024w, https://j86store.com/wp-content/uploads/2024/08/DearNatural-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2024/08/DearNatural-768x768.jpg 768w, https://j86store.com/wp-content/uploads/2024/08/DearNatural-200x200.jpg 200w, https://j86store.com/wp-content/uploads/2024/08/DearNatural-600x600.jpg 600w, https://j86store.com/wp-content/uploads/2024/08/DearNatural-100x100.jpg 100w, https://j86store.com/wp-content/uploads/2024/08/DearNatural.jpg 1281w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 6245,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2022/06/thomnguoi-600x600.png",
+   "srcset": "https://j86store.com/wp-content/uploads/2022/06/thomnguoi-300x300.png 300w, https://j86store.com/wp-content/uploads/2022/06/thomnguoi-150x150.png 150w, https://j86store.com/wp-content/uploads/2022/06/thomnguoi-768x768.png 768w, https://j86store.com/wp-content/uploads/2022/06/thomnguoi-200x200.png 200w, https://j86store.com/wp-content/uploads/2022/06/thomnguoi-600x600.png 600w, https://j86store.com/wp-content/uploads/2022/06/thomnguoi-100x100.png 100w, https://j86store.com/wp-content/uploads/2022/06/thomnguoi.png 1000w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 6245,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2020/05/tra-nghe-orihiro-ukon-tea-200gr-300x300.jpeg",
+   "srcset": "https://j86store.com/wp-content/uploads/2020/05/tra-nghe-orihiro-ukon-tea-200gr-300x300.jpeg 300w, https://j86store.com/wp-content/uploads/2020/05/tra-nghe-orihiro-ukon-tea-200gr-150x150.jpeg 150w, https://j86store.com/wp-content/uploads/2020/05/tra-nghe-orihiro-ukon-tea-200gr-100x100.jpeg 100w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 6611,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2021/11/vitaminC.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2021/11/vitaminC-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2021/11/vitaminC-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2021/11/vitaminC-100x100.jpg 100w, https://j86store.com/wp-content/uploads/2021/11/vitaminC.jpg 600w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 6611,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2022/06/vitamin-e.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2022/06/vitamin-e-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2022/06/vitamin-e-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2022/06/vitamin-e-200x200.jpg 200w, https://j86store.com/wp-content/uploads/2022/06/vitamin-e-100x100.jpg 100w, https://j86store.com/wp-content/uploads/2022/06/vitamin-e.jpg 600w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 6611,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2023/04/Vien-uong-DHC-bo-sung-Canxi.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2023/04/Vien-uong-DHC-bo-sung-Canxi-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2023/04/Vien-uong-DHC-bo-sung-Canxi-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2023/04/Vien-uong-DHC-bo-sung-Canxi-200x200.jpg 200w, https://j86store.com/wp-content/uploads/2023/04/Vien-uong-DHC-bo-sung-Canxi-100x100.jpg 100w, https://j86store.com/wp-content/uploads/2023/04/Vien-uong-DHC-bo-sung-Canxi.jpg 600w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 6938,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2022/06/raucu-600x600.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2022/06/raucu-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2022/06/raucu-1024x1024.jpg 1024w, https://j86store.com/wp-content/uploads/2022/06/raucu-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2022/06/raucu-768x768.jpg 768w, https://j86store.com/wp-content/uploads/2022/06/raucu-200x200.jpg 200w, https://j86store.com/wp-content/uploads/2022/06/raucu-600x600.jpg 600w, https://j86store.com/wp-content/uploads/2022/06/raucu-100x100.jpg 100w, https://j86store.com/wp-content/uploads/2022/06/raucu.jpg 1200w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 6938,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2022/06/collagendhc-300x300.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2022/06/collagendhc-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2022/06/collagendhc-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2022/06/collagendhc-100x100.jpg 100w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 6938,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2023/03/keocanxi-300x300.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2023/03/keocanxi-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2023/03/keocanxi-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2023/03/keocanxi-100x100.jpg 100w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 7429,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2023/03/keobienganchobe-300x300.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2023/03/keobienganchobe-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2023/03/keobienganchobe-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2023/03/keobienganchobe-100x100.jpg 100w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 7429,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2022/06/Sua-Meiji-so-0-1-600x600.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2022/06/Sua-Meiji-so-0-1-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2022/06/Sua-Meiji-so-0-1-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2022/06/Sua-Meiji-so-0-1-200x200.jpg 200w, https://j86store.com/wp-content/uploads/2022/06/Sua-Meiji-so-0-1-600x600.jpg 600w, https://j86store.com/wp-content/uploads/2022/06/Sua-Meiji-so-0-1-100x100.jpg 100w, https://j86store.com/wp-content/uploads/2022/06/Sua-Meiji-so-0-1.jpg 640w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 7429,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2022/06/sua-meiji-so-9-800gr-1-600x600.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2022/06/sua-meiji-so-9-800gr-1-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2022/06/sua-meiji-so-9-800gr-1-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2022/06/sua-meiji-so-9-800gr-1-768x768.jpg 768w, https://j86store.com/wp-content/uploads/2022/06/sua-meiji-so-9-800gr-1-200x200.jpg 200w, https://j86store.com/wp-content/uploads/2022/06/sua-meiji-so-9-800gr-1-600x600.jpg 600w, https://j86store.com/wp-content/uploads/2022/06/sua-meiji-so-9-800gr-1-100x100.jpg 100w, https://j86store.com/wp-content/uploads/2022/06/sua-meiji-so-9-800gr-1.jpg 800w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 7776,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2022/03/lam-boi-tri-muoi-dot-1-jpg-1481705968-14122016155928.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2022/03/lam-boi-tri-muoi-dot-1-jpg-1481705968-14122016155928-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2022/03/lam-boi-tri-muoi-dot-1-jpg-1481705968-14122016155928-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2022/03/lam-boi-tri-muoi-dot-1-jpg-1481705968-14122016155928-200x200.jpg 200w, https://j86store.com/wp-content/uploads/2022/03/lam-boi-tri-muoi-dot-1-jpg-1481705968-14122016155928-100x100.jpg 100w, https://j86store.com/wp-content/uploads/2022/03/lam-boi-tri-muoi-dot-1-jpg-1481705968-14122016155928.jpg 400w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 7776,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2022/03/goi.jpg",
+   "srcset": "https://j86store.com/wp-content/uploads/2022/03/goi-300x300.jpg 300w, https://j86store.com/wp-content/uploads/2022/03/goi-150x150.jpg 150w, https://j86store.com/wp-content/uploads/2022/03/goi-200x200.jpg 200w, https://j86store.com/wp-content/uploads/2022/03/goi-100x100.jpg 100w, https://j86store.com/wp-content/uploads/2022/03/goi.jpg 600w",
+   "alt": "",
+   "w": 300,
+   "h": 300,
+   "rw": 146,
+   "rh": 146,
+   "top": 7776,
+   "parentClasses": "wc-block-grid__product-image",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://assets.parcelperform.com/pp-web-app-assets/logo-carriers/square-logo-carries/bietpo.png",
+   "srcset": null,
+   "alt": "viettel post",
+   "w": 200,
+   "h": 200,
+   "rw": 82,
+   "rh": 82,
+   "top": 8297,
+   "parentClasses": "",
+   "position": "static",
+   "visible": true
+  },
+  {
+   "src": "https://pixel.wp.com/g.gif?v=ext&j=1%3A8.7&blog=178623783&post=178&tz=7&srv=j86store.com&host=j86store.com&ref=&fcp=24332&rand=0.4455793564248798",
+   "srcset": null,
+   "alt": "",
+   "w": 6,
+   "h": 5,
+   "rw": 0,
+   "rh": 0,
+   "top": 0,
+   "parentClasses": "home page-template-default page page-id-178 custom-background wp-custom-logo theme-new-york-business woocommerce-js has-",
+   "position": "static",
+   "visible": false
+  }
+ ],
+ "bgs": [
+  {
+   "url": "url(\"https://j86store.com/wp-content/themes/new-york-business/images/down-arrow.png\")",
+   "el": "DIV.search-cat",
+   "top": 115,
+   "w": 150,
+   "h": 48
+  },
+  {
+   "url": "url(\"https://j86store.com/wp-content/plugins/ml-slider/assets/sliders/flexslider/bg_direction_nav.png\")",
+   "el": "A.flex-prev",
+   "top": 393,
+   "w": 30,
+   "h": 30
+  },
+  {
+   "url": "url(\"https://j86store.com/wp-content/plugins/ml-slider/assets/sliders/flexslider/bg_direction_nav.png\")",
+   "el": "A.flex-next",
+   "top": 393,
+   "w": 30,
+   "h": 30
+  },
+  {
+   "url": "url(\"https://c0.wp.com/p/woocommerce/4.2.2/assets/css/photoswipe/default-skin/default-skin.png\")",
+   "el": "BUTTON.pswp__button.pswp__button--close",
+   "top": 0,
+   "w": 0,
+   "h": 0
+  },
+  {
+   "url": "url(\"https://c0.wp.com/p/woocommerce/4.2.2/assets/css/photoswipe/default-skin/default-skin.png\")",
+   "el": "BUTTON.pswp__button.pswp__button--share",
+   "top": 0,
+   "w": 0,
+   "h": 0
+  },
+  {
+   "url": "url(\"https://c0.wp.com/p/woocommerce/4.2.2/assets/css/photoswipe/default-skin/default-skin.png\")",
+   "el": "BUTTON.pswp__button.pswp__button--fs",
+   "top": 0,
+   "w": 0,
+   "h": 0
+  },
+  {
+   "url": "url(\"https://c0.wp.com/p/woocommerce/4.2.2/assets/css/photoswipe/default-skin/default-skin.png\")",
+   "el": "BUTTON.pswp__button.pswp__button--zoom",
+   "top": 0,
+   "w": 0,
+   "h": 0
+  },
+  {
+   "url": "url(\"https://j86store.com/wp-content/plugins/yith-woocommerce-compare/assets/images/colorbox/controls.png\")",
+   "el": "DIV.",
+   "top": 0,
+   "w": 0,
+   "h": 0
+  },
+  {
+   "url": "url(\"https://j86store.com/wp-content/plugins/yith-woocommerce-compare/assets/images/colorbox/border.png\")",
+   "el": "DIV.",
+   "top": 0,
+   "w": 0,
+   "h": 0
+  },
+  {
+   "url": "url(\"https://j86store.com/wp-content/plugins/yith-woocommerce-compare/assets/images/colorbox/controls.png\")",
+   "el": "DIV.",
+   "top": 0,
+   "w": 0,
+   "h": 0
+  },
+  {
+   "url": "url(\"https://j86store.com/wp-content/plugins/yith-woocommerce-compare/assets/images/colorbox/controls.png\")",
+   "el": "DIV.",
+   "top": 0,
+   "w": 0,
+   "h": 0
+  },
+  {
+   "url": "url(\"https://j86store.com/wp-content/plugins/yith-woocommerce-compare/assets/images/colorbox/controls.png\")",
+   "el": "BUTTON.",
+   "top": 0,
+   "w": 0,
+   "h": 0
+  },
+  {
+   "url": "url(\"https://j86store.com/wp-content/plugins/yith-woocommerce-compare/assets/images/colorbox/controls.png\")",
+   "el": "BUTTON.",
+   "top": 0,
+   "w": 0,
+   "h": 0
+  },
+  {
+   "url": "url(\"https://j86store.com/wp-content/plugins/yith-woocommerce-compare/assets/images/colorbox/controls.png\")",
+   "el": "BUTTON.",
+   "top": 0,
+   "w": 0,
+   "h": 0
+  },
+  {
+   "url": "url(\"https://j86store.com/wp-content/plugins/yith-woocommerce-compare/assets/images/colorbox/loading_background.png\")",
+   "el": "DIV.",
+   "top": 0,
+   "w": 0,
+   "h": 0
+  },
+  {
+   "url": "url(\"https://j86store.com/wp-content/plugins/yith-woocommerce-compare/assets/images/colorbox/loading.gif\")",
+   "el": "DIV.",
+   "top": 0,
+   "w": 0,
+   "h": 0
+  },
+  {
+   "url": "url(\"https://j86store.com/wp-content/plugins/yith-woocommerce-compare/assets/images/colorbox/controls.png\")",
+   "el": "DIV.",
+   "top": 0,
+   "w": 0,
+   "h": 0
+  },
+  {
+   "url": "url(\"https://j86store.com/wp-content/plugins/yith-woocommerce-compare/assets/images/colorbox/controls.png\")",
+   "el": "DIV.",
+   "top": 0,
+   "w": 0,
+   "h": 0
+  },
+  {
+   "url": "url(\"https://j86store.com/wp-content/plugins/yith-woocommerce-compare/assets/images/colorbox/border.png\")",
+   "el": "DIV.",
+   "top": 0,
+   "w": 0,
+   "h": 0
+  },
+  {
+   "url": "url(\"https://j86store.com/wp-content/plugins/yith-woocommerce-compare/assets/images/colorbox/controls.png\")",
+   "el": "DIV.",
+   "top": 0,
+   "w": 0,
+   "h": 0
+  }
+ ],
+ "fonts": {
+  "\"Google Sans\", \"sans serif\" | 400": 558,
+  "FontAwesome | 400": 10,
+  "fontawesome | 400": 2,
+  "Oswald, \"sans serif\" | 600": 1,
+  "\"Google Sans\", \"sans serif\" | 700": 31,
+  "Arial | 400": 5,
+  "\"Google Sans\", \"sans serif\" | 600": 1,
+  "arial | 400": 1,
+  "Arial | 800": 1,
+  "Oswald, \"sans serif\" | 400": 36,
+  "Oswald, \"sans serif\" | 500": 5,
+  "Oswald, \"sans serif\" | 300": 49
+ },
+ "topColors": [
+  [
+   "rgb(25, 25, 25)",
+   655
+  ],
+  [
+   "rgb(101, 100, 100)",
+   398
+  ],
+  [
+   "rgb(255, 255, 255)",
+   146
+  ],
+  [
+   "rgb(34, 34, 34)",
+   68
+  ],
+  [
+   "rgb(13, 15, 26)",
+   50
+  ],
+  [
+   "rgb(18, 18, 18)",
+   32
+  ],
+  [
+   "rgb(50, 55, 60)",
+   30
+  ],
+  [
+   "rgb(221, 221, 221)",
+   21
+  ],
+  [
+   "rgb(51, 51, 51)",
+   14
+  ],
+  [
+   "rgb(238, 238, 238)",
+   12
+  ],
+  [
+   "rgb(128, 128, 128)",
+   6
+  ],
+  [
+   "rgb(186, 186, 186)",
+   6
+  ],
+  [
+   "rgba(0, 0, 0, 0.8)",
+   5
+  ],
+  [
+   "rgba(0, 0, 0, 0.5)",
+   3
+  ],
+  [
+   "rgb(60, 60, 60)",
+   2
+  ],
+  [
+   "rgb(114, 114, 114)",
+   2
+  ],
+  [
+   "rgb(50, 124, 219)",
+   2
+  ],
+  [
+   "rgb(232, 32, 22)",
+   2
+  ],
+  [
+   "rgb(24, 24, 24)",
+   2
+  ],
+  [
+   "rgb(215, 215, 215)",
+   2
+  ],
+  [
+   "rgb(32, 32, 32)",
+   2
+  ],
+  [
+   "rgb(230, 230, 230)",
+   1
+  ],
+  [
+   "rgb(59, 160, 244)",
+   1
+  ],
+  [
+   "rgb(225, 225, 225)",
+   1
+  ],
+  [
+   "rgba(0, 0, 0, 0.9)",
+   1
+  ],
+  [
+   "rgb(26, 27, 28)",
+   1
+  ],
+  [
+   "rgb(59, 89, 152)",
+   1
+  ]
+ ],
+ "favicons": [
+  {
+   "href": "https://j86store.com/wp-content/uploads/2020/09/J86_App-removebg.png",
+   "sizes": "192x192",
+   "rel": "apple-touch-icon-precomposed"
+  },
+  {
+   "href": "https://j86store.com/wp-content/uploads/2022/06/cropped-J86__1_-removebg-preview-32x32.png",
+   "sizes": "32x32",
+   "rel": "icon"
+  },
+  {
+   "href": "https://j86store.com/wp-content/uploads/2022/06/cropped-J86__1_-removebg-preview-192x192.png",
+   "sizes": "192x192",
+   "rel": "icon"
+  },
+  {
+   "href": "https://j86store.com/wp-content/uploads/2022/06/cropped-J86__1_-removebg-preview-180x180.png",
+   "sizes": "",
+   "rel": "apple-touch-icon"
+  },
+  {
+   "href": "https://j86store.com/wp-content/uploads/2020/09/J86_App-removebg.png",
+   "sizes": "192x192",
+   "rel": "apple-touch-icon"
+  },
+  {
+   "href": "https://j86store.com/wp-content/uploads/2020/09/J86_App-removebg.png",
+   "sizes": "512x512",
+   "rel": "apple-touch-icon"
+  }
+ ],
+ "videos": [
+  {
+   "tag": "IFRAME",
+   "src": "https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fj86store&tabs&width=340&height=197&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId",
+   "poster": null
+  }
+ ],
+ "heads": [
+  {
+   "tag": "H1",
+   "text": "",
+   "top": 186
+  },
+  {
+   "tag": "H2",
+   "text": "Danh mục sản phẩm",
+   "top": 317
+  },
+  {
+   "tag": "H3",
+   "text": "Lọc theo giá",
+   "top": 1455
+  },
+  {
+   "tag": "H2",
+   "text": "DANH MỤC SẢN PHẨM",
+   "top": 548
+  },
+  {
+   "tag": "H2",
+   "text": "CHỐNG NẮNG ( UV ) (3)",
+   "top": 848
+  },
+  {
+   "tag": "H2",
+   "text": "DƯỠNG THỂ ( BODY ) (5)",
+   "top": 848
+  },
+  {
+   "tag": "H2",
+   "text": "GIẢM CÂN ( DIET ) (3)",
+   "top": 1191
+  },
+  {
+   "tag": "H2",
+   "text": "GỐC CHỊ EM CHÚNG MÌNH ( WOMEN ) (3)",
+   "top": 1191
+  },
+  {
+   "tag": "H2",
+   "text": "KEM DƯỠNG DÀNH CHO MẶT ( FACE CREAM ) (7)",
+   "top": 1556
+  },
+  {
+   "tag": "H2",
+   "text": "MẮT ( EYES ) (2)",
+   "top": 1556
+  },
+  {
+   "tag": "H2",
+   "text": "MẶT NẠ ( MASK ) (7)",
+   "top": 1921
+  },
+  {
+   "tag": "H2",
+   "text": "MOM AND BABY (14)",
+   "top": 1921
+  },
+  {
+   "tag": "H2",
+   "text": "NƯỚC HOA HỒNG ( LOTION ) (5)",
+   "top": 2264
+  },
+  {
+   "tag": "H2",
+   "text": "PHỤC HỒI TÓC TẠI NHÀ ( HAIR ) (2)",
+   "top": 2264
+  },
+  {
+   "tag": "H2",
+   "text": "SẢN PHẨM DÀNH CHO NAM ( MEN ) (4)",
+   "top": 2607
+  },
+  {
+   "tag": "H2",
+   "text": "SON MÔI ( LIPSTICK ) (3)",
+   "top": 2607
+  },
+  {
+   "tag": "H2",
+   "text": "SỮA RỬA MẶT (9)",
+   "top": 2950
+  },
+  {
+   "tag": "H2",
+   "text": "SỮA TẮM ( SHOWER GEL ) (4)",
+   "top": 2950
+  },
+  {
+   "tag": "H2",
+   "text": "TÂY TẾ BÀO CHẾT ( EXFOLIATE DEAD SKIN ) (4)",
+   "top": 3292
+  },
+  {
+   "tag": "H2",
+   "text": "TẨY TRANG ( CLEANSING ) (3)",
+   "top": 3292
+  },
+  {
+   "tag": "H2",
+   "text": "THỰC PHẨM CHỨC NĂNG ( FUNCTIONAL FOODS ) (38)",
+   "top": 3658
+  },
+  {
+   "tag": "H2",
+   "text": "TRỊ MỤN ( ACNE TREATRMENT ) (5)",
+   "top": 3658
+  },
+  {
+   "tag": "H2",
+   "text": "TRỊ NÁM - TÀN NHANG ( TREAT MELASMA FRECKLES ) (2)",
+   "top": 4023
+  },
+  {
+   "tag": "H2",
+   "text": "TỦ THUỐC GIA ĐÌNH ( FAMILY MEDICINE ) (11)",
+   "top": 4023
+  },
+  {
+   "tag": "H2",
+   "text": "SẢN PHẨM MỚI NHẬP",
+   "top": 4190
+  },
+  {
+   "tag": "H2",
+   "text": "THỰC PHẨM CHỨC NĂNG",
+   "top": 5759
+  },
+  {
+   "tag": "H2",
+   "text": "Mom And Baby",
+   "top": 7309
+  },
+  {
+   "tag": "H2",
+   "text": "Kết Nối Với Chúng Tôi",
+   "top": 8217
+  },
+  {
+   "tag": "H2",
+   "text": "Về J86 Store",
+   "top": 8217
+  },
+  {
+   "tag": "H2",
+   "text": "Hỗ Trợ Khách Hàng",
+   "top": 8217
+  },
+  {
+   "tag": "H2",
+   "text": "Đơn Vị Vận Chuyển",
+   "top": 8217
+  }
+ ],
+ "stylesheets": [
+  "https://c0.wp.com/c/6.1.1/wp-includes/css/dist/block-library/style.min.css",
+  "https://c0.wp.com/p/woocommerce/4.2.2/packages/woocommerce-blocks/build/style.css",
+  "https://j86store.com/wp-content/plugins/yith-woocommerce-wishlist/assets/css/jquery.selectBox.css?ver=1.2.0",
+  "https://j86store.com/wp-content/plugins/yith-woocommerce-wishlist/assets/css/font-awesome.css?ver=4.7.0",
+  "https://j86store.com/wp-content/plugins/woocommerce/assets/css/prettyPhoto.css?ver=3.1.6",
+  "https://j86store.com/wp-content/plugins/yith-woocommerce-wishlist/assets/css/style.css?ver=3.1.1",
+  "https://c0.wp.com/c/6.1.1/wp-includes/css/classic-themes.min.css",
+  "https://j86store.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.5.6",
+  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css?ver=3.3.7",
+  "https://j86store.com/wp-content/plugins/sticky-add-to-cart-for-woocommerce/inc/assets/css/jquery.rateyo.css?ver=1.0.0",
+  "https://j86store.com/wp-content/plugins/sticky-add-to-cart-for-woocommerce/inc/assets/css/wsac-custom.css?ver=1.0.0",
+  "https://c0.wp.com/p/woocommerce/4.2.2/assets/css/woocommerce-layout.css",
+  "https://c0.wp.com/p/woocommerce/4.2.2/assets/css/woocommerce-smallscreen.css",
+  "https://c0.wp.com/p/woocommerce/4.2.2/assets/css/woocommerce.css",
+  "https://j86store.com/wp-content/plugins/yith-woocommerce-compare/assets/css/colorbox.css?ver=1.4.21",
+  "https://j86store.com/wp-content/plugins/yith-woocommerce-quick-view/assets/css/yith-quick-view.css?ver=1.12.0",
+  "https://j86store.com/wp-content/themes/new-york-business/style.css?ver=6.1.1",
+  "https://j86store.com/wp-content/themes/ecommerce-storefront/style.css?ver=6.1.1",
+  "https://fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C500%7CGoogle+Sans%3A300%2C400%2C500&subset=latin%2Clatin-ext",
+  "https://j86store.com/wp-content/themes/new-york-business/css/bootstrap.css?ver=3.3.6",
+  "https://j86store.com/wp-content/themes/ecommerce-storefront/style.css?ver=6.1.1",
+  "https://j86store.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/font-awesome.min.css?ver=4.7.0",
+  "https://j86store.com/wp-content/plugins/sassy-social-share/public/css/sassy-social-share-public.css?ver=3.3.10",
+  "https://j86store.com/wp-content/plugins/sassy-social-share/admin/css/sassy-social-share-svg.css?ver=3.3.10",
+  "https://j86store.com/wp-content/plugins/pwa-for-wp/assets/css/pwaforwp-main.min.css?ver=1.7.18.1",
+  "https://c0.wp.com/p/jetpack/8.7/css/jetpack.css",
+  "https://j86store.com/wp-content/plugins/ml-slider/assets/sliders/flexslider/flexslider.css?ver=3.20.2",
+  "https://j86store.com/wp-content/plugins/ml-slider/assets/metaslider/public.css?ver=3.20.2",
+  "https://j86store.com/wp-content/plugins/ml-slider/themes/nivo-bar/v1.0.0/style.min.css?ver=1.0.0",
+  "https://c0.wp.com/p/woocommerce/4.2.2/assets/css/photoswipe/photoswipe.min.css",
+  "https://c0.wp.com/p/woocommerce/4.2.2/assets/css/photoswipe/default-skin/default-skin.min.css"
+ ],
+ "svgCount": 8,
+ "topology": [
+  {
+   "tag": "div",
+   "id": "page",
+   "classes": "site",
+   "top": 0,
+   "h": 8634,
+   "w": 768,
+   "left": 0,
+   "position": "relative",
+   "bg": "rgba(0, 0, 0, 0)",
+   "z": "auto",
+   "text": "0975564644 j86store.japan@gmail.com Phan Rí Cửa, Tuy Phong, Bình Thuận 8:00 - 22:00 ĐẸP MỖI GIÂY – K",
+   "childCount": 94,
+   "children": [
+    {
+     "tag": "header",
+     "id": "masthead",
+     "classes": "site-header site-header-background",
+     "top": 0,
+     "h": 277,
+     "w": 768,
+     "left": 0,
+     "position": "relative",
+     "bg": "rgb(255, 255, 255)",
+     "z": "9999",
+     "text": "0975564644 j86store.japan@gmail.com Phan Rí Cửa, Tuy Phong, Bình Thuận 8:00 - 22:00 ĐẸP MỖI GIÂY – K",
+     "childCount": 3
+    },
+    {
+     "tag": "div",
+     "id": "content",
+     "classes": "",
+     "top": 297,
+     "h": 7860,
+     "w": 768,
+     "left": 0,
+     "position": "static",
+     "bg": "rgba(0, 0, 0, 0)",
+     "z": "auto",
+     "text": "DANH MỤC SẢN PHẨM PHỤC HỒI TÓC TẠI NHÀ ( HAIR ) (2) SỮA RỬA MẶT (9) GỐC CHỊ EM CHÚNG MÌNH ( WOMEN ) ",
+     "childCount": 1
+    },
+    {
+     "tag": "footer",
+     "id": "colophon",
+     "classes": "site-footer footer-foreground",
+     "top": 8177,
+     "h": 457,
+     "w": 768,
+     "left": 0,
+     "position": "static",
+     "bg": "rgb(26, 27, 28)",
+     "z": "auto",
+     "text": "KẾT NỐI VỚI CHÚNG TÔI VỀ J86 STORE Giới thiệu J86 Store Liên hệ HỖ TRỢ KHÁCH HÀNG Hướng dẫn đặt hàng",
+     "childCount": 2
+    }
+   ]
+  }
+ ],
+ "lenis": false,
+ "scrollSnap": "none / none",
+ "header_scroll0": [
+  {
+   "sel": "BODY#.home.page-template-default.page.page-id-178",
+   "position": "static",
+   "top": "auto",
+   "h": 8634,
+   "viewportTop": 0,
+   "bg": "rgb(255, 249, 249)",
+   "shadow": "none",
+   "z": "auto",
+   "transition": "all",
+   "transform": "none"
+  },
+  {
+   "sel": "HEADER#masthead.site-header..site-header-background",
+   "position": "relative",
+   "top": "0px",
+   "h": 277,
+   "viewportTop": 0,
+   "bg": "rgb(255, 255, 255)",
+   "shadow": "none",
+   "z": "9999",
+   "transition": "all",
+   "transform": "none"
+  },
+  {
+   "sel": "DIV#.mini-header.hidden-xs",
+   "position": "relative",
+   "top": "0px",
+   "h": 50,
+   "viewportTop": 0,
+   "bg": "rgba(0, 0, 0, 0)",
+   "shadow": "none",
+   "z": "auto",
+   "transition": "all",
+   "transform": "none"
+  },
+  {
+   "sel": "UL#footer-social.header-social-icon.animate.fadeInRight",
+   "position": "static",
+   "top": "auto",
+   "h": 45,
+   "viewportTop": 8509,
+   "bg": "rgba(0, 0, 0, 0)",
+   "shadow": "none",
+   "z": "auto",
+   "transition": "all",
+   "transform": "none"
+  }
+ ]
+}

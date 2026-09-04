@@ -1,0 +1,165 @@
+{
+ "nav_link": {
+  "count": 16,
+  "sel": "#masthead .main-navigation li a, #masthead nav li a, .primary-menu li a, #masthead ul.menu > li > a",
+  "diff": {
+   "#masthead .main-navigation li a, #masthead nav li a, .primary-menu li a, #masthead ul.menu > li > a": {
+    "outline": [
+     "rgb(255, 255, 255) none 3px",
+     "rgb(255, 255, 255) none 0px"
+    ],
+    "transition": "all"
+   }
+  }
+ },
+ "product_card": {
+  "count": 20,
+  "sel": "ul.products li.product, .product-item, .products .product",
+  "diff": {
+   "ul.products li.product, .product-item, .products .product": {
+    "transition": "all"
+   },
+   "ul.products li.product img, .products .product img": {
+    "color": [
+     "rgb(101, 100, 100)",
+     "rgb(50, 124, 219)"
+    ],
+    "borderColor": [
+     "rgb(101, 100, 100)",
+     "rgb(50, 124, 219)"
+    ],
+    "outline": [
+     "rgb(101, 100, 100) none 3px",
+     "rgb(50, 124, 219) none 3px"
+    ],
+    "borderBottomColor": [
+     "rgb(101, 100, 100)",
+     "rgb(50, 124, 219)"
+    ],
+    "transition": "all"
+   },
+   "ul.products li.product .button, .products .product .button, ul.products li.product a.add_to_cart_button": {
+    "transition": null
+   },
+   "ul.products li.product .woocommerce-loop-product__title, .products .product h2": {
+    "transition": "all"
+   }
+  }
+ },
+ "category_card": {
+  "count": 20,
+  "sel": ".product-category, li.product-category, .wc-block-product-categories-list-item",
+  "diff": {
+   ".product-category img, li.product-category img": {
+    "color": [
+     "rgb(101, 100, 100)",
+     "rgb(50, 124, 219)"
+    ],
+    "borderColor": [
+     "rgb(101, 100, 100)",
+     "rgb(50, 124, 219)"
+    ],
+    "outline": [
+     "rgb(101, 100, 100) none 3px",
+     "rgb(50, 124, 219) none 3px"
+    ],
+    "borderBottomColor": [
+     "rgb(101, 100, 100)",
+     "rgb(50, 124, 219)"
+    ],
+    "transition": "all"
+   },
+   ".product-category h2, li.product-category h2": {
+    "transition": "all"
+   }
+  }
+ },
+ "sidebar_link": {
+  "count": 20,
+  "sel": ".widget_product_categories li a, #secondary .widget li a, .sidebar .widget li a",
+  "diff": {
+   ".widget_product_categories li a, #secondary .widget li a, .sidebar .widget li a": {
+    "color": [
+     "rgb(101, 100, 100)",
+     "rgb(50, 124, 219)"
+    ],
+    "borderColor": [
+     "rgb(101, 100, 100)",
+     "rgb(50, 124, 219)"
+    ],
+    "outline": [
+     "rgb(101, 100, 100) none 3px",
+     "rgb(50, 124, 219) none 0px"
+    ],
+    "borderBottomColor": [
+     "rgb(101, 100, 100)",
+     "rgb(50, 124, 219)"
+    ],
+    "transition": "all"
+   }
+  }
+ },
+ "footer_link": {
+  "count": 7,
+  "sel": "#colophon a",
+  "diff": {
+   "#colophon a": {
+    "color": [
+     "rgb(255, 255, 255)",
+     "rgb(204, 204, 204)"
+    ],
+    "borderColor": [
+     "rgb(255, 255, 255)",
+     "rgb(204, 204, 204)"
+    ],
+    "outline": [
+     "rgb(255, 255, 255) none 3px",
+     "rgb(204, 204, 204) none 0px"
+    ],
+    "borderBottomColor": [
+     "rgb(255, 255, 255)",
+     "rgb(204, 204, 204)"
+    ],
+    "transition": "all"
+   }
+  }
+ },
+ "search_btn": {
+  "count": 1,
+  "sel": "#masthead button[type=submit], #masthead .search-submit, #masthead form button",
+  "diff": {
+   "#masthead button[type=submit], #masthead .search-submit, #masthead form button": {
+    "transition": "background 0.2s"
+   }
+  }
+ },
+ "cat_button": {
+  "count": 1,
+  "sel": "#masthead .product-categories-btn, #masthead [class*='categor'] > a, .header-cat-button",
+  "diff": {
+   "#masthead .product-categories-btn, #masthead [class*='categor'] > a, .header-cat-button": {
+    "color": [
+     "rgb(34, 34, 34)",
+     "rgb(255, 255, 255)"
+    ],
+    "backgroundColor": [
+     "rgba(0, 0, 0, 0)",
+     "rgb(50, 124, 219)"
+    ],
+    "borderColor": [
+     "rgb(34, 34, 34)",
+     "rgb(255, 255, 255)"
+    ],
+    "outline": [
+     "rgb(34, 34, 34) none 3px",
+     "rgb(255, 255, 255) none 0px"
+    ],
+    "borderBottomColor": [
+     "rgb(34, 34, 34)",
+     "rgb(255, 255, 255)"
+    ],
+    "transition": "all"
+   }
+  }
+ }
+}

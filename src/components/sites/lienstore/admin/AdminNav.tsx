@@ -1,0 +1,62 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { logout } from "@/app/admin/actions";
+import { Fa, type FaName } from "@/components/sites/lienstore/shared/icons";
+import { cn } from "@/lib/utils";
+
+const LINKS: { href: string; label: string; icon: FaName; exact?: boolean }[] = [
+  { href: "/admin/", label: "Tổng quan", icon: "tachometer", exact: true },
+  { href: "/admin/products/", label: "Sản phẩm", icon: "list" },
+  { href: "/admin/categories/", label: "Danh mục", icon: "align-left" },
+  { href: "/admin/orders/", label: "Đơn hàng", icon: "shopping-cart" },
+];
+
+export function AdminNav() {
+  const pathname = usePathname();
+  const isActive = (href: string, exact?: boolean) => (exact ? pathname === href || pathname === href.slice(0, -1) : pathname.startsWith(href.slice(0, -1)));
+
+  return (
+    <aside className="flex w-full flex-col bg-lien-footer text-white md:min-h-screen md:w-60">
+      <div className="border-b border-white/10 px-5 py-4">
+        <Link href="/admin/" className="block font-oswald text-[22px] leading-7 text-white no-underline">
+          LienStore <span className="text-white/60">· Quản trị</span>
+        </Link>
+      </div>
+      <nav className="flex flex-row gap-1 overflow-x-auto px-2 py-2 md:flex-col md:py-4" aria-label="Quản trị">
+        {LINKS.map((l) => (
+          <Link
+            key={l.href}
+            href={l.href}
+            className={cn(
+              "flex items-center gap-3 rounded-md px-3 py-2 text-[14px] leading-5 no-underline whitespace-nowrap",
+              isActive(l.href, l.exact) ? "bg-lien-blue text-white" : "text-white/80 hover:bg-white/10 hover:text-white",
+            )}
+          >
+            <Fa name={l.icon} className="w-4 text-center text-[14px]" />
+            {l.label}
+          </Link>
+        ))}
+        <a
+          href="/"
+          target="_blank"
+          rel="noreferrer"
+          className="flex items-center gap-3 rounded-md px-3 py-2 text-[14px] leading-5 text-white/80 no-underline whitespace-nowrap hover:bg-white/10 hover:text-white"
+        >
+          <Fa name="eye" className="w-4 text-center text-[14px]" />
+          Xem cửa hàng
+        </a>
+        <form action={logout} className="md:mt-auto">
+          <button
+            type="submit"
+            className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-left text-[14px] leading-5 text-white/80 whitespace-nowrap hover:bg-white/10 hover:text-white"
+          >
+            <Fa name="sign-out" className="w-4 text-center text-[14px]" />
+            Đăng xuất
+          </button>
+        </form>
+      </nav>
+    </aside>
+  );
+}

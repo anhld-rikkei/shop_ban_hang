@@ -1,0 +1,196 @@
+"use client";
+
+import { useId, useState, type FormEvent } from "react";
+import { Fa } from "@/components/sites/lienstore/shared/icons";
+import { cn } from "@/lib/utils";
+
+interface ProductTabsProps {
+  name: string;
+  /** Sanitised HTML description. */
+  description: string;
+  reviewCount: number;
+}
+
+type TabKey = "description" | "reviews";
+
+const H2 = "my-[21.58px] font-oswald text-[26px] font-light leading-[36.4px] text-lien-heading";
+const FIELD =
+  "box-border w-full rounded-[3px] border border-lien-input-border bg-white p-[5px] font-arial text-[16px] leading-6 text-lien-input-text focus:border-lien-blue focus:outline-none";
+const REQUIRED = <span className="required text-[#e2401c]">*</span>;
+
+/** `.woocommerce-tabs`: "Mô tả" / "Đánh giá (n)" tabs with the WooCommerce grey tab strip. */
+export function ProductTabs({ name, description, reviewCount }: ProductTabsProps) {
+  const [tab, setTab] = useState<TabKey>("description");
+  const base = useId();
+
+  const tabs: { key: TabKey; label: string }[] = [
+    { key: "description", label: "Mô tả" },
+    { key: "reviews", label: `Đánh giá (${reviewCount})` },
+  ];
+
+  return (
+    <div className="woocommerce-tabs wc-tabs-wrapper clear-both">
+      <ul
+        role="tablist"
+        className="tabs wc-tabs relative m-0 mb-[25.888px] list-none overflow-hidden p-0 pl-4 before:absolute before:right-0 before:bottom-0 before:left-0 before:z-[1] before:border-b before:border-[#d3ced2] before:content-['']"
+      >
+        {tabs.map(({ key, label }) => {
+          const active = tab === key;
+          return (
+            <li
+              key={key}
+              role="presentation"
+              className={cn(
+                "relative -mx-[5px] inline-block rounded-t-[4px] border border-[#d3ced2] px-4",
+                active ? "z-[2] border-b-white bg-white" : "z-0 bg-[#ebe9eb]",
+              )}
+            >
+              <button
+                type="button"
+                role="tab"
+                id={`${base}-tab-${key}`}
+                aria-selected={active}
+                aria-controls={`${base}-panel-${key}`}
+                onClick={() => setTab(key)}
+                className={cn(
+                  "inline-block cursor-pointer border-0 bg-transparent p-0 py-2 text-[16px] leading-6 font-bold no-underline",
+                  active ? "text-lien-text" : "text-[#515151] hover:text-lien-text",
+                )}
+              >
+                {label}
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+
+      {tab === "description" ? (
+        <div
+          role="tabpanel"
+          id={`${base}-panel-description`}
+          aria-labelledby={`${base}-tab-description`}
+          className="woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content mb-8"
+        >
+          <h2 className={H2}>Mô tả</h2>
+          <div className="lien-prose" dangerouslySetInnerHTML={{ __html: description }} />
+        </div>
+      ) : (
+        <div
+          role="tabpanel"
+          id={`${base}-panel-reviews`}
+          aria-labelledby={`${base}-tab-reviews`}
+          className="woocommerce-Tabs-panel woocommerce-Tabs-panel--reviews panel entry-content mb-8"
+        >
+          <h2 className={H2}>Đánh giá</h2>
+          <p className="woocommerce-noreviews mb-4 text-[16px] leading-6 text-lien-text">Chưa có đánh giá nào.</p>
+          <ReviewForm name={name} />
+        </div>
+      )}
+    </div>
+  );
+}
+
+const RATING_LABELS = ["Rất tệ", "Tệ", "Bình thường", "Tốt", "Rất tốt"];
+
+/** WooCommerce review form; purely client-side (no backend) — submitting shows a "pending moderation" notice. */
+function ReviewForm({ name }: { name: string }) {
+  const id = useId();
+  const [rating, setRating] = useState(0);
+  const [hover, setHover] = useState(0);
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (rating === 0) {
+      setError("Vui lòng chọn số sao đánh giá.");
+      return;
+    }
+    setError(null);
+    setSent(true);
+  };
+
+  if (sent) {
+    return (
+      <p
+        role="status"
+        className="woocommerce-message relative mb-8 border-t-[3px] border-[#8fae1b] bg-[#f7f6f7] px-8 py-4 text-[16px] leading-6 text-[#515151]"
+      >
+        Cảm ơn bạn! Đánh giá đang chờ duyệt.
+      </p>
+    );
+  }
+
+  const shown = hover || rating;
+
+  return (
+    <div id="review_form_wrapper" className="max-w-[760px]">
+      <h3 className="comment-reply-title mb-4 text-[16px] leading-6 font-bold text-lien-text">
+        Hãy là người đầu tiên nhận xét &ldquo;{name}&rdquo;
+      </h3>
+      <form id="commentform" className="comment-form" onSubmit={onSubmit}>
+        <p className="comment-notes mb-4 text-[14px] leading-5 text-lien-muted">
+          Email của bạn sẽ không được hiển thị công khai. Các trường bắt buộc được đánh dấu {REQUIRED}
+        </p>
+
+        <fieldset className="comment-form-rating mb-4 border-0 p-0">
+          <legend className="mb-1 text-[16px] leading-6 text-lien-text">Đánh giá của bạn {REQUIRED}</legend>
+          <div className="stars flex gap-0.5" onMouseLeave={() => setHover(0)}>
+            {RATING_LABELS.map((label, i) => {
+              const value = i + 1;
+              return (
+                <label key={value} className="cursor-pointer" onMouseEnter={() => setHover(value)}>
+                  <input
+                    type="radio"
+                    name="rating"
+                    value={value}
+                    checked={rating === value}
+                    onChange={() => setRating(value)}
+                    className="sr-only"
+                  />
+                  <Fa
+                    name={value <= shown ? "star" : "star-o"}
+                    label={`${value} sao – ${label}`}
+                    className="text-[18px] leading-[18px] text-lien-blue"
+                  />
+                </label>
+              );
+            })}
+          </div>
+          {error ? <p className="mt-1 text-[14px] leading-5 text-[#e2401c]">{error}</p> : null}
+        </fieldset>
+
+        <p className="comment-form-comment mb-4">
+          <label htmlFor={`${id}-comment`} className="mb-1 block text-[16px] leading-6 text-lien-text">
+            Nhận xét của bạn {REQUIRED}
+          </label>
+          <textarea id={`${id}-comment`} name="comment" rows={6} required className={FIELD} />
+        </p>
+
+        <div className="sm:flex sm:gap-4">
+          <p className="comment-form-author mb-4 sm:flex-1">
+            <label htmlFor={`${id}-author`} className="mb-1 block text-[16px] leading-6 text-lien-text">
+              Tên {REQUIRED}
+            </label>
+            <input id={`${id}-author`} name="author" type="text" required autoComplete="name" className={FIELD} />
+          </p>
+          <p className="comment-form-email mb-4 sm:flex-1">
+            <label htmlFor={`${id}-email`} className="mb-1 block text-[16px] leading-6 text-lien-text">
+              Email {REQUIRED}
+            </label>
+            <input id={`${id}-email`} name="email" type="email" required autoComplete="email" className={FIELD} />
+          </p>
+        </div>
+
+        <p className="form-submit">
+          <button
+            type="submit"
+            className="submit inline-block cursor-pointer rounded-[3px] border-0 bg-lien-blue px-4 py-[9.888px] font-arial text-[16px] leading-4 font-bold text-white transition-[background] duration-200 hover:bg-[#2a6bc0]"
+          >
+            Gửi đi
+          </button>
+        </p>
+      </form>
+    </div>
+  );
+}

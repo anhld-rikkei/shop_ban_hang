@@ -1,0 +1,183 @@
+{
+ "sliderEl": "metaslider-id-1018 .ml-slider-3-20-2 metaslider metaslider-flex metaslider-1018 ml-slider ms-theme-nivo-bar has-dots-nav",
+ "sliderScripts": [
+  " var metaslider_1018 = function($) {$('#metaslider_1018').addClass('flexslider'); $('#metaslider_1018').flexslider({ slideshowSpeed:5000, animation:\"fade\", controlNav:true, directionNav:true, pauseOnHover:false, direction:\"horizontal\", reverse:false, animationSpeed:300, prevText:\"Previous\", nextText:\"Next\", fadeFirstSlide:false, slideshow:true }); $(document).trigger('metaslider/initialized', '#metaslider_1018'); }; var timer_metaslider_1018 = function() { var slider = !window.jQuery ? window.setTimeout(timer_metaslider_1018, 100) : !jQuery.isReady ? window.setTimeout(timer_metaslider_1018, 1) : metaslider_1018(window.jQuery); }; timer_metaslider_1018(); ",
+  " /* <![CDATA[ */ var wc_single_product_params = {\"i18n_required_rating_text\":\"Vui l\\u00f2ng ch\\u1ecdn m\\u1ed9t m\\u1ee9c \\u0111\\u00e1nh gi\\u00e1\",\"review_rating_required\":\"yes\",\"flexslider\":{\"rtl\":false,\"animation\":\"slide\",\"smoothHeight\":true,\"directionNav\":false,\"controlNav\":\"thumbnails\",\"slideshow\":false,\"animationSpeed\":500,\"animationLoop\":false,\"allowOneSlide\":false},\"zoom_enabled\":\"\",\"zoom_options\":[],\"photoswipe_enabled\":\"1\",\"photoswipe_options\":{\"shareEl\":false,\"closeOnScroll\":false,\"history\":false,\"hideAnimationDuration\":0,\"showAnimationDuration\":0},\"flexslider_enabled\":\"1\"}; /* ]]> */ "
+ ],
+ "slides": [
+  {
+   "src": "https://j86store.com/wp-content/uploads/2023/05/uvsld-1280x520.png",
+   "srcset": "",
+   "alt": "",
+   "w": 1280,
+   "h": 520
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2023/05/vitamin-1280x520.png",
+   "srcset": "",
+   "alt": "",
+   "w": 1280,
+   "h": 520
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2022/01/son-1.png",
+   "srcset": "",
+   "alt": "",
+   "w": 1280,
+   "h": 520
+  },
+  {
+   "src": "https://j86store.com/wp-content/uploads/2023/05/kids-1280x520.png",
+   "srcset": "",
+   "alt": "",
+   "w": 1280,
+   "h": 520
+  }
+ ],
+ "containers": [
+  {
+   "sel": "DIV#.container.vertical-center",
+   "w": 1200,
+   "l": 120,
+   "maxW": "1200px",
+   "pad": "15px",
+   "float": "none",
+   "display": "flex"
+  },
+  {
+   "sel": "DIV#.container.",
+   "w": 1200,
+   "l": 120,
+   "maxW": "1200px",
+   "pad": "15px",
+   "float": "none",
+   "display": "block"
+  },
+  {
+   "sel": "DIV#.container",
+   "w": 1200,
+   "l": 120,
+   "maxW": "1200px",
+   "pad": "15px",
+   "float": "none",
+   "display": "block"
+  },
+  {
+   "sel": "DIV#.row.vertical-center",
+   "w": 1200,
+   "l": 120,
+   "maxW": "none",
+   "pad": "0px",
+   "float": "none",
+   "display": "flex"
+  },
+  {
+   "sel": "DIV#.container.background",
+   "w": 1170,
+   "l": 135,
+   "maxW": "1170px",
+   "pad": "15px",
+   "float": "none",
+   "display": "block"
+  },
+  {
+   "sel": "DIV#.row",
+   "w": 1170,
+   "l": 135,
+   "maxW": "none",
+   "pad": "0px",
+   "float": "none",
+   "display": "block"
+  },
+  {
+   "sel": "ASIDE#secondary.widget-area",
+   "w": 360,
+   "l": 150,
+   "maxW": "none",
+   "pad": "0px",
+   "float": "none",
+   "display": "block"
+  },
+  {
+   "sel": "DIV#primary.col-sm-8.col-lg-8.col-xs-12",
+   "w": 780,
+   "l": 525,
+   "maxW": "none",
+   "pad": "15px",
+   "float": "left",
+   "display": "block"
+  },
+  {
+   "sel": "MAIN#main.site-main",
+   "w": 750,
+   "l": 540,
+   "maxW": "none",
+   "pad": "0px",
+   "float": "none",
+   "display": "block"
+  },
+  {
+   "sel": "DIV#.container",
+   "w": 1200,
+   "l": 120,
+   "maxW": "1200px",
+   "pad": "15px",
+   "float": "none",
+   "display": "block"
+  },
+  {
+   "sel": "DIV#.row",
+   "w": 1200,
+   "l": 120,
+   "maxW": "none",
+   "pad": "0px",
+   "float": "none",
+   "display": "block"
+  },
+  {
+   "sel": "DIV#.row",
+   "w": 1200,
+   "l": 120,
+   "maxW": "none",
+   "pad": "0px",
+   "float": "none",
+   "display": "block"
+  }
+ ],
+ "priceSlider": null,
+ "animateEls": [
+  "UL.mimi-header-social-icon pull-right animate fadeInRight",
+  "UL.header-social-icon animate fadeInRight"
+ ],
+ "stickyEls": [
+  {
+   "el": "DIV#yith-quick-view-modal.",
+   "box": [
+    0,
+    300,
+    1440,
+    600
+   ],
+   "z": "99999"
+  }
+ ],
+ "fontFaces": [
+  "@font-face { font-family: FontAwesome; src: url(\"../fonts/fontawesome-webfont.woff2?v=4.7.0\") format(\"woff2\"), url(\"../fonts/fontawesome-webfont.woff?v=4.7.0\") format(\"woff\"), url(\"../fonts/fontawesome-webfont.ttf?v=4.7.0\") format(\"truetype\"); font-weight: 400; font-style: normal; }",
+  "@font-face { font-family: star; src: url(\"../fonts/star.woff\") format(\"woff\"), url(\"../fonts/star.ttf\") format(\"truetype\"); font-weight: 400; font-style: normal; }",
+  "@font-face { font-family: WooCommerce; src: url(\"../fonts/WooCommerce.woff\") format(\"woff\"), url(\"../fonts/WooCommerce.ttf\") format(\"truetype\"); font-weight: 400; font-style: normal; }",
+  "@font-face { font-family: FontAwesome; src: url(\"../fonts/fontawesome-webfont.woff2?v=4.7.0\") format(\"woff2\"), url(\"../fonts/fontawesome-webfont.woff?v=4.7.0\") format(\"woff\"), url(\"../fonts/fontawesome-webfont.ttf?v=4.7.0\") format(\"truetype\"); font-weight: normal; font-style: normal; }",
+  "@font-face { font-family: flexslider-icon; src: url(\"fonts/flexslider-icon.woff\") format(\"woff\"), url(\"fonts/flexslider-icon.ttf\") format(\"truetype\"); font-weight: 400; font-style: normal; }"
+ ],
+ "keyframes": [
+  "fa-spin",
+  "fa-spin",
+  "spin",
+  "blink",
+  "fa-spin",
+  "fa-spin",
+  "spin",
+  "spin",
+  "animatebottom",
+  "animatebottom"
+ ]
+}

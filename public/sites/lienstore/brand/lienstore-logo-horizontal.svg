@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" width="1040" height="240" font-family="'Be Vietnam Pro','Inter','Segoe UI',Arial,sans-serif">
+  <g transform="translate(10 10)">
+  <circle cx="50" cy="50" r="48" fill="#B9000E"/>
+  <rect x="20" y="28" width="60" height="9" rx="4.5" fill="#FFFFFF"/>
+  <rect x="26" y="43" width="48" height="7" rx="3.5" fill="#FFFFFF"/>
+  <rect x="31" y="43" width="10" height="34" rx="5" fill="#FFFFFF"/>
+  <rect x="59" y="43" width="10" height="34" rx="5" fill="#FFFFFF"/>
+  </g>
+  <text x="132" y="58" font-size="40" font-weight="700" letter-spacing="-0.6" fill="#14151A">LienStore</text>
+  <rect x="132" y="76" width="26" height="2" fill="#B9000E"/>
+  <text x="167" y="81" font-size="12" font-weight="600" letter-spacing="2.4" fill="#4B5563">CHUYÊN HÀNG NHẬT</text>
+</svg>

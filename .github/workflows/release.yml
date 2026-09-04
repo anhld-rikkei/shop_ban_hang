@@ -1,0 +1,83 @@
+# Release pipeline: tag → build multi-arch image → push to GHCR → (optional) redeploy on TrueNAS.
+#
+# Versioning: git tags vMAJOR.MINOR.PATCH (SemVer). `npm version patch|minor|major` bumps package.json,
+# commits and creates the tag; `git push --follow-tags` triggers this workflow.
+# Image tags produced: 1.2.3, 1.2, latest, sha-<short>.
+#
+# Required repository secrets for the deploy job (skip the job if you deploy manually):
+#   TRUENAS_HOST      e.g. truenas.local or a Tailscale IP
+#   TRUENAS_USER      SSH user with app permissions (e.g. truenas_admin)
+#   TRUENAS_SSH_KEY   private key (ed25519) whose public key is in that user's authorized_keys
+#   TRUENAS_APP_NAME  name of the Custom App (default: lienstore)
+name: Release
+
+on:
+  push:
+    tags: ["v*.*.*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+
+env:
+  IMAGE: ghcr.io/${{ github.repository_owner }}/lienstore
+
+jobs:
+  build-push:
+    name: Build & push image
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.meta.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.IMAGE }}
+          tags: |
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=raw,value=latest,enable=${{ startsWith(github.ref, 'refs/tags/v') }}
+            type=sha,prefix=sha-
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+      - name: GitHub Release notes
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+
+  deploy-truenas:
+    name: Redeploy on TrueNAS
+    runs-on: ubuntu-latest
+    needs: build-push
+    if: ${{ secrets.TRUENAS_HOST != '' }}
+    steps:
+      - name: Pull new image and redeploy the app
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.TRUENAS_HOST }}
+          username: ${{ secrets.TRUENAS_USER }}
+          key: ${{ secrets.TRUENAS_SSH_KEY }}
+          script: |
+            APP="${{ secrets.TRUENAS_APP_NAME || 'lienstore' }}"
+            # TrueNAS SCALE 24.10+/25.04: pull the images referenced by the app and redeploy it.
+            sudo midclt call -job app.pull_images "$APP" '{"redeploy": true}'
+            sleep 20
+            curl -fsS http://127.0.0.1:30080/api/health/

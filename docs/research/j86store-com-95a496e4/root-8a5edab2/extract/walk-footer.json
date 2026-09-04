@@ -1,0 +1,1572 @@
+{
+ "tag": "footer",
+ "id": "colophon",
+ "cls": "site-footer footer-foreground",
+ "box": [
+  0,
+  7044,
+  1440,
+  457
+ ],
+ "text": null,
+ "href": null,
+ "img": null,
+ "input": null,
+ "svg": null,
+ "iconChar": null,
+ "styles": {
+  "fontSize": "14px",
+  "fontWeight": "400",
+  "fontFamily": "\"Google Sans\", \"sans serif\"",
+  "lineHeight": "22.4px",
+  "color": "rgb(25, 25, 25)",
+  "backgroundColor": "rgb(26, 27, 28)",
+  "backgroundPosition": "0% 0%",
+  "paddingTop": "15px",
+  "width": "1440px",
+  "height": "456.594px",
+  "minHeight": "150px",
+  "display": "block",
+  "objectFit": "fill",
+  "listStyle": "outside none disc"
+ },
+ "kids": 2,
+ "children": [
+  {
+   "tag": "div",
+   "id": null,
+   "cls": "footer-section footer-foreground",
+   "box": [
+    0,
+    7059,
+    1440,
+    442
+   ],
+   "text": null,
+   "href": null,
+   "img": null,
+   "input": null,
+   "svg": null,
+   "iconChar": null,
+   "styles": {
+    "fontSize": "14px",
+    "fontWeight": "400",
+    "fontFamily": "\"Google Sans\", \"sans serif\"",
+    "lineHeight": "22.4px",
+    "color": "rgb(25, 25, 25)",
+    "backgroundPosition": "0% 0%",
+    "width": "1440px",
+    "height": "441.594px",
+    "display": "block",
+    "objectFit": "fill",
+    "listStyle": "outside none disc"
+   },
+   "kids": 1,
+   "children": [
+    {
+     "tag": "div",
+     "id": null,
+     "cls": "container",
+     "box": [
+      120,
+      7059,
+      1200,
+      442
+     ],
+     "text": null,
+     "href": null,
+     "img": null,
+     "input": null,
+     "svg": null,
+     "iconChar": null,
+     "styles": {
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "fontFamily": "\"Google Sans\", \"sans serif\"",
+      "lineHeight": "22.4px",
+      "color": "rgb(25, 25, 25)",
+      "backgroundPosition": "0% 0%",
+      "paddingTop": "7px",
+      "paddingRight": "15px",
+      "paddingLeft": "15px",
+      "marginRight": "120px",
+      "marginLeft": "120px",
+      "width": "1200px",
+      "height": "441.594px",
+      "maxWidth": "1200px",
+      "display": "block",
+      "objectFit": "fill",
+      "listStyle": "outside none disc"
+     },
+     "kids": 3,
+     "children": [
+      {
+       "tag": "aside",
+       "id": null,
+       "cls": "widget-area",
+       "box": [
+        135,
+        7066,
+        1170,
+        310
+       ],
+       "text": null,
+       "href": null,
+       "img": null,
+       "input": null,
+       "svg": null,
+       "iconChar": null,
+       "styles": {
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "\"Google Sans\", \"sans serif\"",
+        "lineHeight": "22.4px",
+        "color": "rgb(25, 25, 25)",
+        "backgroundPosition": "0% 0%",
+        "width": "1170px",
+        "height": "309.594px",
+        "display": "block",
+        "objectFit": "fill",
+        "listStyle": "outside none disc"
+       },
+       "kids": 4,
+       "children": [
+        {
+         "tag": "div",
+         "id": null,
+         "cls": "col-md-3 col-sm-3 footer-widget",
+         "box": [
+          135,
+          7066,
+          293,
+          310
+         ],
+         "text": null,
+         "href": null,
+         "img": null,
+         "input": null,
+         "svg": null,
+         "iconChar": null,
+         "styles": {
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "\"Google Sans\", \"sans serif\"",
+          "lineHeight": "22.4px",
+          "color": "rgb(25, 25, 25)",
+          "backgroundPosition": "0% 0%",
+          "paddingRight": "15px",
+          "paddingLeft": "15px",
+          "width": "292.5px",
+          "height": "309.594px",
+          "minHeight": "1px",
+          "display": "block",
+          "float": "left",
+          "position": "relative",
+          "objectFit": "fill",
+          "listStyle": "outside none disc"
+         },
+         "kids": 1,
+         "children": [
+          {
+           "tag": "section",
+           "id": "text-8",
+           "cls": "widget widget_text",
+           "box": [
+            150,
+            7066,
+            263,
+            310
+           ],
+           "text": null,
+           "href": null,
+           "img": null,
+           "input": null,
+           "svg": null,
+           "iconChar": null,
+           "styles": {
+            "fontSize": "14px",
+            "fontWeight": "400",
+            "fontFamily": "\"Google Sans\", \"sans serif\"",
+            "lineHeight": "22.4px",
+            "color": "rgb(25, 25, 25)",
+            "backgroundPosition": "0% 0%",
+            "paddingBottom": "42px",
+            "width": "262.5px",
+            "height": "309.594px",
+            "display": "block",
+            "objectFit": "fill",
+            "listStyle": "outside none disc"
+           },
+           "kids": 2,
+           "children": [
+            {
+             "tag": "h2",
+             "id": null,
+             "cls": "widget-title",
+             "box": [
+              150,
+              7083,
+              263,
+              59
+             ],
+             "text": "Kết Nối Với Chúng Tôi",
+             "href": null,
+             "img": null,
+             "input": null,
+             "svg": null,
+             "iconChar": null,
+             "styles": {
+              "fontSize": "21px",
+              "fontWeight": "500",
+              "fontFamily": "Oswald, \"sans serif\"",
+              "lineHeight": "29.4px",
+              "letterSpacing": "3.8178px",
+              "color": "rgb(255, 255, 255)",
+              "textTransform": "uppercase",
+              "backgroundPosition": "0% 0%",
+              "marginTop": "17.43px",
+              "marginBottom": "21px",
+              "width": "262.5px",
+              "height": "58.7812px",
+              "display": "block",
+              "borderTop": "0px none rgb(255, 255, 255)",
+              "borderBottom": "0px none rgb(255, 255, 255)",
+              "borderLeft": "0px none rgb(255, 255, 255)",
+              "borderRight": "0px none rgb(255, 255, 255)",
+              "objectFit": "fill",
+              "listStyle": "outside none disc"
+             },
+             "kids": 0
+            },
+            {
+             "tag": "div",
+             "id": null,
+             "cls": "textwidget",
+             "box": [
+              150,
+              7163,
+              263,
+              156
+             ],
+             "text": null,
+             "href": null,
+             "img": null,
+             "input": null,
+             "svg": null,
+             "iconChar": null,
+             "styles": {
+              "fontSize": "14px",
+              "fontWeight": "400",
+              "fontFamily": "\"Google Sans\", \"sans serif\"",
+              "lineHeight": "22.4px",
+              "color": "rgb(25, 25, 25)",
+              "backgroundPosition": "0% 0%",
+              "width": "262.5px",
+              "height": "156.391px",
+              "display": "block",
+              "objectFit": "fill",
+              "listStyle": "outside none disc"
+             },
+             "kids": 1,
+             "children": [
+              {
+               "tag": "p",
+               "id": null,
+               "cls": null,
+               "box": [
+                150,
+                7163,
+                263,
+                156
+               ],
+               "text": null,
+               "href": null,
+               "img": null,
+               "input": null,
+               "svg": null,
+               "iconChar": null,
+               "styles": {
+                "fontSize": "14px",
+                "fontWeight": "400",
+                "fontFamily": "\"Google Sans\", \"sans serif\"",
+                "lineHeight": "22.4px",
+                "color": "rgb(255, 255, 255)",
+                "backgroundPosition": "0% 0%",
+                "marginBottom": "14px",
+                "width": "262.5px",
+                "height": "156.391px",
+                "display": "block",
+                "borderTop": "0px none rgb(255, 255, 255)",
+                "borderBottom": "0px none rgb(255, 255, 255)",
+                "borderLeft": "0px none rgb(255, 255, 255)",
+                "borderRight": "0px none rgb(255, 255, 255)",
+                "objectFit": "fill",
+                "listStyle": "outside none disc"
+               },
+               "kids": 1,
+               "children": [
+                {
+                 "tag": "iframe",
+                 "id": null,
+                 "cls": null,
+                 "box": [
+                  150,
+                  7163,
+                  263,
+                  150
+                 ],
+                 "text": null,
+                 "href": null,
+                 "img": null,
+                 "input": null,
+                 "svg": null,
+                 "iconChar": null,
+                 "styles": {
+                  "fontSize": "14px",
+                  "fontWeight": "400",
+                  "fontFamily": "\"Google Sans\", \"sans serif\"",
+                  "lineHeight": "22.4px",
+                  "color": "rgb(255, 255, 255)",
+                  "backgroundPosition": "0% 0%",
+                  "width": "262.5px",
+                  "height": "150px",
+                  "maxWidth": "100%",
+                  "display": "inline",
+                  "borderTop": "0px none rgb(255, 255, 255)",
+                  "borderBottom": "0px none rgb(255, 255, 255)",
+                  "borderLeft": "0px none rgb(255, 255, 255)",
+                  "borderRight": "0px none rgb(255, 255, 255)",
+                  "overflow": "clip",
+                  "objectFit": "fill",
+                  "listStyle": "outside none disc"
+                 },
+                 "kids": 0
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "id": null,
+         "cls": "col-md-3 col-sm-3 footer-widget",
+         "box": [
+          428,
+          7066,
+          293,
+          183
+         ],
+         "text": null,
+         "href": null,
+         "img": null,
+         "input": null,
+         "svg": null,
+         "iconChar": null,
+         "styles": {
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "\"Google Sans\", \"sans serif\"",
+          "lineHeight": "22.4px",
+          "color": "rgb(25, 25, 25)",
+          "backgroundPosition": "0% 0%",
+          "paddingRight": "15px",
+          "paddingLeft": "15px",
+          "width": "292.5px",
+          "height": "182.594px",
+          "minHeight": "1px",
+          "display": "block",
+          "float": "left",
+          "position": "relative",
+          "objectFit": "fill",
+          "listStyle": "outside none disc"
+         },
+         "kids": 1,
+         "children": [
+          {
+           "tag": "section",
+           "id": "text-5",
+           "cls": "widget widget_text",
+           "box": [
+            443,
+            7066,
+            263,
+            183
+           ],
+           "text": null,
+           "href": null,
+           "img": null,
+           "input": null,
+           "svg": null,
+           "iconChar": null,
+           "styles": {
+            "fontSize": "14px",
+            "fontWeight": "400",
+            "fontFamily": "\"Google Sans\", \"sans serif\"",
+            "lineHeight": "22.4px",
+            "color": "rgb(25, 25, 25)",
+            "backgroundPosition": "0% 0%",
+            "paddingBottom": "42px",
+            "width": "262.5px",
+            "height": "182.594px",
+            "display": "block",
+            "objectFit": "fill",
+            "listStyle": "outside none disc"
+           },
+           "kids": 2,
+           "children": [
+            {
+             "tag": "h2",
+             "id": null,
+             "cls": "widget-title",
+             "box": [
+              443,
+              7083,
+              263,
+              29
+             ],
+             "text": "Về J86 Store",
+             "href": null,
+             "img": null,
+             "input": null,
+             "svg": null,
+             "iconChar": null,
+             "styles": {
+              "fontSize": "21px",
+              "fontWeight": "500",
+              "fontFamily": "Oswald, \"sans serif\"",
+              "lineHeight": "29.4px",
+              "letterSpacing": "3.8178px",
+              "color": "rgb(255, 255, 255)",
+              "textTransform": "uppercase",
+              "backgroundPosition": "0% 0%",
+              "marginTop": "17.43px",
+              "marginBottom": "21px",
+              "width": "262.5px",
+              "height": "29.3906px",
+              "display": "block",
+              "borderTop": "0px none rgb(255, 255, 255)",
+              "borderBottom": "0px none rgb(255, 255, 255)",
+              "borderLeft": "0px none rgb(255, 255, 255)",
+              "borderRight": "0px none rgb(255, 255, 255)",
+              "objectFit": "fill",
+              "listStyle": "outside none disc"
+             },
+             "kids": 0
+            },
+            {
+             "tag": "div",
+             "id": null,
+             "cls": "textwidget",
+             "box": [
+              443,
+              7134,
+              263,
+              59
+             ],
+             "text": null,
+             "href": null,
+             "img": null,
+             "input": null,
+             "svg": null,
+             "iconChar": null,
+             "styles": {
+              "fontSize": "14px",
+              "fontWeight": "400",
+              "fontFamily": "\"Google Sans\", \"sans serif\"",
+              "lineHeight": "22.4px",
+              "color": "rgb(25, 25, 25)",
+              "backgroundPosition": "0% 0%",
+              "width": "262.5px",
+              "height": "58.7812px",
+              "display": "block",
+              "objectFit": "fill",
+              "listStyle": "outside none disc"
+             },
+             "kids": 2,
+             "children": [
+              {
+               "tag": "p",
+               "id": null,
+               "cls": null,
+               "box": [
+                443,
+                7134,
+                263,
+                22
+               ],
+               "text": null,
+               "href": null,
+               "img": null,
+               "input": null,
+               "svg": null,
+               "iconChar": null,
+               "styles": {
+                "fontSize": "14px",
+                "fontWeight": "400",
+                "fontFamily": "\"Google Sans\", \"sans serif\"",
+                "lineHeight": "22.4px",
+                "color": "rgb(255, 255, 255)",
+                "backgroundPosition": "0% 0%",
+                "marginBottom": "14px",
+                "width": "262.5px",
+                "height": "22.3906px",
+                "display": "block",
+                "borderTop": "0px none rgb(255, 255, 255)",
+                "borderBottom": "0px none rgb(255, 255, 255)",
+                "borderLeft": "0px none rgb(255, 255, 255)",
+                "borderRight": "0px none rgb(255, 255, 255)",
+                "objectFit": "fill",
+                "listStyle": "outside none disc"
+               },
+               "kids": 1,
+               "children": [
+                {
+                 "tag": "a",
+                 "id": null,
+                 "cls": null,
+                 "box": [
+                  443,
+                  7136,
+                  123,
+                  18
+                 ],
+                 "text": "Giới thiệu J86 Store",
+                 "href": "https://j86store.com/gioi-thieu-ve-j86-store/",
+                 "img": null,
+                 "input": null,
+                 "svg": null,
+                 "iconChar": null,
+                 "styles": {
+                  "fontSize": "14px",
+                  "fontWeight": "400",
+                  "fontFamily": "\"Google Sans\", \"sans serif\"",
+                  "lineHeight": "22.4px",
+                  "color": "rgb(255, 255, 255)",
+                  "backgroundPosition": "0% 0%",
+                  "display": "inline",
+                  "borderTop": "0px none rgb(255, 255, 255)",
+                  "borderBottom": "0px none rgb(255, 255, 255)",
+                  "borderLeft": "0px none rgb(255, 255, 255)",
+                  "borderRight": "0px none rgb(255, 255, 255)",
+                  "cursor": "pointer",
+                  "objectFit": "fill",
+                  "listStyle": "outside none disc"
+                 },
+                 "kids": 0
+                }
+               ]
+              },
+              {
+               "tag": "p",
+               "id": null,
+               "cls": null,
+               "box": [
+                443,
+                7170,
+                263,
+                22
+               ],
+               "text": null,
+               "href": null,
+               "img": null,
+               "input": null,
+               "svg": null,
+               "iconChar": null,
+               "styles": {
+                "fontSize": "14px",
+                "fontWeight": "400",
+                "fontFamily": "\"Google Sans\", \"sans serif\"",
+                "lineHeight": "22.4px",
+                "color": "rgb(255, 255, 255)",
+                "backgroundPosition": "0% 0%",
+                "marginBottom": "14px",
+                "width": "262.5px",
+                "height": "22.3906px",
+                "display": "block",
+                "borderTop": "0px none rgb(255, 255, 255)",
+                "borderBottom": "0px none rgb(255, 255, 255)",
+                "borderLeft": "0px none rgb(255, 255, 255)",
+                "borderRight": "0px none rgb(255, 255, 255)",
+                "objectFit": "fill",
+                "listStyle": "outside none disc"
+               },
+               "kids": 1,
+               "children": [
+                {
+                 "tag": "a",
+                 "id": null,
+                 "cls": null,
+                 "box": [
+                  443,
+                  7172,
+                  45,
+                  18
+                 ],
+                 "text": "Liên hệ",
+                 "href": "https://j86store.com/lien-he/",
+                 "img": null,
+                 "input": null,
+                 "svg": null,
+                 "iconChar": null,
+                 "styles": {
+                  "fontSize": "14px",
+                  "fontWeight": "400",
+                  "fontFamily": "\"Google Sans\", \"sans serif\"",
+                  "lineHeight": "22.4px",
+                  "color": "rgb(255, 255, 255)",
+                  "backgroundPosition": "0% 0%",
+                  "display": "inline",
+                  "borderTop": "0px none rgb(255, 255, 255)",
+                  "borderBottom": "0px none rgb(255, 255, 255)",
+                  "borderLeft": "0px none rgb(255, 255, 255)",
+                  "borderRight": "0px none rgb(255, 255, 255)",
+                  "cursor": "pointer",
+                  "objectFit": "fill",
+                  "listStyle": "outside none disc"
+                 },
+                 "kids": 0
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "id": null,
+         "cls": "col-md-3 col-sm-3 footer-widget",
+         "box": [
+          720,
+          7066,
+          293,
+          183
+         ],
+         "text": null,
+         "href": null,
+         "img": null,
+         "input": null,
+         "svg": null,
+         "iconChar": null,
+         "styles": {
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "\"Google Sans\", \"sans serif\"",
+          "lineHeight": "22.4px",
+          "color": "rgb(25, 25, 25)",
+          "backgroundPosition": "0% 0%",
+          "paddingRight": "15px",
+          "paddingLeft": "15px",
+          "width": "292.5px",
+          "height": "182.594px",
+          "minHeight": "1px",
+          "display": "block",
+          "float": "left",
+          "position": "relative",
+          "objectFit": "fill",
+          "listStyle": "outside none disc"
+         },
+         "kids": 1,
+         "children": [
+          {
+           "tag": "section",
+           "id": "text-6",
+           "cls": "widget widget_text",
+           "box": [
+            735,
+            7066,
+            263,
+            183
+           ],
+           "text": null,
+           "href": null,
+           "img": null,
+           "input": null,
+           "svg": null,
+           "iconChar": null,
+           "styles": {
+            "fontSize": "14px",
+            "fontWeight": "400",
+            "fontFamily": "\"Google Sans\", \"sans serif\"",
+            "lineHeight": "22.4px",
+            "color": "rgb(25, 25, 25)",
+            "backgroundPosition": "0% 0%",
+            "paddingBottom": "42px",
+            "width": "262.5px",
+            "height": "182.594px",
+            "display": "block",
+            "objectFit": "fill",
+            "listStyle": "outside none disc"
+           },
+           "kids": 2,
+           "children": [
+            {
+             "tag": "h2",
+             "id": null,
+             "cls": "widget-title",
+             "box": [
+              735,
+              7083,
+              263,
+              29
+             ],
+             "text": "Hỗ Trợ Khách Hàng",
+             "href": null,
+             "img": null,
+             "input": null,
+             "svg": null,
+             "iconChar": null,
+             "styles": {
+              "fontSize": "21px",
+              "fontWeight": "500",
+              "fontFamily": "Oswald, \"sans serif\"",
+              "lineHeight": "29.4px",
+              "letterSpacing": "3.8178px",
+              "color": "rgb(255, 255, 255)",
+              "textTransform": "uppercase",
+              "backgroundPosition": "0% 0%",
+              "marginTop": "17.43px",
+              "marginBottom": "21px",
+              "width": "262.5px",
+              "height": "29.3906px",
+              "display": "block",
+              "borderTop": "0px none rgb(255, 255, 255)",
+              "borderBottom": "0px none rgb(255, 255, 255)",
+              "borderLeft": "0px none rgb(255, 255, 255)",
+              "borderRight": "0px none rgb(255, 255, 255)",
+              "objectFit": "fill",
+              "listStyle": "outside none disc"
+             },
+             "kids": 0
+            },
+            {
+             "tag": "div",
+             "id": null,
+             "cls": "textwidget",
+             "box": [
+              735,
+              7134,
+              263,
+              59
+             ],
+             "text": null,
+             "href": null,
+             "img": null,
+             "input": null,
+             "svg": null,
+             "iconChar": null,
+             "styles": {
+              "fontSize": "14px",
+              "fontWeight": "400",
+              "fontFamily": "\"Google Sans\", \"sans serif\"",
+              "lineHeight": "22.4px",
+              "color": "rgb(25, 25, 25)",
+              "backgroundPosition": "0% 0%",
+              "width": "262.5px",
+              "height": "58.7812px",
+              "display": "block",
+              "objectFit": "fill",
+              "listStyle": "outside none disc"
+             },
+             "kids": 2,
+             "children": [
+              {
+               "tag": "p",
+               "id": null,
+               "cls": null,
+               "box": [
+                735,
+                7134,
+                263,
+                22
+               ],
+               "text": null,
+               "href": null,
+               "img": null,
+               "input": null,
+               "svg": null,
+               "iconChar": null,
+               "styles": {
+                "fontSize": "14px",
+                "fontWeight": "400",
+                "fontFamily": "\"Google Sans\", \"sans serif\"",
+                "lineHeight": "22.4px",
+                "color": "rgb(255, 255, 255)",
+                "backgroundPosition": "0% 0%",
+                "marginBottom": "14px",
+                "width": "262.5px",
+                "height": "22.3906px",
+                "display": "block",
+                "borderTop": "0px none rgb(255, 255, 255)",
+                "borderBottom": "0px none rgb(255, 255, 255)",
+                "borderLeft": "0px none rgb(255, 255, 255)",
+                "borderRight": "0px none rgb(255, 255, 255)",
+                "objectFit": "fill",
+                "listStyle": "outside none disc"
+               },
+               "kids": 1,
+               "children": [
+                {
+                 "tag": "a",
+                 "id": null,
+                 "cls": null,
+                 "box": [
+                  735,
+                  7136,
+                  128,
+                  18
+                 ],
+                 "text": "Hướng dẫn đặt hàng",
+                 "href": "https://j86store.com/huong-dan-dat-hang/",
+                 "img": null,
+                 "input": null,
+                 "svg": null,
+                 "iconChar": null,
+                 "styles": {
+                  "fontSize": "14px",
+                  "fontWeight": "400",
+                  "fontFamily": "\"Google Sans\", \"sans serif\"",
+                  "lineHeight": "22.4px",
+                  "color": "rgb(255, 255, 255)",
+                  "backgroundPosition": "0% 0%",
+                  "display": "inline",
+                  "borderTop": "0px none rgb(255, 255, 255)",
+                  "borderBottom": "0px none rgb(255, 255, 255)",
+                  "borderLeft": "0px none rgb(255, 255, 255)",
+                  "borderRight": "0px none rgb(255, 255, 255)",
+                  "cursor": "pointer",
+                  "objectFit": "fill",
+                  "listStyle": "outside none disc"
+                 },
+                 "kids": 0
+                }
+               ]
+              },
+              {
+               "tag": "p",
+               "id": null,
+               "cls": null,
+               "box": [
+                735,
+                7170,
+                263,
+                22
+               ],
+               "text": null,
+               "href": null,
+               "img": null,
+               "input": null,
+               "svg": null,
+               "iconChar": null,
+               "styles": {
+                "fontSize": "14px",
+                "fontWeight": "400",
+                "fontFamily": "\"Google Sans\", \"sans serif\"",
+                "lineHeight": "22.4px",
+                "color": "rgb(255, 255, 255)",
+                "backgroundPosition": "0% 0%",
+                "marginBottom": "14px",
+                "width": "262.5px",
+                "height": "22.3906px",
+                "display": "block",
+                "borderTop": "0px none rgb(255, 255, 255)",
+                "borderBottom": "0px none rgb(255, 255, 255)",
+                "borderLeft": "0px none rgb(255, 255, 255)",
+                "borderRight": "0px none rgb(255, 255, 255)",
+                "objectFit": "fill",
+                "listStyle": "outside none disc"
+               },
+               "kids": 1,
+               "children": [
+                {
+                 "tag": "a",
+                 "id": null,
+                 "cls": null,
+                 "box": [
+                  735,
+                  7172,
+                  113,
+                  18
+                 ],
+                 "text": "Chính sách đổi trả",
+                 "href": "https://j86store.com/chinh-sach-doi-tra/",
+                 "img": null,
+                 "input": null,
+                 "svg": null,
+                 "iconChar": null,
+                 "styles": {
+                  "fontSize": "14px",
+                  "fontWeight": "400",
+                  "fontFamily": "\"Google Sans\", \"sans serif\"",
+                  "lineHeight": "22.4px",
+                  "color": "rgb(255, 255, 255)",
+                  "backgroundPosition": "0% 0%",
+                  "display": "inline",
+                  "borderTop": "0px none rgb(255, 255, 255)",
+                  "borderBottom": "0px none rgb(255, 255, 255)",
+                  "borderLeft": "0px none rgb(255, 255, 255)",
+                  "borderRight": "0px none rgb(255, 255, 255)",
+                  "cursor": "pointer",
+                  "objectFit": "fill",
+                  "listStyle": "outside none disc"
+                 },
+                 "kids": 0
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "tag": "div",
+         "id": null,
+         "cls": "col-md-3 col-sm-3 footer-widget",
+         "box": [
+          1013,
+          7066,
+          293,
+          192
+         ],
+         "text": null,
+         "href": null,
+         "img": null,
+         "input": null,
+         "svg": null,
+         "iconChar": null,
+         "styles": {
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "\"Google Sans\", \"sans serif\"",
+          "lineHeight": "22.4px",
+          "color": "rgb(25, 25, 25)",
+          "backgroundPosition": "0% 0%",
+          "paddingRight": "15px",
+          "paddingLeft": "15px",
+          "width": "292.5px",
+          "height": "191.812px",
+          "minHeight": "1px",
+          "display": "block",
+          "float": "left",
+          "position": "relative",
+          "objectFit": "fill",
+          "listStyle": "outside none disc"
+         },
+         "kids": 1,
+         "children": [
+          {
+           "tag": "section",
+           "id": "text-9",
+           "cls": "widget widget_text",
+           "box": [
+            1028,
+            7066,
+            263,
+            192
+           ],
+           "text": null,
+           "href": null,
+           "img": null,
+           "input": null,
+           "svg": null,
+           "iconChar": null,
+           "styles": {
+            "fontSize": "14px",
+            "fontWeight": "400",
+            "fontFamily": "\"Google Sans\", \"sans serif\"",
+            "lineHeight": "22.4px",
+            "color": "rgb(25, 25, 25)",
+            "backgroundPosition": "0% 0%",
+            "paddingBottom": "42px",
+            "width": "262.5px",
+            "height": "191.812px",
+            "display": "block",
+            "objectFit": "fill",
+            "listStyle": "outside none disc"
+           },
+           "kids": 2,
+           "children": [
+            {
+             "tag": "h2",
+             "id": null,
+             "cls": "widget-title",
+             "box": [
+              1028,
+              7083,
+              263,
+              29
+             ],
+             "text": "Đơn Vị Vận Chuyển",
+             "href": null,
+             "img": null,
+             "input": null,
+             "svg": null,
+             "iconChar": null,
+             "styles": {
+              "fontSize": "21px",
+              "fontWeight": "500",
+              "fontFamily": "Oswald, \"sans serif\"",
+              "lineHeight": "29.4px",
+              "letterSpacing": "3.8178px",
+              "color": "rgb(255, 255, 255)",
+              "textTransform": "uppercase",
+              "backgroundPosition": "0% 0%",
+              "marginTop": "17.43px",
+              "marginBottom": "21px",
+              "width": "262.5px",
+              "height": "29.3906px",
+              "display": "block",
+              "borderTop": "0px none rgb(255, 255, 255)",
+              "borderBottom": "0px none rgb(255, 255, 255)",
+              "borderLeft": "0px none rgb(255, 255, 255)",
+              "borderRight": "0px none rgb(255, 255, 255)",
+              "objectFit": "fill",
+              "listStyle": "outside none disc"
+             },
+             "kids": 0
+            },
+            {
+             "tag": "div",
+             "id": null,
+             "cls": "textwidget",
+             "box": [
+              1028,
+              7134,
+              263,
+              0
+             ],
+             "text": null,
+             "href": null,
+             "img": null,
+             "input": null,
+             "svg": null,
+             "iconChar": null,
+             "styles": {
+              "fontSize": "14px",
+              "fontWeight": "400",
+              "fontFamily": "\"Google Sans\", \"sans serif\"",
+              "lineHeight": "22.4px",
+              "color": "rgb(25, 25, 25)",
+              "backgroundPosition": "0% 0%",
+              "width": "262.5px",
+              "display": "block",
+              "objectFit": "fill",
+              "listStyle": "outside none disc"
+             },
+             "kids": 1,
+             "children": [
+              {
+               "tag": "p",
+               "id": null,
+               "cls": null,
+               "box": [
+                1028,
+                7134,
+                263,
+                0
+               ],
+               "text": null,
+               "href": null,
+               "img": null,
+               "input": null,
+               "svg": null,
+               "iconChar": null,
+               "styles": {
+                "fontSize": "14px",
+                "fontWeight": "400",
+                "fontFamily": "\"Google Sans\", \"sans serif\"",
+                "lineHeight": "22.4px",
+                "color": "rgb(255, 255, 255)",
+                "backgroundPosition": "0% 0%",
+                "marginBottom": "14px",
+                "width": "262.5px",
+                "display": "block",
+                "borderTop": "0px none rgb(255, 255, 255)",
+                "borderBottom": "0px none rgb(255, 255, 255)",
+                "borderLeft": "0px none rgb(255, 255, 255)",
+                "borderRight": "0px none rgb(255, 255, 255)",
+                "objectFit": "fill",
+                "listStyle": "outside none disc"
+               },
+               "kids": 1,
+               "children": [
+                {
+                 "tag": "img",
+                 "id": null,
+                 "cls": "lazyloaded alignleft",
+                 "box": [
+                  1028,
+                  7134,
+                  82,
+                  82
+                 ],
+                 "text": null,
+                 "href": null,
+                 "img": {
+                  "src": "https://assets.parcelperform.com/pp-web-app-assets/logo-carriers/square-logo-carries/bietpo.png",
+                  "alt": "viettel post",
+                  "nw": 200,
+                  "nh": 200
+                 },
+                 "input": null,
+                 "svg": null,
+                 "iconChar": null,
+                 "styles": {
+                  "fontSize": "14px",
+                  "fontWeight": "400",
+                  "fontFamily": "\"Google Sans\", \"sans serif\"",
+                  "lineHeight": "22.4px",
+                  "color": "rgb(255, 255, 255)",
+                  "backgroundPosition": "0% 0%",
+                  "marginRight": "21px",
+                  "width": "82px",
+                  "height": "82px",
+                  "maxWidth": "100%",
+                  "display": "block",
+                  "float": "left",
+                  "borderTop": "0px none rgb(255, 255, 255)",
+                  "borderBottom": "0px none rgb(255, 255, 255)",
+                  "borderLeft": "0px none rgb(255, 255, 255)",
+                  "borderRight": "0px none rgb(255, 255, 255)",
+                  "overflow": "clip",
+                  "objectFit": "fill",
+                  "verticalAlign": "middle",
+                  "listStyle": "outside none disc"
+                 },
+                 "kids": 0
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "tag": "div",
+       "id": null,
+       "cls": "row",
+       "box": [
+        120,
+        7375,
+        1200,
+        70
+       ],
+       "text": null,
+       "href": null,
+       "img": null,
+       "input": null,
+       "svg": null,
+       "iconChar": null,
+       "styles": {
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "\"Google Sans\", \"sans serif\"",
+        "lineHeight": "22.4px",
+        "color": "rgb(25, 25, 25)",
+        "backgroundPosition": "0% 0%",
+        "marginRight": "-15px",
+        "marginLeft": "-15px",
+        "width": "1200px",
+        "height": "70px",
+        "display": "block",
+        "objectFit": "fill",
+        "listStyle": "outside none disc"
+       },
+       "kids": 1,
+       "children": [
+        {
+         "tag": "div",
+         "id": null,
+         "cls": "col-md-12",
+         "box": [
+          120,
+          7375,
+          1200,
+          70
+         ],
+         "text": null,
+         "href": null,
+         "img": null,
+         "input": null,
+         "svg": null,
+         "iconChar": null,
+         "styles": {
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "\"Google Sans\", \"sans serif\"",
+          "lineHeight": "22.4px",
+          "color": "rgb(25, 25, 25)",
+          "backgroundPosition": "0% 0%",
+          "paddingRight": "15px",
+          "paddingLeft": "15px",
+          "width": "1200px",
+          "height": "70px",
+          "minHeight": "1px",
+          "display": "block",
+          "float": "left",
+          "position": "relative",
+          "objectFit": "fill",
+          "listStyle": "outside none disc"
+         },
+         "kids": 1,
+         "children": [
+          {
+           "tag": "center",
+           "id": null,
+           "cls": null,
+           "box": [
+            135,
+            7375,
+            1170,
+            45
+           ],
+           "text": null,
+           "href": null,
+           "img": null,
+           "input": null,
+           "svg": null,
+           "iconChar": null,
+           "styles": {
+            "fontSize": "14px",
+            "fontWeight": "400",
+            "fontFamily": "\"Google Sans\", \"sans serif\"",
+            "lineHeight": "22.4px",
+            "color": "rgb(25, 25, 25)",
+            "textAlign": "-webkit-center",
+            "backgroundPosition": "0% 0%",
+            "width": "1170px",
+            "height": "45px",
+            "display": "block",
+            "objectFit": "fill",
+            "listStyle": "outside none disc"
+           },
+           "kids": 1,
+           "children": [
+            {
+             "tag": "ul",
+             "id": "footer-social",
+             "cls": "header-social-icon animate fadeInRight",
+             "box": [
+              135,
+              7375,
+              1170,
+              45
+             ],
+             "text": null,
+             "href": null,
+             "img": null,
+             "input": null,
+             "svg": null,
+             "iconChar": null,
+             "styles": {
+              "fontSize": "14px",
+              "fontWeight": "400",
+              "fontFamily": "\"Google Sans\", \"sans serif\"",
+              "lineHeight": "22.4px",
+              "color": "rgb(25, 25, 25)",
+              "textAlign": "-webkit-center",
+              "backgroundPosition": "0% 0%",
+              "marginBottom": "25px",
+              "width": "1170px",
+              "height": "45px",
+              "display": "block",
+              "objectFit": "fill",
+              "listStyle": "outside none disc"
+             },
+             "kids": 1,
+             "children": [
+              {
+               "tag": "li",
+               "id": null,
+               "cls": null,
+               "box": [
+                695,
+                7375,
+                50,
+                45
+               ],
+               "text": null,
+               "href": null,
+               "img": null,
+               "input": null,
+               "svg": null,
+               "iconChar": null,
+               "styles": {
+                "fontSize": "14px",
+                "fontWeight": "400",
+                "fontFamily": "\"Google Sans\", \"sans serif\"",
+                "lineHeight": "22.4px",
+                "color": "rgb(255, 255, 255)",
+                "textAlign": "-webkit-center",
+                "backgroundPosition": "0% 0%",
+                "paddingTop": "5px",
+                "width": "50px",
+                "height": "45px",
+                "display": "inline-block",
+                "borderTop": "0px none rgb(255, 255, 255)",
+                "borderBottom": "0px none rgb(255, 255, 255)",
+                "borderLeft": "0px none rgb(255, 255, 255)",
+                "borderRight": "0px none rgb(255, 255, 255)",
+                "objectFit": "fill",
+                "listStyle": "outside none disc"
+               },
+               "kids": 1,
+               "children": [
+                {
+                 "tag": "a",
+                 "id": null,
+                 "cls": "facebook",
+                 "box": [
+                  700,
+                  7380,
+                  40,
+                  40
+                 ],
+                 "text": null,
+                 "href": "https://facebook.com/j86store",
+                 "img": null,
+                 "input": null,
+                 "svg": null,
+                 "iconChar": null,
+                 "styles": {
+                  "fontSize": "14px",
+                  "fontWeight": "400",
+                  "fontFamily": "\"Google Sans\", \"sans serif\"",
+                  "lineHeight": "22.4px",
+                  "color": "rgb(255, 255, 255)",
+                  "textAlign": "center",
+                  "backgroundColor": "rgb(59, 89, 152)",
+                  "backgroundPosition": "0% 0%",
+                  "marginRight": "5px",
+                  "marginLeft": "5px",
+                  "width": "40px",
+                  "height": "40px",
+                  "display": "inline-block",
+                  "borderRadius": "24px",
+                  "borderTop": "0px none rgb(255, 255, 255)",
+                  "borderBottom": "0px none rgb(255, 255, 255)",
+                  "borderLeft": "0px none rgb(255, 255, 255)",
+                  "borderRight": "0px none rgb(255, 255, 255)",
+                  "transition": "0.3s ease-in-out",
+                  "cursor": "pointer",
+                  "objectFit": "fill",
+                  "listStyle": "outside none disc"
+                 },
+                 "kids": 1
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "tag": "div",
+       "id": null,
+       "cls": "row",
+       "box": [
+        120,
+        7445,
+        1200,
+        55
+       ],
+       "text": null,
+       "href": null,
+       "img": null,
+       "input": null,
+       "svg": null,
+       "iconChar": null,
+       "styles": {
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "\"Google Sans\", \"sans serif\"",
+        "lineHeight": "22.4px",
+        "color": "rgb(25, 25, 25)",
+        "backgroundPosition": "0% 0%",
+        "marginRight": "-15px",
+        "marginLeft": "-15px",
+        "width": "1200px",
+        "height": "55px",
+        "display": "block",
+        "objectFit": "fill",
+        "listStyle": "outside none disc"
+       },
+       "kids": 1,
+       "children": [
+        {
+         "tag": "div",
+         "id": null,
+         "cls": "vertical-center footer-bottom-section",
+         "box": [
+          120,
+          7445,
+          1200,
+          55
+         ],
+         "text": null,
+         "href": null,
+         "img": null,
+         "input": null,
+         "svg": null,
+         "iconChar": null,
+         "styles": {
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "fontFamily": "\"Google Sans\", \"sans serif\"",
+          "lineHeight": "22.4px",
+          "color": "rgb(25, 25, 25)",
+          "backgroundPosition": "0% 0%",
+          "width": "1200px",
+          "height": "55px",
+          "display": "flex",
+          "alignItems": "center",
+          "borderTop": "1px solid rgb(255, 255, 255)",
+          "objectFit": "fill",
+          "listStyle": "outside none disc"
+         },
+         "kids": 1,
+         "children": [
+          {
+           "tag": "div",
+           "id": null,
+           "cls": "col-md-12 site-info",
+           "box": [
+            120,
+            7446,
+            1200,
+            54
+           ],
+           "text": null,
+           "href": null,
+           "img": null,
+           "input": null,
+           "svg": null,
+           "iconChar": null,
+           "styles": {
+            "fontSize": "15px",
+            "fontWeight": "400",
+            "fontFamily": "\"Google Sans\", \"sans serif\"",
+            "lineHeight": "24px",
+            "color": "rgb(255, 255, 255)",
+            "textAlign": "center",
+            "backgroundPosition": "0% 0%",
+            "paddingTop": "15px",
+            "paddingRight": "15px",
+            "paddingBottom": "15px",
+            "paddingLeft": "15px",
+            "width": "1200px",
+            "height": "54px",
+            "minHeight": "1px",
+            "display": "block",
+            "float": "left",
+            "borderTop": "0px none rgb(255, 255, 255)",
+            "borderBottom": "0px none rgb(255, 255, 255)",
+            "borderLeft": "0px none rgb(255, 255, 255)",
+            "borderRight": "0px none rgb(255, 255, 255)",
+            "position": "relative",
+            "objectFit": "fill",
+            "listStyle": "outside none disc"
+           },
+           "kids": 1,
+           "children": [
+            {
+             "tag": "p",
+             "id": null,
+             "cls": null,
+             "box": [
+              135,
+              7461,
+              1170,
+              24
+             ],
+             "text": null,
+             "href": null,
+             "img": null,
+             "input": null,
+             "svg": null,
+             "iconChar": null,
+             "styles": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "fontFamily": "\"Google Sans\", \"sans serif\"",
+              "lineHeight": "24px",
+              "color": "rgb(255, 255, 255)",
+              "textAlign": "-webkit-center",
+              "backgroundPosition": "0% 0%",
+              "width": "1170px",
+              "height": "24px",
+              "display": "block",
+              "borderTop": "0px none rgb(255, 255, 255)",
+              "borderBottom": "0px none rgb(255, 255, 255)",
+              "borderLeft": "0px none rgb(255, 255, 255)",
+              "borderRight": "0px none rgb(255, 255, 255)",
+              "objectFit": "fill",
+              "listStyle": "outside none disc"
+             },
+             "kids": 1,
+             "children": [
+              {
+               "tag": "a",
+               "id": null,
+               "cls": null,
+               "box": [
+                534,
+                7464,
+                372,
+                18
+               ],
+               "text": "Copyright 2020-2026 by J86 Store. All Rights Reserved.",
+               "href": "https://j86store.com",
+               "img": null,
+               "input": null,
+               "svg": null,
+               "iconChar": null,
+               "styles": {
+                "fontSize": "15px",
+                "fontWeight": "400",
+                "fontFamily": "\"Google Sans\", \"sans serif\"",
+                "lineHeight": "24px",
+                "color": "rgb(255, 255, 255)",
+                "textAlign": "-webkit-center",
+                "backgroundPosition": "0% 0%",
+                "display": "inline",
+                "borderTop": "0px none rgb(255, 255, 255)",
+                "borderBottom": "0px none rgb(255, 255, 255)",
+                "borderLeft": "0px none rgb(255, 255, 255)",
+                "borderRight": "0px none rgb(255, 255, 255)",
+                "cursor": "pointer",
+                "objectFit": "fill",
+                "listStyle": "outside none disc"
+               },
+               "kids": 0
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

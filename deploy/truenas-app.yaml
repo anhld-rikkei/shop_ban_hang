@@ -1,0 +1,36 @@
+# LienStore on TrueNAS SCALE (24.10 Electric Eel / 25.04 Fangtooth+)
+# Apps → Discover Apps → ⋮ (top right) → "Install via YAML" → paste this file.
+#
+# Variant A — image published to GitHub Container Registry by .github/workflows/release.yml.
+#   If the package is private, add the registry
+#   under Apps → Settings → Manage Container Images / Registries (ghcr.io + a PAT with read:packages).
+#
+# Before installing:
+#   1. Create dataset  <pool>/apps/lienstore   (Datasets → Add Dataset, Share Type: Apps)
+#   2. Shell:  mkdir -p /mnt/<pool>/apps/lienstore/data && chown -R 1000:1000 /mnt/<pool>/apps/lienstore
+#   3. Change ADMIN_PASSWORD and ADMIN_SESSION_SECRET below (secret: `openssl rand -hex 32`).
+#
+# First start creates /app/data/lienstore.db (SQLite) and imports the seed catalogue automatically.
+services:
+  lienstore:
+    image: ghcr.io/anhld-rikkei/lienstore:latest
+    container_name: lienstore
+    restart: unless-stopped
+    ports:
+      - "30080:3000"            # LAN: http://<truenas-ip>:30080 — put Cloudflare Tunnel / reverse proxy in front for HTTPS
+    environment:
+      NODE_ENV: production
+      LIEN_DB_PATH: /app/data/lienstore.db
+      NEXT_PUBLIC_SITE_URL: https://linconnn.io.vn
+      ADMIN_USER: admin
+      ADMIN_PASSWORD: CHANGE_ME_STRONG_PASSWORD
+      ADMIN_SESSION_SECRET: CHANGE_ME_LONG_RANDOM_STRING
+      # NEXT_PUBLIC_FB_PAGE_ID: ""   # optional Messenger chat bubble
+    volumes:
+      - /mnt/<pool>/apps/lienstore/data:/app/data
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/api/health/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
