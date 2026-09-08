@@ -14,16 +14,16 @@ export const ASSET_ROOT = "/sites/lienstore/root-8a5edab2/images";
 
 export const contact: ContactInfo = {
   phones: [
-    { label: "VN", number: "Đang cập nhật" },
+    { label: "VN", number: "0964 839 769", href: "tel:+84964839769" },
     { label: "JP", number: "070-9138-1512", href: "tel:+817091381512" },
   ],
   email: "contact@linconnn.io.vn",
   address: "Xã Hoằng Hóa, Tỉnh Thanh Hóa",
   hours: "8:00 - 22:00",
   socials: [
-    { kind: "facebook", label: "Facebook", href: "https://facebook.com/lienstore" },
-    { kind: "zalo", label: "Zalo", href: "https://zalo.me/" },
-    { kind: "messenger", label: "Messenger", href: "https://m.me/lienstore" },
+    { kind: "facebook", label: "Facebook", href: "https://www.facebook.com/dien.luc.809784" },
+    { kind: "zalo", label: "Zalo", href: "https://zalo.me/0964839769" },
+    { kind: "messenger", label: "Messenger", href: "https://m.me/dien.luc.809784" },
   ],
 };
 

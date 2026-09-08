@@ -3,7 +3,7 @@
  "note": "Seed catalogue imported into SQLite on first start and synced (add-only) on newer versions. Regenerate with `npm run db:export`.",
  "meta": {
   "nextOrderNumber": 1001,
-  "seededAt": "2026-09-08T05:52:49Z"
+  "seededAt": "2026-09-08T06:27:12Z"
  },
  "categories": [
   {
@@ -10336,8 +10336,8 @@
   {
    "slug": "lien-he",
    "title": "LIÊN HỆ",
-   "content": "<p><strong>Website:</strong> linconnn.io.vn</p>\n<p><strong>Hotline VN:</strong> Đang cập nhật</p>\n<p><strong>Hotline JP:</strong> <a href=\"tel:+817091381512\">070-9138-1512</a></p>\n<p><strong>Email:</strong> <a href=\"mailto:contact@linconnn.io.vn\">contact@linconnn.io.vn</a></p>\n<p><strong>Facebook:</strong> <a href=\"https://facebook.com/lienstore\" target=\"_blank\" rel=\"noreferrer\">facebook.com/lienstore</a> · <strong>Zalo:</strong> <a href=\"https://zalo.me/\" target=\"_blank\" rel=\"noreferrer\">zalo.me</a> · <strong>Messenger:</strong> <a href=\"https://m.me/lienstore\" target=\"_blank\" rel=\"noreferrer\">m.me/lienstore</a></p>\n<p><strong>Địa chỉ:</strong> Xã Hoằng Hóa, Tỉnh Thanh Hóa</p>\n<p><strong>LienStore</strong> — Giá không thể rẻ nhất, nhưng <strong>CAM KẾT</strong> luôn luôn là <strong>HÀNG NHẬT NỘI ĐỊA</strong>.</p>",
-   "date": "2020-05-31T17:40:09"
+   "content": "<p><strong>Website:</strong> linconnn.io.vn</p>\n<p><strong>Hotline VN:</strong> <a href=\"tel:+84964839769\">0964 839 769</a></p>\n<p><strong>Hotline JP:</strong> <a href=\"tel:+817091381512\">070-9138-1512</a></p>\n<p><strong>Email:</strong> <a href=\"mailto:contact@linconnn.io.vn\">contact@linconnn.io.vn</a></p>\n<p><strong>Facebook:</strong> <a href=\"https://www.facebook.com/dien.luc.809784\" target=\"_blank\" rel=\"noreferrer\">facebook.com/dien.luc.809784</a> · <strong>Zalo:</strong> <a href=\"https://zalo.me/0964839769\" target=\"_blank\" rel=\"noreferrer\">zalo.me/0964839769</a> · <strong>Messenger:</strong> <a href=\"https://m.me/dien.luc.809784\" target=\"_blank\" rel=\"noreferrer\">m.me/dien.luc.809784</a></p>\n<p><strong>Địa chỉ:</strong> Xã Hoằng Hóa, Tỉnh Thanh Hóa</p>\n<p><strong>LienStore</strong> — Giá không thể rẻ nhất, nhưng <strong>CAM KẾT</strong> luôn luôn là <strong>HÀNG NHẬT NỘI ĐỊA</strong>.</p>",
+   "date": "2026-09-08"
   }
  ],
  "posts": [

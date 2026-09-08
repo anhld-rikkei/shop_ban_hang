@@ -5,6 +5,11 @@ Tất cả thay đổi đáng chú ý của LienStore được ghi tại đây.
 
 ## [Unreleased]
 
+## [1.5.1] - 2026-09-08
+
+### Changed
+- Thông tin liên hệ thật: hotline VN 0964 839 769, Facebook facebook.com/dien.luc.809784, Zalo zalo.me/0964839769, Messenger m.me/dien.luc.809784 (thanh liên hệ, footer, trang Liên hệ).
+
 ## [1.5.0] - 2026-09-08
 
 ### Added
@@ -72,7 +77,8 @@ Bản phát hành đầu tiên.
 - Số hotline VN, link Zalo/Facebook/Messenger còn là placeholder trong `src/components/sites/lienstore/root-8a5edab2/data.ts`.
 - Dự án khởi tạo từ [ai-website-cloner-template](https://github.com/JCodesMore/ai-website-cloner-template) (MIT).
 
-[Unreleased]: https://github.com/anhld-rikkei/shop_ban_hang/compare/v1.5.0...HEAD
+[Unreleased]: https://github.com/anhld-rikkei/shop_ban_hang/compare/v1.5.1...HEAD
+[1.5.1]: https://github.com/anhld-rikkei/shop_ban_hang/compare/v1.5.0...v1.5.1
 [1.5.0]: https://github.com/anhld-rikkei/shop_ban_hang/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/anhld-rikkei/shop_ban_hang/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/anhld-rikkei/shop_ban_hang/compare/v1.2.0...v1.3.0
