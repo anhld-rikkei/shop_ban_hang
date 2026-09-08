@@ -30,12 +30,18 @@ digest="$(docker image inspect -f '{{index .RepoDigests 0}}' "$IMAGE" 2>/dev/nul
 version="$(docker image inspect -f '{{index .Config.Labels "org.opencontainers.image.version"}}' "$IMAGE" 2>/dev/null)"
 log "new image for $IMAGE (version=${version:-?} digest=${digest:-?}) → redeploying app"
 
-if midclt call -job app.redeploy "$APP" >/dev/null 2>&1; then
-  :
-elif midclt call -job app.pull_images "$APP" '{"redeploy": true}' >/dev/null 2>&1; then
+out1="$(midclt call -job app.redeploy "$APP" 2>&1)"
+if [ $? -eq 0 ]; then
   :
 else
-  log "redeploy failed — check: midclt call app.query"; notify "❌ $APP: redeploy failed for $IMAGE"; exit 1
+  out2="$(midclt call -job app.pull_images "$APP" '{"redeploy": true}' 2>&1)"
+  if [ $? -ne 0 ]; then
+    log "redeploy failed. app.redeploy: $(echo "$out1" | tail -c 400 | tr '
+' ' ')"
+    log "                 app.pull_images: $(echo "$out2" | tail -c 400 | tr '
+' ' ')"
+    notify "❌ $APP: redeploy failed for $IMAGE"; exit 1
+  fi
 fi
 
 # wait for the health endpoint of the app (port from the compose ports mapping)
