@@ -92,6 +92,10 @@ python scripts/xlsx/amazon_jp_lookup.py "D:\danh-sach-san-pham-fanpage.xlsx" --a
 
 Script mở Amazon JP bằng trình duyệt ẩn, loại các kết quả dạng set/mua sỉ, ưu tiên tiêu đề khớp quy cách, ghi 3 ứng viên để đối chiếu. Cột "Giá vốn (VNĐ)" và "Giá bán đề xuất" là công thức trong sheet Tham số (tỷ giá, phí vận chuyển, hệ số) nên tự tính khi có Giá Nhật. Sau đó `xlsx:import` sẽ tải ảnh Amazon về kho web và đưa giá vốn vào admin.
 
+## Cào sản phẩm từ fanpage bằng ChatGPT (agent duyệt web)
+
+Prompt đầy đủ ở [`docs/CHATGPT_FANPAGE_PROMPT.txt`](CHATGPT_FANPAGE_PROMPT.txt): yêu cầu agent đọc từng bài trên fanpage, tách sản phẩm, ghi đúng tên cột của template này, mô tả HTML theo khung `<p><strong>Công dụng</strong></p><ul>…` (website tự tách mục), điền "Tên tiếng Nhật" để script tra Amazon, và đối chiếu trùng với `lienstore-san-pham.xlsx` đã xuất. Kết quả nhập bằng `xlsx:import` như thường; nếu agent chỉ đưa được CSV (`;`), đặt tên `.csv` và chạy cùng lệnh.
+
 ## Đưa lên prod
 
 `data/seed.json` sau khi nhập được commit và phát hành bằng tag. Container prod có `LIEN_SEED_SYNC=update` (đã đặt trong `deploy/truenas-app.yaml`) sẽ ghi đè các sản phẩm có trong seed bằng giá trị mới, giữ nguyên đơn hàng, khách hàng và sản phẩm chỉ có trong DB. Nếu bạn muốn sửa sản phẩm trực tiếp trên admin prod và không bị seed ghi đè, đổi thành `LIEN_SEED_SYNC=add`.

@@ -56,7 +56,17 @@ cat_by_key = {}
 for c in categories:
     cat_by_key[norm(c["name"])] = c["slug"]; cat_by_key[c["slug"]] = c["slug"]
 
-wb = openpyxl.load_workbook(args.xlsx, data_only=True)
+if args.xlsx.lower().endswith(".csv"):
+    # CSV fallback (UTF-8, ";" separated, quoted multi-line cells) → wrap it in an in-memory workbook
+    import csv
+    wb = openpyxl.Workbook(); ws0 = wb.active; ws0.title = "Sản phẩm"
+    with open(args.xlsx, encoding="utf-8-sig", newline="") as f:
+        sample = f.read(4096); f.seek(0)
+        delim = ";" if sample.count(";") >= sample.count(",") else ","
+        for row in csv.reader(f, delimiter=delim):
+            ws0.append(row)
+else:
+    wb = openpyxl.load_workbook(args.xlsx, data_only=True)
 
 # --- categories sheet (optional)
 if "Danh mục" in wb.sheetnames:
