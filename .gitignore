@@ -57,3 +57,6 @@ data/*.db-*
 
 # Screenshots of the reference site used during cloning (59 MB, not needed at runtime)
 docs/design-references/
+
+# Excel working copies
+/*.xlsx

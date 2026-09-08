@@ -18,6 +18,7 @@ services:
     environment:
       NODE_ENV: production
       LIEN_DB_PATH: /app/data/lienstore.db
+      LIEN_SEED_SYNC: update
       NEXT_PUBLIC_SITE_URL: http://192.168.1.10:30080   # change to the NAS IP or https://dev.linconnn.io.vn
       ADMIN_USER: admin
       ADMIN_PASSWORD: CHANGE_ME_STRONG_PASSWORD

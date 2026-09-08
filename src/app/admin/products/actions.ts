@@ -39,6 +39,10 @@ export async function saveProductAction(_prev: ProductFormState, formData: FormD
   const regularPrice = regularRaw ? parseIntField(regularRaw) : null;
   if (regularRaw && regularPrice === null) fields.regularPrice = "Giá gốc không hợp lệ.";
 
+  const costRaw = get("costPrice");
+  const costPrice = costRaw ? parseIntField(costRaw) : null;
+  if (costRaw && costPrice === null) fields.costPrice = "Giá vốn không hợp lệ.";
+
   const stockRaw = get("stock");
   const stock = stockRaw === "" ? null : parseIntField(stockRaw);
   if (stockRaw !== "" && (stock === null || stock < 0)) fields.stock = "Tồn kho phải là số nguyên ≥ 0 hoặc để trống.";
@@ -69,6 +73,7 @@ export async function saveProductAction(_prev: ProductFormState, formData: FormD
     name,
     price: price ?? 0,
     regularPrice: regularPrice && regularPrice > (price ?? 0) ? regularPrice : null,
+    costPrice,
     currency: existing?.currency ?? "VNĐ",
     sku: get("sku") || null,
     stock,

@@ -13,6 +13,16 @@ interface ProductFormProps {
   categories: ShopCategory[];
 }
 
+const digits = (s: string) => Number.parseInt(s.replace(/[^\d]/g, ""), 10);
+
+/** Profit per unit + margin % for the live hint under the cost field. */
+function computeMargin(priceText: string, costText: string): { profit: number; pct: number } | null {
+  const price = digits(priceText);
+  const cost = digits(costText);
+  if (!Number.isFinite(price) || !Number.isFinite(cost) || price <= 0) return null;
+  return { profit: price - cost, pct: Math.round(((price - cost) / price) * 1000) / 10 };
+}
+
 function FieldError({ msg }: { msg?: string }) {
   return msg ? <p className="mt-1 text-[12px] leading-4 text-red-600">{msg}</p> : null;
 }
@@ -20,6 +30,9 @@ function FieldError({ msg }: { msg?: string }) {
 export function ProductForm({ product, categories }: ProductFormProps) {
   const [state, action, pending] = useActionState<ProductFormState, FormData>(saveProductAction, null);
   const [images, setImages] = useState((product?.images ?? []).join("\n"));
+  const [priceText, setPriceText] = useState(String(product?.price ?? ""));
+  const [costText, setCostText] = useState(String(product?.costPrice ?? ""));
+  const margin = computeMargin(priceText, costText);
   const fields = state?.fields ?? {};
   const previews = images
     .split(/\r?\n/)
@@ -97,7 +110,7 @@ export function ProductForm({ product, categories }: ProductFormProps) {
                 <label className={adminLabel} htmlFor="price">
                   Giá (VNĐ) *
                 </label>
-                <input id="price" name="price" inputMode="numeric" defaultValue={product?.price ?? ""} required className={cn(adminInput, fields.price && "border-red-500")} />
+                <input id="price" name="price" inputMode="numeric" value={priceText} onChange={(e) => setPriceText(e.target.value)} required className={cn(adminInput, fields.price && "border-red-500")} />
                 <FieldError msg={fields.price} />
               </div>
               <div>
@@ -106,6 +119,18 @@ export function ProductForm({ product, categories }: ProductFormProps) {
                 </label>
                 <input id="regularPrice" name="regularPrice" inputMode="numeric" defaultValue={product?.regularPrice ?? ""} className={cn(adminInput, fields.regularPrice && "border-red-500")} />
                 <FieldError msg={fields.regularPrice} />
+              </div>
+              <div>
+                <label className={adminLabel} htmlFor="costPrice">
+                  Giá vốn (giá nhập, VNĐ)
+                </label>
+                <input id="costPrice" name="costPrice" inputMode="numeric" value={costText} onChange={(e) => setCostText(e.target.value)} placeholder="Chỉ hiển thị trong quản trị" className={cn(adminInput, fields.costPrice && "border-red-500")} />
+                <FieldError msg={fields.costPrice} />
+                {margin ? (
+                  <p className={cn("mt-1 text-[12px] leading-4", margin.profit >= 0 ? "text-green-700" : "text-red-600")}>
+                    Lợi nhuận/sp: {margin.profit.toLocaleString("vi-VN")}đ ({margin.pct}%)
+                  </p>
+                ) : null}
               </div>
               <div>
                 <label className={adminLabel} htmlFor="sku">

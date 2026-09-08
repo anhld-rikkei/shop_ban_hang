@@ -29,6 +29,7 @@ interface ProductRow {
   name: string;
   price: number;
   regular_price: number | null;
+  cost_price: number | null;
   currency: string;
   sku: string | null;
   stock: number | null;
@@ -67,6 +68,7 @@ function rowToProduct(r: ProductRow): CatalogProduct {
     name: r.name,
     price: r.price,
     regularPrice: r.regular_price,
+    costPrice: r.cost_price ?? null,
     currency: r.currency,
     sku: r.sku,
     stock: r.stock,
@@ -282,13 +284,14 @@ export async function saveProduct(input: ProductInput): Promise<CatalogProduct> 
     if (id) {
       const exists = db.prepare("SELECT id FROM products WHERE id = ?").get(id);
       if (!exists) throw new Error(`Product ${id} not found`);
-      db.prepare(`UPDATE products SET slug = ?, name = ?, price = ?, regular_price = ?, currency = ?, sku = ?, stock = ?, stock_status = ?,
+      db.prepare(`UPDATE products SET slug = ?, name = ?, price = ?, regular_price = ?, cost_price = ?, currency = ?, sku = ?, stock = ?, stock_status = ?,
         tags = ?, images = ?, thumb = ?, short_description = ?, description = ?, related = ?, rating = ?, review_count = ?, status = ?, updated_at = ?
         WHERE id = ?`).run(
         input.slug,
         input.name,
         input.price,
         input.regularPrice,
+        input.costPrice,
         input.currency,
         input.sku,
         input.stock,
@@ -307,13 +310,14 @@ export async function saveProduct(input: ProductInput): Promise<CatalogProduct> 
       );
       db.prepare("DELETE FROM product_categories WHERE product_id = ?").run(id);
     } else {
-      const res = db.prepare(`INSERT INTO products (slug, name, price, regular_price, currency, sku, stock, stock_status, tags, images, thumb,
+      const res = db.prepare(`INSERT INTO products (slug, name, price, regular_price, cost_price, currency, sku, stock, stock_status, tags, images, thumb,
         short_description, description, related, rating, review_count, status, created_at, updated_at)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(
         input.slug,
         input.name,
         input.price,
         input.regularPrice,
+        input.costPrice,
         input.currency,
         input.sku,
         input.stock,

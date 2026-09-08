@@ -36,7 +36,8 @@
 ### Trang quản trị `/admin/`
 - Đăng nhập admin bằng tài khoản cấu hình qua biến môi trường.
 - **Dashboard**: số sản phẩm, đang bán, hết hàng, đơn hàng, chờ xử lý, doanh thu, khách hàng.
-- **Sản phẩm**: danh sách có lọc/tìm, thêm, sửa, xoá, ảnh, giá, tồn kho, danh mục, tag, trạng thái nháp/đăng.
+- **Sản phẩm**: danh sách có lọc/tìm, thêm, sửa, xoá, ảnh, giá, tồn kho, danh mục, tag, trạng thái nháp/đăng. Cột **giá vốn** và **lợi nhuận** (số tiền + % biên) trên từng dòng, tổng vốn tồn kho và lợi nhuận tồn kho ở đầu trang; giá vốn không bao giờ hiển thị ra cửa hàng.
+- **Excel**: `npm run xlsx:export` xuất catalogue ra Excel, điền tay hoặc giao Claude điền, `npm run xlsx:import` nhập lại (tạo/cập nhật sản phẩm, danh mục mới, tải ảnh URL). Xem [docs/EXCEL_IMPORT.md](docs/EXCEL_IMPORT.md).
 - **Danh mục**: thêm, sửa (đổi slug tự cập nhật sản phẩm), xoá, ảnh và mô tả.
 - **Đơn hàng**: danh sách theo trạng thái, chi tiết đơn, đổi trạng thái (chờ xử lý → đang xử lý → hoàn thành / huỷ).
 
@@ -64,7 +65,7 @@ Trình duyệt ──► Next.js 16 (App Router, React 19, Tailwind v4)
 | Đóng gói | Docker multi-stage (`node:24-slim`), user không phải root, healthcheck |
 | Hạ tầng | TrueNAS SCALE Custom App, Cloudflare Tunnel, GitHub Actions + GHCR |
 
-Chi tiết: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) · Triển khai: [docs/DEPLOY.md](docs/DEPLOY.md) · TrueNAS nhanh: [deploy/README.md](deploy/README.md)
+Chi tiết: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) · Triển khai: [docs/DEPLOY.md](docs/DEPLOY.md) · TrueNAS nhanh: [deploy/README.md](deploy/README.md) · Excel: [docs/EXCEL_IMPORT.md](docs/EXCEL_IMPORT.md)
 
 ## Chạy trên máy dev
 
@@ -83,6 +84,7 @@ Lần chạy đầu ứng dụng tạo `data/lienstore.db` và nhập `data/seed
 | `npm run check` | lint + typecheck + build |
 | `npm run db:export` | xuất catalogue từ DB đang chạy ra `data/seed.json` (`-- --all file.json` để backup kèm khách hàng, đơn hàng) |
 | `npm run db:reset` | xoá DB local, lần chạy sau seed lại |
+| `npm run xlsx:export -- file.xlsx` / `xlsx:import -- file.xlsx` | vòng Excel: xuất catalogue, nhập lại sau khi điền (cần Python + `pip install -r scripts/xlsx/requirements.txt`) |
 | `npm run docker:build` / `docker:run` | build và chạy image local |
 
 ## Biến môi trường
@@ -93,7 +95,7 @@ Lần chạy đầu ứng dụng tạo `data/lienstore.db` và nhập `data/seed
 | `ADMIN_SESSION_SECRET` | ngẫu nhiên mỗi lần chạy | khoá ký cookie admin, cần đặt cố định khi chạy thật |
 | `LIEN_DB_PATH` | `data/lienstore.db` | file SQLite (`/app/data/lienstore.db` trong container) |
 | `LIEN_SEED_PATH` | `data/seed.json` | seed nhập khi DB trống |
-| `LIEN_SEED_SYNC` | `add` | đồng bộ seed mới vào DB đang có: `add` chèn thiếu, `overwrite` thay catalogue, `off` tắt |
+| `LIEN_SEED_SYNC` | `add` | đồng bộ seed mới vào DB đang có: `add` chèn thiếu, `update` ghi đè các dòng có trong seed (Excel là nguồn sự thật), `overwrite` thay catalogue, `off` tắt |
 | `NEXT_PUBLIC_SITE_URL` | `http://localhost:3000` | URL công khai cho robots/sitemap |
 | `NEXT_PUBLIC_FB_PAGE_ID` | rỗng | bật chat Messenger |
 
@@ -128,6 +130,7 @@ src/lib/                 db.ts (truy cập dữ liệu), sqlite.ts (schema/migra
 data/seed.json           catalogue mẫu; data/lienstore.db được tạo khi chạy (không commit)
 public/sites/lienstore/  ảnh sản phẩm, ảnh trang chủ, font, bộ logo thương hiệu
 deploy/                  YAML TrueNAS, script build trên NAS, script đẩy source
+scripts/xlsx/            xuất/nhập catalogue qua Excel (Python)
 .github/workflows/       ci.yml (lint/typecheck/build/smoke), release.yml (tag → GHCR → TrueNAS)
 ```
 

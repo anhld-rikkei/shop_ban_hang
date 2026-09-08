@@ -9,6 +9,8 @@ export interface CatalogProduct {
   /** Price in VND (integer, e.g. 890000). */
   price: number;
   regularPrice: number | null;
+  /** Purchase/cost price in VND used for profit reporting in admin; null = unknown. */
+  costPrice: number | null;
   currency: string;
   sku: string | null;
   /** Units in stock; null = not tracked. */

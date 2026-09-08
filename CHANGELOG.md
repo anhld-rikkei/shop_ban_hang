@@ -5,6 +5,13 @@ Tất cả thay đổi đáng chú ý của LienStore được ghi tại đây.
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-09-08
+
+### Added
+- **Giá vốn & lợi nhuận** trong quản trị: trường "Giá vốn" trên form sản phẩm (gợi ý lợi nhuận/sp và % biên ngay khi gõ), cột Giá vốn + Lợi nhuận trong danh sách sản phẩm, tổng vốn tồn kho và lợi nhuận tồn kho, cảnh báo "chưa có giá" cho sản phẩm giá 0. Migration schema v2 (`products.cost_price`). Giá vốn không xuất hiện ở storefront.
+- **Vòng Excel**: `scripts/xlsx/export_products_xlsx.py` xuất catalogue (+ sheet Danh mục, Hướng dẫn, ô vàng cho dữ liệu thiếu) và `import_products_xlsx.py` nhập lại: cập nhật theo ID/slug, tạo sản phẩm và danh mục mới, tải ảnh URL về `public/`, không xoá gì, `--dry-run --diff` để xem trước. Lệnh `npm run xlsx:export` / `xlsx:import`. Tài liệu + prompt cho Claude trong Excel: `docs/EXCEL_IMPORT.md`.
+- `LIEN_SEED_SYNC=update`: ghi đè các dòng có trong seed (Excel/seed là nguồn sự thật) mà vẫn giữ đơn hàng, khách hàng và sản phẩm chỉ có trong DB. YAML TrueNAS đặt sẵn chế độ này.
+
 ## [1.1.0] - 2026-09-08
 
 ### Added
@@ -35,6 +42,7 @@ Bản phát hành đầu tiên.
 - Số hotline VN, link Zalo/Facebook/Messenger còn là placeholder trong `src/components/sites/lienstore/root-8a5edab2/data.ts`.
 - Dự án khởi tạo từ [ai-website-cloner-template](https://github.com/JCodesMore/ai-website-cloner-template) (MIT).
 
-[Unreleased]: https://github.com/anhld-rikkei/shop_ban_hang/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/anhld-rikkei/shop_ban_hang/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/anhld-rikkei/shop_ban_hang/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/anhld-rikkei/shop_ban_hang/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/anhld-rikkei/shop_ban_hang/releases/tag/v1.0.0

@@ -129,6 +129,11 @@ export const MIGRATIONS: Migration[] = [
       `INSERT INTO settings (key, value) VALUES ('next_order_number', '1001')`,
     ],
   },
+  {
+    version: 2,
+    name: "product-cost-price",
+    up: [`ALTER TABLE products ADD COLUMN cost_price INTEGER`],
+  },
 ];
 
 export const SCHEMA_VERSION = MIGRATIONS[MIGRATIONS.length - 1].version;
@@ -240,6 +245,8 @@ function seedVersion(seed: SeedFile): string {
  * Keep an already-seeded database in step with a newer seed file shipped in a new image.
  *  - default ("add"):   insert categories/products/pages/posts that do not exist yet (matched by slug); never touches
  *                       rows the admin may have edited, and never touches orders/customers.
+ *  - LIEN_SEED_SYNC=update:    upsert every row present in the seed (matched by slug) — seed values win over admin edits
+ *                              for those rows; rows only in the DB are kept. Use when Excel/seed is the source of truth.
  *  - LIEN_SEED_SYNC=overwrite: replace the whole catalogue (products, categories, pages, posts) with the seed.
  *  - LIEN_SEED_SYNC=off:       never sync.
  * Runs once per seed version (meta.seededAt), so it costs nothing on normal restarts.
@@ -265,6 +272,11 @@ function syncSeed(db: DatabaseSync) {
   if (mode === "overwrite") {
     withTransaction(db, () => {
       db.exec("DELETE FROM product_categories; DELETE FROM products; DELETE FROM categories; DELETE FROM pages; DELETE FROM posts;");
+      importCatalogue(db, seed, "INSERT OR REPLACE");
+      setSetting(db, "seed_version", version);
+    });
+  } else if (mode === "update") {
+    withTransaction(db, () => {
       importCatalogue(db, seed, "INSERT OR REPLACE");
       setSetting(db, "seed_version", version);
     });
@@ -296,21 +308,28 @@ function importCatalogue(db: DatabaseSync, seed: SeedFile, verb: InsertVerb) {
     (seed.categories ?? []).forEach((c, i) => insCat.run(c.slug, c.name, c.description ?? "", c.image ?? null, i));
 
     const insProd = db.prepare(`${verb} INTO products
-      (id, slug, name, price, regular_price, currency, sku, stock, stock_status, tags, images, thumb, short_description, description,
+      (id, slug, name, price, regular_price, cost_price, currency, sku, stock, stock_status, tags, images, thumb, short_description, description,
        related, rating, review_count, status, created_at, updated_at)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`);
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`);
     const insPC = db.prepare("INSERT OR REPLACE INTO product_categories (product_id, category_slug, position) VALUES (?, ?, ?)");
     const exists = db.prepare("SELECT id FROM products WHERE slug = ?");
     const now = new Date().toISOString();
     for (const p of seed.products ?? []) {
       // In "add" mode skip products already present (by slug) so admin edits and their category links survive.
       if (verb === "INSERT OR IGNORE" && exists.get(p.slug)) continue;
+      // In "update" mode the seed row wins: drop the old row (and its category links) and re-insert under the same id.
+      if (verb === "INSERT OR REPLACE") {
+        const old = exists.get(p.slug) as { id: number } | undefined;
+        if (old && old.id !== p.id) db.prepare("DELETE FROM products WHERE id = ?").run(old.id);
+        db.prepare("DELETE FROM product_categories WHERE product_id = ?").run(p.id);
+      }
       insProd.run(
         p.id,
         p.slug,
         str(p.name),
         num(p.price, 0),
         num(p.regularPrice),
+        num(p.costPrice),
         str(p.currency, "VNĐ"),
         typeof p.sku === "string" ? p.sku : null,
         num(p.stock),
