@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { CartDrawer } from "@/components/sites/lienstore/shop/CartDrawer";
 import { FacebookChat } from "@/components/sites/lienstore/shop/FacebookChat";
+import { SalesPopup } from "@/components/sites/lienstore/shop/SalesPopup";
 import { FloatingWidgets } from "@/components/sites/lienstore/root-8a5edab2/FloatingWidgets";
 import { branding, contact, footerCopyright } from "@/components/sites/lienstore/root-8a5edab2/data";
 import { PageBand } from "@/components/sites/lienstore/ui2/HomeBlocks";
@@ -57,6 +58,7 @@ export async function SiteChrome({ children }: { children: ReactNode }) {
       <div className="flex-1">{children}</div>
       <Footer2 logo={logo} contact={contact} categories={categories} accountLinks={ACCOUNT_LINKS} supportLinks={SUPPORT_LINKS} copyright={footerCopyright} />
       <CartDrawer />
+      <SalesPopup />
       <FloatingWidgets cartHref="/cart/" wishlistHref="/wishlist/" accountHref="/my-account/" />
       {process.env.NEXT_PUBLIC_FB_PAGE_ID ? <FacebookChat pageId={process.env.NEXT_PUBLIC_FB_PAGE_ID} /> : null}
     </div>

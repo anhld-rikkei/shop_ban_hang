@@ -836,6 +836,41 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   return (getDb().prepare("SELECT slug, title, content, excerpt, date FROM posts WHERE slug = ?").get(slug) as BlogPost | undefined) ?? null;
 }
 
+// ---------- Social proof ----------
+
+export interface RecentPurchase {
+  slug: string;
+  name: string;
+  image: string;
+  /** Province / city guessed from the shipping address (last comma-separated part). */
+  city: string;
+  status: OrderStatus;
+  createdAt: string;
+}
+
+/** Most recent confirmed order lines (processing / completed), one per product, for the "khách vừa mua" popup. */
+export async function getRecentPurchases(limit = 12): Promise<RecentPurchase[]> {
+  const rows = getDb()
+    .prepare(
+      `SELECT oi.slug, oi.name, oi.image, o.address, o.status, o.created_at
+         FROM order_items oi JOIN orders o ON o.id = oi.order_id
+        WHERE o.status IN ('processing', 'completed')
+        ORDER BY o.created_at DESC, oi.id DESC LIMIT ?`,
+    )
+    .all(limit * 3) as unknown as Array<{ slug: string; name: string; image: string; address: string; status: OrderStatus; created_at: string }>;
+  const seen = new Set<string>();
+  const out: RecentPurchase[] = [];
+  for (const r of rows) {
+    if (seen.has(r.slug)) continue;
+    seen.add(r.slug);
+    const parts = r.address.split(",").map((s) => s.trim()).filter(Boolean);
+    const city = (parts[parts.length - 1] ?? "").replace(/^(tỉnh|tp\.?|thành phố|t\.p\.?)\s+/i, "").trim();
+    out.push({ slug: r.slug, name: r.name, image: r.image, city, status: r.status, createdAt: r.created_at });
+    if (out.length >= limit) break;
+  }
+  return out;
+}
+
 // ---------- Shipping ----------
 
 interface ShippingMethodRow {

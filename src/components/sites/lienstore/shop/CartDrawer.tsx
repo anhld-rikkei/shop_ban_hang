@@ -146,7 +146,7 @@ function Suggestions({ ids }: { ids: number[] }) {
 
   useEffect(() => {
     let alive = true;
-    fetch(`/api/cart/suggest?ids=${key}`)
+    fetch(`/api/cart/suggest/?ids=${key}`)
       .then((r) => (r.ok ? r.json() : { items: [] }))
       .then((d: { items: QuickViewProduct[] }) => {
         if (!alive) return;
