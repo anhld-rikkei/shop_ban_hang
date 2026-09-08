@@ -23,9 +23,9 @@ interface Header2Props {
   logo: { src: string; width: number; height: number; alt: string };
   categories: HeaderCategory[];
   supportLinks: HeaderLink[];
+  newsLinks: HeaderLink[];
   aboutHref: string;
   newsHref: string;
-  contactHref: string;
 }
 
 function Badge({ n }: { n: number }) {
@@ -40,11 +40,11 @@ function Badge({ n }: { n: number }) {
  * Main header (sesofoods-style): logo · inline menu with "Danh mục" mega dropdown · pill search · account/wishlist/cart.
  * Collapses to a hamburger + drawer below 992px. Becomes compact and sticky after scrolling.
  */
-export function Header2({ logo, categories, supportLinks, aboutHref, newsHref, contactHref }: Header2Props) {
-  const { items, wishlist, hydrated } = useCart();
+export function Header2({ logo, categories, supportLinks, newsLinks, aboutHref, newsHref }: Header2Props) {
+  const { items, wishlist, hydrated, openDrawer } = useCart();
   const cartCount = hydrated ? items.reduce((s, i) => s + i.quantity, 0) : 0;
   const wishCount = hydrated ? wishlist.length : 0;
-  const [open, setOpen] = useState<null | "cat" | "support">(null);
+  const [open, setOpen] = useState<null | "cat" | "support" | "news">(null);
   const [drawer, setDrawer] = useState(false);
   const [stuck, setStuck] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
@@ -116,23 +116,35 @@ export function Header2({ logo, categories, supportLinks, aboutHref, newsHref, c
             {open === "support" ? (
               <div className="absolute top-full left-0 z-50 mt-1 w-[240px] rounded-md border border-lien-line bg-white py-2 shadow-[0_12px_32px_-8px_rgba(0,0,0,0.25)]">
                 {supportLinks.map((l) => (
-                  <Link key={l.href} href={l.href} className="block px-4 py-2 text-[13px] leading-5 text-lien-text no-underline hover:bg-lien-blue-soft hover:text-lien-blue">
+                  <Link key={l.href} href={l.href} onClick={() => setOpen(null)} className="block px-4 py-2 text-[13px] leading-5 text-lien-text no-underline hover:bg-lien-blue-soft hover:text-lien-blue">
                     {l.label}
                   </Link>
                 ))}
               </div>
             ) : null}
           </div>
-          <Link href={newsHref} className={navItem}>
-            Tin tức
-            <span className="ml-1 rounded-full bg-lien-info px-1.5 py-px text-[9px] font-bold uppercase text-white">New</span>
-          </Link>
+          <div className="relative">
+            <button type="button" onClick={() => setOpen(open === "news" ? null : "news")} className={cn(navItem, open === "news" && "text-lien-blue")} aria-expanded={open === "news"}>
+              Tin tức
+              <Fa name="angle-down" className="text-[12px]" />
+              <span className="ml-1 rounded-full bg-lien-info px-1.5 py-px text-[9px] font-bold uppercase text-white">New</span>
+            </button>
+            {open === "news" ? (
+              <div className="absolute top-full left-0 z-50 mt-1 w-[260px] rounded-md border border-lien-line bg-white py-2 shadow-[0_12px_32px_-8px_rgba(0,0,0,0.25)]">
+                {newsLinks.map((l) => (
+                  <Link key={l.href} href={l.href} onClick={() => setOpen(null)} className="block px-4 py-2.5 text-[13px] leading-5 text-lien-text no-underline hover:bg-lien-blue-soft hover:text-lien-blue">
+                    {l.label}
+                  </Link>
+                ))}
+                <Link href={newsHref} onClick={() => setOpen(null)} className="block border-t border-lien-line px-4 py-2.5 text-[13px] leading-5 text-lien-muted no-underline hover:bg-lien-blue-soft hover:text-lien-blue">
+                  Các tin tức khác
+                </Link>
+              </div>
+            ) : null}
+          </div>
           <Link href={aboutHref} className={navItem}>
             <Fa name="user-circle" className="mr-1 text-[13px]" />
             Về chúng tôi
-          </Link>
-          <Link href={contactHref} className={navItem}>
-            Liên hệ
           </Link>
         </nav>
 
@@ -151,10 +163,10 @@ export function Header2({ logo, categories, supportLinks, aboutHref, newsHref, c
             <Fa name="heart-o" />
             {wishCount ? <Badge n={wishCount} /> : null}
           </Link>
-          <Link href="/cart/" aria-label="Giỏ hàng" className="relative flex h-10 w-10 items-center justify-center rounded-full text-[20px] text-lien-heading no-underline hover:bg-lien-cream hover:text-lien-blue" data-cart-count={cartCount}>
+          <button type="button" onClick={openDrawer} aria-label="Giỏ hàng" className="relative flex h-10 w-10 items-center justify-center rounded-full text-[20px] text-lien-heading hover:bg-lien-cream hover:text-lien-blue" data-cart-count={cartCount}>
             <Fa name="shopping-cart" />
             <Badge n={cartCount} />
-          </Link>
+          </button>
         </div>
       </div>
 
@@ -192,7 +204,7 @@ export function Header2({ logo, categories, supportLinks, aboutHref, newsHref, c
                 </ul>
               </div>
               <div className="px-4 py-3">
-                {[{ label: "Tất cả sản phẩm", href: "/shop/" }, ...supportLinks, { label: "Tin tức", href: newsHref }, { label: "Về chúng tôi", href: aboutHref }, { label: "Liên hệ", href: contactHref }, { label: "Tài khoản", href: "/my-account/" }].map((l) => (
+                {[{ label: "Tất cả sản phẩm", href: "/shop/" }, ...supportLinks, ...newsLinks, { label: "Tin tức", href: newsHref }, { label: "Về chúng tôi & liên hệ", href: aboutHref }, { label: "Tài khoản", href: "/my-account/" }].map((l) => (
                   <Link key={l.href + l.label} href={l.href} className="block py-2 text-[14px] font-medium text-lien-heading no-underline">
                     {l.label}
                   </Link>

@@ -161,3 +161,38 @@ export interface ProductQueryResult {
   perPage: number;
   totalPages: number;
 }
+
+/** One column of the shipping-fee table (a destination group / delivery lane). */
+export interface ShippingZone {
+  id: number;
+  methodId: number;
+  name: string;
+  /** Base fee in VND. */
+  fee: number;
+  /** Fee unit suffix shown after the amount, e.g. "/kg" (empty = per order). */
+  unit: string;
+  /** Order value from which the base fee is waived; null = never. */
+  freeOver: number | null;
+  /** Surcharge (see ShippingMethod.extraLabel); null = not applicable. */
+  extraFee: number | null;
+  extraFreeOver: number | null;
+  /** Provinces / cities covered, free text. */
+  areas: string;
+  /** Delivery time, free text. */
+  eta: string;
+  position: number;
+  active: boolean;
+}
+
+/** A shipping method (e.g. Japan → Vietnam, domestic Vietnam) rendered as its own fee table. */
+export interface ShippingMethod {
+  id: number;
+  name: string;
+  description: string;
+  /** Row label for the surcharge line; empty = no surcharge row. */
+  extraLabel: string;
+  currency: string;
+  position: number;
+  active: boolean;
+  zones: ShippingZone[];
+}

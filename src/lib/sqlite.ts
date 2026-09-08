@@ -156,6 +156,47 @@ export const MIGRATIONS: Migration[] = [
       `CREATE INDEX idx_order_files_order ON order_files(order_id)`,
     ],
   },
+  {
+    version: 4,
+    name: "shipping-methods",
+    up: [
+      `CREATE TABLE shipping_methods (
+        id          INTEGER PRIMARY KEY AUTOINCREMENT,
+        name        TEXT NOT NULL,
+        description TEXT NOT NULL DEFAULT '',
+        extra_label TEXT NOT NULL DEFAULT '',
+        currency    TEXT NOT NULL DEFAULT 'đ',
+        position    INTEGER NOT NULL DEFAULT 0,
+        active      INTEGER NOT NULL DEFAULT 1
+      )`,
+      `CREATE TABLE shipping_zones (
+        id              INTEGER PRIMARY KEY AUTOINCREMENT,
+        method_id       INTEGER NOT NULL REFERENCES shipping_methods(id) ON DELETE CASCADE,
+        name            TEXT NOT NULL,
+        fee             INTEGER NOT NULL DEFAULT 0,
+        unit            TEXT NOT NULL DEFAULT '',
+        free_over       INTEGER,
+        extra_fee       INTEGER,
+        extra_free_over INTEGER,
+        areas           TEXT NOT NULL DEFAULT '',
+        eta             TEXT NOT NULL DEFAULT '',
+        position        INTEGER NOT NULL DEFAULT 0,
+        active          INTEGER NOT NULL DEFAULT 1
+      )`,
+      `CREATE INDEX idx_shipping_zones_method ON shipping_zones(method_id)`,
+      `INSERT INTO shipping_methods (id, name, description, extra_label, currency, position) VALUES
+        (1, 'Vận chuyển Nhật Bản → Việt Nam', 'Hàng được mua tại Nhật, gom đơn hàng tuần và gửi về Việt Nam. Phí tính theo cân nặng thực tế sau khi đóng gói.', 'Hàng lỏng / bình xịt / cồng kềnh', 'đ', 1),
+        (2, 'Giao hàng nội địa Việt Nam', 'Từ kho Thanh Hóa giao tới tận nhà qua đơn vị vận chuyển. Phí tính theo khu vực nhận hàng.', '', 'đ', 2)`,
+      `INSERT INTO shipping_zones (method_id, name, fee, unit, free_over, extra_fee, extra_free_over, areas, eta, position) VALUES
+        (1, 'Đường bay', 280000, '/kg', NULL, 50000, NULL, 'Toàn quốc', '5–7 ngày từ khi gom đủ đơn', 1),
+        (1, 'Đường biển', 120000, '/kg', NULL, 30000, NULL, 'Toàn quốc', '20–30 ngày', 2),
+        (2, 'Thanh Hóa', 20000, '', 500000, NULL, NULL, 'TP Thanh Hóa, Hoằng Hóa, Sầm Sơn và các huyện trong tỉnh', '1 ngày', 1),
+        (2, 'Miền Bắc', 30000, '', 1000000, NULL, NULL, 'Hà Nội, Hải Phòng, Nam Định, Ninh Bình, Nghệ An, Thái Bình, Hưng Yên, Bắc Ninh, Quảng Ninh…', '1–2 ngày', 2),
+        (2, 'Miền Trung', 35000, '', 1000000, NULL, NULL, 'Hà Tĩnh, Quảng Bình, Quảng Trị, Huế, Đà Nẵng, Quảng Nam, Quảng Ngãi, Bình Định, Phú Yên, Khánh Hòa, Tây Nguyên', '2–3 ngày', 3),
+        (2, 'Miền Nam', 40000, '', 1000000, NULL, NULL, 'TP Hồ Chí Minh, Bình Dương, Đồng Nai, Long An, Cần Thơ và các tỉnh Đồng bằng sông Cửu Long', '3–4 ngày', 4)`,
+      `INSERT INTO settings (key, value) VALUES ('shipping_notes', '["Bảng phí mang tính tham khảo; LienStore báo phí chính xác khi xác nhận đơn qua Zalo/điện thoại.","Đơn nội địa đạt mức miễn phí của khu vực sẽ được miễn phí giao hàng.","Hàng lỏng, bình xịt, hàng cồng kềnh khi gửi từ Nhật có phụ phí theo quy định hãng bay.","Thời gian giao tính từ ngày hàng rời kho; ngày lễ, thời tiết xấu có thể chậm hơn.","Kiểm tra hàng khi nhận; hàng lỗi/nhầm được đổi trả theo chính sách của cửa hàng."]')`,
+    ],
+  },
 ];
 
 export const SCHEMA_VERSION = MIGRATIONS[MIGRATIONS.length - 1].version;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState, type FormEvent } from "react";
+import { useId, useState, type FormEvent, type ReactNode } from "react";
 import { Fa } from "@/components/sites/lienstore/shared/icons";
 import { ProductDescription } from "./ProductDescription";
 import { cn } from "@/lib/utils";
@@ -10,9 +10,11 @@ interface ProductTabsProps {
   /** Sanitised HTML description. */
   description: string;
   reviewCount: number;
+  /** Server-rendered shipping fee tables (ShippingTable). */
+  shipping?: ReactNode;
 }
 
-type TabKey = "description" | "reviews";
+type TabKey = "description" | "shipping" | "reviews";
 
 const H2 = "sr-only";
 const FIELD =
@@ -20,12 +22,13 @@ const FIELD =
 const REQUIRED = <span className="required text-[#e2401c]">*</span>;
 
 /** `.woocommerce-tabs`: "Mô tả" / "Đánh giá (n)" tabs with the WooCommerce grey tab strip. */
-export function ProductTabs({ name, description, reviewCount }: ProductTabsProps) {
+export function ProductTabs({ name, description, reviewCount, shipping }: ProductTabsProps) {
   const [tab, setTab] = useState<TabKey>("description");
   const base = useId();
 
   const tabs: { key: TabKey; label: string }[] = [
-    { key: "description", label: "Mô tả" },
+    { key: "description", label: "Thông tin sản phẩm" },
+    ...(shipping ? [{ key: "shipping" as TabKey, label: "Chi phí vận chuyển" }] : []),
     { key: "reviews", label: `Đánh giá (${reviewCount})` },
   ];
 
@@ -71,6 +74,11 @@ export function ProductTabs({ name, description, reviewCount }: ProductTabsProps
         >
           <h2 className={H2}>Mô tả</h2>
           <ProductDescription name={name} description={description} />
+        </div>
+      ) : tab === "shipping" ? (
+        <div role="tabpanel" id={`${base}-panel-shipping`} aria-labelledby={`${base}-tab-shipping`} className="panel mb-8">
+          <h2 className={H2}>Chi phí vận chuyển</h2>
+          {shipping}
         </div>
       ) : (
         <div

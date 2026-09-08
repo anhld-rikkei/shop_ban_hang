@@ -13,6 +13,7 @@ const LINKS: { href: string; label: string; icon: FaName; exact?: boolean }[] = 
   { href: "/admin/orders/", label: "Đơn hàng", icon: "shopping-cart" },
   { href: "/admin/customers/", label: "Khách hàng", icon: "users" },
   { href: "/admin/inventory/", label: "Kho hàng", icon: "cubes" },
+  { href: "/admin/shipping/", label: "Vận chuyển", icon: "truck" },
 ];
 
 export function AdminNav() {

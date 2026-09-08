@@ -41,7 +41,7 @@ export function AddToCartButton({
   className,
   linkClassName,
 }: AddToCartButtonProps) {
-  const { add } = useCart();
+  const { add, openDrawer } = useCart();
   const [added, setAdded] = useState(false);
   const [busy, setBusy] = useState(false);
   const withLink = showViewCart ?? variant !== "sticky";
@@ -50,6 +50,7 @@ export function AddToCartButton({
     if (disabled || busy) return;
     setBusy(true);
     add(product, quantity);
+    openDrawer();
     // mimic WooCommerce's brief loading state
     window.setTimeout(() => {
       setBusy(false);

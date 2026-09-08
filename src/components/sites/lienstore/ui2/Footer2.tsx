@@ -114,7 +114,7 @@ export function Footer2({ logo, contact, categories, accountLinks, supportLinks,
         <div className="mx-auto flex max-w-[1300px] flex-wrap items-center justify-between gap-2 px-4 py-4 text-[13px] text-lien-muted">
           <span>{copyright}</span>
           <span className="flex gap-4">
-            <Link href="/gioi-thieu-ve-lienstore/" className="text-lien-muted no-underline hover:text-lien-blue">
+            <Link href="/ve-chung-toi/" className="text-lien-muted no-underline hover:text-lien-blue">
               Về chúng tôi
             </Link>
             <Link href="/chinh-sach-doi-tra/" className="text-lien-muted no-underline hover:text-lien-blue">

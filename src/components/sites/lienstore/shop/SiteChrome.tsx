@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { CartDrawer } from "@/components/sites/lienstore/shop/CartDrawer";
 import { FacebookChat } from "@/components/sites/lienstore/shop/FacebookChat";
 import { FloatingWidgets } from "@/components/sites/lienstore/root-8a5edab2/FloatingWidgets";
 import { branding, contact, footerCopyright } from "@/components/sites/lienstore/root-8a5edab2/data";
@@ -10,10 +11,19 @@ import { getAllProducts, getCategories } from "@/lib/db";
 
 export const SUPPORT_LINKS: HeaderLink[] = [
   { label: "Hướng dẫn đặt hàng", href: "/huong-dan-dat-hang/" },
+  { label: "Chi phí vận chuyển", href: "/van-chuyen/" },
   { label: "Chính sách đổi trả", href: "/chinh-sach-doi-tra/" },
   { label: "Tra cứu đơn hàng", href: "/my-account/" },
   { label: "Chính sách bảo mật", href: "/privacy-policy/" },
-  { label: "Liên hệ", href: "/lien-he/" },
+  { label: "Liên hệ", href: "/ve-chung-toi/#lien-he" },
+];
+
+/** "Tin tức" dropdown. */
+export const NEWS_LINKS: HeaderLink[] = [
+  { label: "Hàng mới về", href: "/shop/?orderby=date" },
+  { label: "Sản phẩm bán chạy", href: "/shop/?orderby=rating" },
+  { label: "Hướng dẫn đặt hàng & mua hộ", href: "/huong-dan-dat-hang/" },
+  { label: "Cài LienStore lên điện thoại", href: "/them-ung-dung-lien-vao-mobile/" },
 ];
 
 export const ACCOUNT_LINKS: HeaderLink[] = [
@@ -43,9 +53,10 @@ export async function SiteChrome({ children }: { children: ReactNode }) {
   return (
     <div id="page" className="relative flex min-h-screen flex-col">
       <TopBar2 contact={contact} />
-      <Header2 logo={logo} categories={categories} supportLinks={SUPPORT_LINKS} aboutHref="/gioi-thieu-ve-lienstore/" newsHref="/category/goc-chia-se/" contactHref="/lien-he/" />
+      <Header2 logo={logo} categories={categories} supportLinks={SUPPORT_LINKS} newsLinks={NEWS_LINKS} aboutHref="/ve-chung-toi/" newsHref="/category/goc-chia-se/" />
       <div className="flex-1">{children}</div>
       <Footer2 logo={logo} contact={contact} categories={categories} accountLinks={ACCOUNT_LINKS} supportLinks={SUPPORT_LINKS} copyright={footerCopyright} />
+      <CartDrawer />
       <FloatingWidgets cartHref="/cart/" wishlistHref="/wishlist/" accountHref="/my-account/" />
       {process.env.NEXT_PUBLIC_FB_PAGE_ID ? <FacebookChat pageId={process.env.NEXT_PUBLIC_FB_PAGE_ID} /> : null}
     </div>

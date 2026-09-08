@@ -13,6 +13,8 @@ import type {
   ProductQuery,
   ProductQueryResult,
   ShopCategory,
+  ShippingMethod,
+  ShippingZone,
   StaticPage,
   BlogPost,
 } from "@/types/shop";
@@ -832,6 +834,138 @@ export async function getPosts(): Promise<BlogPost[]> {
 
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   return (getDb().prepare("SELECT slug, title, content, excerpt, date FROM posts WHERE slug = ?").get(slug) as BlogPost | undefined) ?? null;
+}
+
+// ---------- Shipping ----------
+
+interface ShippingMethodRow {
+  id: number;
+  name: string;
+  description: string;
+  extra_label: string;
+  currency: string;
+  position: number;
+  active: number;
+}
+interface ShippingZoneRow {
+  id: number;
+  method_id: number;
+  name: string;
+  fee: number;
+  unit: string;
+  free_over: number | null;
+  extra_fee: number | null;
+  extra_free_over: number | null;
+  areas: string;
+  eta: string;
+  position: number;
+  active: number;
+}
+
+const rowToZone = (r: ShippingZoneRow): ShippingZone => ({
+  id: r.id,
+  methodId: r.method_id,
+  name: r.name,
+  fee: r.fee,
+  unit: r.unit,
+  freeOver: r.free_over,
+  extraFee: r.extra_fee,
+  extraFreeOver: r.extra_free_over,
+  areas: r.areas,
+  eta: r.eta,
+  position: r.position,
+  active: r.active === 1,
+});
+
+/** Shipping methods with their zones, ordered by position. `activeOnly` hides disabled methods/zones (storefront). */
+export async function getShippingMethods(activeOnly = true): Promise<ShippingMethod[]> {
+  const db = getDb();
+  const where = activeOnly ? "WHERE active = 1" : "";
+  const methods = db.prepare(`SELECT * FROM shipping_methods ${where} ORDER BY position, id`).all() as unknown as ShippingMethodRow[];
+  const zones = db.prepare(`SELECT * FROM shipping_zones ${where} ORDER BY position, id`).all() as unknown as ShippingZoneRow[];
+  return methods.map((m) => ({
+    id: m.id,
+    name: m.name,
+    description: m.description,
+    extraLabel: m.extra_label,
+    currency: m.currency,
+    position: m.position,
+    active: m.active === 1,
+    zones: zones.filter((z) => z.method_id === m.id).map(rowToZone),
+  }));
+}
+
+export interface ShippingMethodInput {
+  id?: number;
+  name: string;
+  description: string;
+  extraLabel: string;
+  currency: string;
+  position: number;
+  active: boolean;
+}
+
+export async function saveShippingMethod(input: ShippingMethodInput): Promise<number> {
+  const db = getDb();
+  if (input.id) {
+    db.prepare("UPDATE shipping_methods SET name = ?, description = ?, extra_label = ?, currency = ?, position = ?, active = ? WHERE id = ?").run(
+      input.name,
+      input.description,
+      input.extraLabel,
+      input.currency,
+      input.position,
+      input.active ? 1 : 0,
+      input.id,
+    );
+    return input.id;
+  }
+  const r = db
+    .prepare("INSERT INTO shipping_methods (name, description, extra_label, currency, position, active) VALUES (?, ?, ?, ?, ?, ?)")
+    .run(input.name, input.description, input.extraLabel, input.currency, input.position, input.active ? 1 : 0);
+  return Number(r.lastInsertRowid);
+}
+
+export async function deleteShippingMethod(id: number): Promise<boolean> {
+  const db = getDb();
+  db.prepare("DELETE FROM shipping_zones WHERE method_id = ?").run(id);
+  return Number(db.prepare("DELETE FROM shipping_methods WHERE id = ?").run(id).changes) > 0;
+}
+
+export type ShippingZoneInput = Omit<ShippingZone, "id"> & { id?: number };
+
+export async function saveShippingZone(input: ShippingZoneInput): Promise<number> {
+  const db = getDb();
+  const args = [input.name, input.fee, input.unit, input.freeOver, input.extraFee, input.extraFreeOver, input.areas, input.eta, input.position, input.active ? 1 : 0];
+  if (input.id) {
+    db.prepare(
+      "UPDATE shipping_zones SET name = ?, fee = ?, unit = ?, free_over = ?, extra_fee = ?, extra_free_over = ?, areas = ?, eta = ?, position = ?, active = ? WHERE id = ?",
+    ).run(...args, input.id);
+    return input.id;
+  }
+  const r = db
+    .prepare(
+      "INSERT INTO shipping_zones (method_id, name, fee, unit, free_over, extra_fee, extra_free_over, areas, eta, position, active) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+    )
+    .run(input.methodId, ...args);
+  return Number(r.lastInsertRowid);
+}
+
+export async function deleteShippingZone(id: number): Promise<boolean> {
+  return Number(getDb().prepare("DELETE FROM shipping_zones WHERE id = ?").run(id).changes) > 0;
+}
+
+/** Free-text notes shown under the shipping tables (one per line in admin). */
+export async function getShippingNotes(): Promise<string[]> {
+  try {
+    const v = JSON.parse(getSetting(getDb(), "shipping_notes") ?? "[]");
+    return Array.isArray(v) ? v.filter((x): x is string => typeof x === "string" && x.trim() !== "") : [];
+  } catch {
+    return [];
+  }
+}
+
+export async function setShippingNotes(notes: string[]): Promise<void> {
+  setSetting(getDb(), "shipping_notes", JSON.stringify(notes.map((n) => n.trim()).filter(Boolean)));
 }
 
 // ---------- Stats / health ----------

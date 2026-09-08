@@ -26,11 +26,11 @@
 - **Tìm kiếm nhanh**: modal tìm kiếm gợi ý theo từ khoá và danh mục.
 - **Chi tiết sản phẩm**: gallery có zoom, giá/giá gốc, tồn kho, sản phẩm liên quan, nút thêm vào giỏ cố định khi cuộn, chia sẻ mạng xã hội, Quick View từ danh sách. **Mô tả có cấu trúc**: tự tách thành thẻ Thông tin nhanh (xuất xứ, nhà sản xuất, quy cách) và các mục Công dụng / Thành phần / Hướng dẫn sử dụng / Đối tượng / Lưu ý với mục lục nhảy nhanh; mô tả không nhận diện được vẫn hiển thị nguyên bản.
 - **Bill mua hàng tại Nhật**: khách xem/tải chứng từ cửa hàng đính kèm ngay trong trang “Đơn hàng đã nhận”, mục Đơn hàng của tài khoản và khi tra cứu đơn (link có chữ ký, không cần đăng nhập).
-- **Giỏ hàng**: thêm/sửa số lượng/xoá, lưu trong trình duyệt, badge số lượng trên header, widget giỏ nổi.
+- **Giỏ hàng**: khay giỏ trượt từ phải mở ngay khi thêm sản phẩm (tăng/giảm, xoá, tạm tính, gợi ý "Thường được mua cùng với", nút Xem giỏ / Thanh toán); trang giỏ đầy đủ; lưu trong trình duyệt, badge số lượng trên header.
 - **Wishlist**: lưu sản phẩm yêu thích, chuyển sang giỏ hàng.
 - **Thanh toán**: form địa chỉ giao hàng, chọn COD hoặc chuyển khoản, giá được tính lại phía server, trang "đã nhận đơn", tra cứu đơn bằng mã đơn + số điện thoại.
 - **Tài khoản khách hàng**: đăng ký, đăng nhập, quên mật khẩu, cập nhật thông tin, lịch sử đơn hàng; tuỳ chọn tạo tài khoản ngay khi thanh toán. Mật khẩu băm scrypt, phiên đăng nhập ký HMAC.
-- **Nội dung**: trang tĩnh (giới thiệu, hướng dẫn đặt hàng, chính sách đổi trả, liên hệ, chính sách bảo mật), blog "Góc chia sẻ" với bình luận.
+- **Nội dung**: trang "Về chúng tôi & liên hệ" (`/ve-chung-toi/`), trang "Chi phí vận chuyển" (`/van-chuyen/`, bảng do admin quản lý, cũng hiện ở tab trên trang sản phẩm), trang tĩnh (hướng dẫn đặt hàng, chính sách đổi trả, chính sách bảo mật), blog "Góc chia sẻ" với bình luận.
 - **Giao diện (UI v2, kiểu sesofoods.com)**: chữ Roboto tự host (không phụ thuộc Google Fonts), thanh liên hệ màu kem + header dính có menu "Danh mục" thả xuống 3 cột, ô tìm kiếm tròn, icon tài khoản/yêu thích/giỏ với badge đỏ; thẻ sản phẩm viền mỏng với nhãn "-x%" / "Mới" / "Hết hàng", nút bo tròn; trang danh mục có cột trái danh mục; trang sản phẩm 2 cột (gallery vuông + khối giá/số lượng/CTA + hộp COD, bill Nhật, Zalo), tab Mô tả/Đánh giá dạng pill; footer xám nhạt 5 cột. Tông xanh nước biển (ocean blue) và logo LienStore giữ nguyên; màu sắc gom trong token `--lien-*` ở `src/app/globals.css`. Responsive cho điện thoại và máy tính.
 - **Khác**: responsive theo breakpoint gốc, thanh liên hệ (hotline VN/JP, email, địa chỉ, giờ mở cửa), icon Facebook/Zalo/Messenger, chat Messenger tuỳ chọn, PWA manifest, robots.txt, sitemap.xml, trang 404.
 
@@ -43,6 +43,7 @@
 - **Đơn hàng**: danh sách theo trạng thái, chi tiết đơn, đổi trạng thái (chờ xử lý → đang xử lý → hoàn thành / huỷ), ghi chú nội bộ, **đính kèm bill mua hàng tại Nhật** (ảnh/PDF) để khách xem lại trong trang đơn hàng.
 - **Khách hàng**: danh sách khách có tài khoản và khách vãng lai (gộp theo email/điện thoại), số đơn, tổng chi tiêu; trang chi tiết liệt kê từng đơn với sản phẩm đã mua và trạng thái đã gửi bill.
 - **Kho hàng**: tồn kho, sắp hết, hết hàng, không theo dõi; cập nhật tồn và mức tối thiểu ngay trên bảng; **danh sách cần đặt hàng** tính từ các đơn đang mở trừ tồn kho, kèm link mua (Amazon JP) và xuất CSV.
+- **Vận chuyển** (`/admin/shipping/`): quản lý các phương thức vận chuyển (Nhật → Việt Nam, nội địa…) và các khu vực/cột của bảng phí (phí thường, đơn vị, miễn phí trên, phụ phí, khu vực, thời gian, ẩn/hiện), lưu ý vận chuyển; xem trước như khách thấy.
 - **Ảnh sản phẩm**: tải ảnh từ máy ngay trong form (tự thu nhỏ về 1200px + thumbnail 300×300), thêm bằng URL, sắp thứ tự, đặt ảnh đại diện, xoá; file lưu trong thư mục dữ liệu, phục vụ qua `/api/files/…`.
 
 ### Vận hành

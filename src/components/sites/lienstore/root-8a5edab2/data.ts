@@ -44,7 +44,7 @@ export const categoriesMenuLabel = "Product Categories";
 
 export const categoriesDropdown: MenuLink[] = [{"label": "CHỐNG NẮNG ( UV )", "href": "/product-category/chong-nang-uv/"}, {"label": "DƯỠNG THỂ ( BODY )", "href": "/product-category/duong-the-body/"}, {"label": "GIẢM CÂN ( DIET )", "href": "/product-category/giam-can-diet/"}, {"label": "GỐC CHỊ EM CHÚNG MÌNH ( WOMEN )", "href": "/product-category/goc-chi-em-chung-minh-women/"}, {"label": "KEM DƯỠNG DÀNH CHO MẶT ( FACE CREAM )", "href": "/product-category/kem-duong-danh-cho-mat-face-cream/"}, {"label": "MẮT ( EYES )", "href": "/product-category/mat-eyes/"}, {"label": "MẶT NẠ ( MASK )", "href": "/product-category/mat-na-mask/"}, {"label": "MOM AND BABY", "href": "/product-category/mom-and-baby/"}, {"label": "NƯỚC HOA HỒNG ( LOTION )", "href": "/product-category/nuoc-hoa-hong-lotion/"}, {"label": "PHỤC HỒI TÓC TẠI NHÀ ( HAIR )", "href": "/product-category/phuc-hoi-toc-tai-nha-hair/"}];
 
-export const mainMenu: MenuLink[] = [{"label": "Toàn Bộ Sản Phẩm", "href": "/shop/"}, {"label": "Góc Chia Sẻ", "href": "/category/goc-chia-se/"}, {"label": "LIÊN HỆ", "href": "/lien-he/"}, {"label": "My account", "href": "/my-account/"}];
+export const mainMenu: MenuLink[] = [{"label": "Toàn Bộ Sản Phẩm", "href": "/shop/"}, {"label": "Góc Chia Sẻ", "href": "/category/goc-chia-se/"}, {"label": "LIÊN HỆ", "href": "/ve-chung-toi/#lien-he"}, {"label": "My account", "href": "/my-account/"}];
 
 export const slides: Slide[] = [{"image": "/sites/lienstore/root-8a5edab2/images/uvsld-1280x520-b5707f.png", "href": "/product/kem-chong-nang-skin-aqua-tone-up-uv-essence/", "alt": ""}, {"image": "/sites/lienstore/root-8a5edab2/images/vitamin-1280x520-ca9fa7.png", "href": "/product/vitamin-c-dhc-60-ngay/", "alt": ""}, {"image": "/sites/lienstore/root-8a5edab2/images/son-1-2f8444.png", "href": "/product/son-duong-tri-tham-moi-dhc/", "alt": ""}, {"image": "/sites/lienstore/root-8a5edab2/images/kids-1280x520-2d52b6.png", "href": "/product/thuoc-tri-cam-sot-cho-be-paburon-dang-goi/", "alt": ""}];
 
@@ -75,8 +75,8 @@ export const footerColumns: FooterColumn[] = [
   {
     title: "Về LienStore",
     links: [
-      { label: "Giới thiệu LienStore", href: "/gioi-thieu-ve-lienstore/" },
-      { label: "Liên hệ", href: "/lien-he/" },
+      { label: "Về chúng tôi", href: "/ve-chung-toi/" },
+      { label: "Liên hệ", href: "/ve-chung-toi/#lien-he" },
     ],
   },
   {

@@ -38,6 +38,10 @@ interface CartApi extends CartState {
   removeFromWishlist: (productId: number) => void;
   inWishlist: (productId: number) => boolean;
   trackViewed: (product: CartProduct) => void;
+  /** Slide-in mini cart (opened after add-to-cart / header cart icon). */
+  drawerOpen: boolean;
+  openDrawer: () => void;
+  closeDrawer: () => void;
 }
 
 const CART_KEY = "lienstore:cart";
@@ -68,6 +72,9 @@ const EMPTY: CartState = { items: [], wishlist: [], recentlyViewed: [], lastAdde
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<CartState>(EMPTY);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const openDrawer = useCallback(() => setDrawerOpen(true), []);
+  const closeDrawer = useCallback(() => setDrawerOpen(false), []);
 
   useEffect(() => {
     // Hydrate from localStorage after mount (deferred so the first client render matches the server).
@@ -170,8 +177,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
       removeFromWishlist,
       inWishlist: (productId) => state.wishlist.some((p) => p.id === productId),
       trackViewed,
+      drawerOpen,
+      openDrawer,
+      closeDrawer,
     };
-  }, [state, add, update, remove, clear, dismissLastAdded, toggleWishlist, removeFromWishlist, trackViewed]);
+  }, [state, add, update, remove, clear, dismissLastAdded, toggleWishlist, removeFromWishlist, trackViewed, drawerOpen, openDrawer, closeDrawer]);
 
   return <CartContext.Provider value={api}>{children}</CartContext.Provider>;
 }

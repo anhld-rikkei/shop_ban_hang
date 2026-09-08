@@ -9,9 +9,10 @@ import { ProductPageNotice } from "@/components/sites/lienstore/shop/product/Pro
 import { ProductShare } from "@/components/sites/lienstore/shop/product/ProductShare";
 import { ProductTabs } from "@/components/sites/lienstore/shop/product/ProductTabs";
 import { StickyAddToCart } from "@/components/sites/lienstore/shop/product/StickyAddToCart";
+import { ShippingTable } from "@/components/sites/lienstore/shop/ShippingTable";
 import { ShopProductGrid, toCartProduct } from "@/components/sites/lienstore/shop/ShopProductCard";
 import { SiteChrome } from "@/components/sites/lienstore/shop/SiteChrome";
-import { getCategories, getProductBySlug, getRelatedProducts } from "@/lib/db";
+import { getCategories, getProductBySlug, getRelatedProducts, getShippingMethods, getShippingNotes } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
 
@@ -50,7 +51,7 @@ export default async function ProductPage({ params }: PageProps) {
   const product = await getProductBySlug(slug);
   if (!product) notFound();
 
-  const [categories, related] = await Promise.all([getCategories(), getRelatedProducts(product, 6)]);
+  const [categories, related, shipping, shippingNotes] = await Promise.all([getCategories(), getRelatedProducts(product, 6), getShippingMethods(), getShippingNotes()]);
   const categoryNames = Object.fromEntries(categories.map((c) => [c.slug, c.name]));
   const firstCategory = product.categories[0];
 
@@ -86,7 +87,7 @@ export default async function ProductPage({ params }: PageProps) {
         <StickyAddToCart product={product} />
 
         <div className="mt-10">
-          <ProductTabs name={product.name} description={product.description} reviewCount={product.reviewCount} />
+          <ProductTabs name={product.name} description={product.description} reviewCount={product.reviewCount} shipping={<ShippingTable methods={shipping} notes={shippingNotes} compact />} />
         </div>
 
         {related.length > 0 ? (
