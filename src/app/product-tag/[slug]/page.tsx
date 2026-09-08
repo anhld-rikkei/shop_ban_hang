@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ProductListing } from "@/components/sites/lienstore/shop/ProductListing";
-import { FullWidthShell, SiteChrome } from "@/components/sites/lienstore/shop/SiteChrome";
+import { SiteChrome } from "@/components/sites/lienstore/shop/SiteChrome";
 import { queryProducts } from "@/lib/db";
 import { PER_PAGE, parseOrderBy, type SearchParams } from "@/app/shop/_listing";
 
@@ -27,7 +27,6 @@ export default async function Page({ params, searchParams }: PageProps) {
 
   return (
     <SiteChrome>
-      <FullWidthShell>
         <ProductListing
           crumbs={[{ label: "Shop", href: "/shop/" }, { label: title }]}
           title={title}
@@ -35,7 +34,6 @@ export default async function Page({ params, searchParams }: PageProps) {
           orderby={orderby}
           basePath={`/product-tag/${slug}/`}
         />
-      </FullWidthShell>
     </SiteChrome>
   );
 }

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { FullWidthShell, SiteChrome } from "@/components/sites/lienstore/shop/SiteChrome";
+import { SiteChrome } from "@/components/sites/lienstore/shop/SiteChrome";
 import { parsePageNumber, type SearchParams } from "@/app/shop/_listing";
 import { CategoryListing, categoryMetadata } from "../../_listing";
 
@@ -22,9 +22,7 @@ export default async function Page({ params, searchParams }: PageProps) {
 
   return (
     <SiteChrome>
-      <FullWidthShell>
         <CategoryListing slug={slug} page={page} searchParams={sp} />
-      </FullWidthShell>
     </SiteChrome>
   );
 }

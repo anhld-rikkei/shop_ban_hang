@@ -19,33 +19,33 @@ function hrefFor(basePath: string, n: number, query?: string) {
 export function Pagination({ page, totalPages, basePath, query, className }: PaginationProps) {
   if (totalPages <= 1) return null;
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
-  const cell = "block px-2 py-2 text-[16px] leading-4";
+  const cell = "flex h-9 min-w-9 items-center justify-center rounded-full px-3 text-[13px] font-medium leading-4";
   return (
     <nav aria-label="Phân trang" className={cn("text-center", className)}>
-      <ul className="m-px inline-flex list-none border-y border-l border-[#d3ced2] p-0 text-lien-text">
+      <ul className="m-0 inline-flex list-none flex-wrap gap-1.5 p-0 text-lien-text">
         {page > 1 ? (
-          <li className="border-r border-[#d3ced2]">
-            <Link href={hrefFor(basePath, page - 1, query)} className={cn(cell, "text-lien-muted hover:bg-lien-blue-soft hover:text-[#8a7e88]")} aria-label="Trang trước">
+          <li className="">
+            <Link href={hrefFor(basePath, page - 1, query)} className={cn(cell, "text-lien-muted border border-lien-line hover:border-lien-blue hover:text-lien-blue")} aria-label="Trang trước">
               ←
             </Link>
           </li>
         ) : null}
         {pages.map((n) => (
-          <li key={n} className="border-r border-[#d3ced2]">
+          <li key={n} className="">
             {n === page ? (
-              <span aria-current="page" className={cn(cell, "bg-lien-blue-soft text-[#8a7e88]")}>
+              <span aria-current="page" className={cn(cell, "bg-lien-blue text-white")}>
                 {n}
               </span>
             ) : (
-              <Link href={hrefFor(basePath, n, query)} className={cn(cell, "text-lien-muted hover:bg-lien-blue-soft hover:text-[#8a7e88]")}>
+              <Link href={hrefFor(basePath, n, query)} className={cn(cell, "text-lien-muted border border-lien-line hover:border-lien-blue hover:text-lien-blue")}>
                 {n}
               </Link>
             )}
           </li>
         ))}
         {page < totalPages ? (
-          <li className="border-r border-[#d3ced2]">
-            <Link href={hrefFor(basePath, page + 1, query)} className={cn(cell, "text-lien-muted hover:bg-lien-blue-soft hover:text-[#8a7e88]")} aria-label="Trang sau">
+          <li className="">
+            <Link href={hrefFor(basePath, page + 1, query)} className={cn(cell, "text-lien-muted border border-lien-line hover:border-lien-blue hover:text-lien-blue")} aria-label="Trang sau">
               →
             </Link>
           </li>

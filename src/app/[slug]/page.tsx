@@ -55,14 +55,14 @@ export default async function EntryPage({ params }: Props) {
           <Breadcrumb items={kind === "post" ? [{ label: "Góc Chia Sẻ", href: "/category/goc-chia-se/" }, { label: entry.title }] : [{ label: entry.title }]} />
           <header className="mb-6">
             {kind === "post" ? (
-              <p className="entry-meta mb-2 font-oswald text-[12px] uppercase leading-5 tracking-[2px] text-lien-muted">
+              <p className="entry-meta mb-2 text-[12px] uppercase leading-5 tracking-[1px] text-lien-muted">
                 <span className="posted-on">
                   Posted on <time dateTime={entry.date}>{formatDate(entry.date)}</time>
                 </span>{" "}
                 <span className="byline">by LienStore</span>
               </p>
             ) : null}
-            <h1 className="mb-2 font-oswald text-[28px] font-light leading-[39.2px] text-lien-heading">{entry.title}</h1>
+            <h1 className="mb-2 text-[26px] font-bold leading-9 text-lien-heading">{entry.title}</h1>
           </header>
           <div className="lien-prose" dangerouslySetInnerHTML={{ __html: entry.content }} />
           {kind === "post" ? (
@@ -72,7 +72,7 @@ export default async function EntryPage({ params }: Props) {
                 <div className="nav-links flex flex-wrap justify-between gap-6">
                   {prev ? (
                     <div className="nav-previous max-w-[48%]">
-                      <span className="block font-oswald text-[11px] uppercase tracking-[2px] text-lien-muted">Previous</span>
+                      <span className="block text-[11px] uppercase tracking-[1px] text-lien-muted">Previous</span>
                       <Link href={`/${prev.slug}/`} className="block text-[15px] leading-6 text-lien-text hover:text-lien-blue">
                         ← {prev.title}
                       </Link>
@@ -82,7 +82,7 @@ export default async function EntryPage({ params }: Props) {
                   )}
                   {next ? (
                     <div className="nav-next max-w-[48%] text-right">
-                      <span className="block font-oswald text-[11px] uppercase tracking-[2px] text-lien-muted">Next</span>
+                      <span className="block text-[11px] uppercase tracking-[1px] text-lien-muted">Next</span>
                       <Link href={`/${next.slug}/`} className="block text-[15px] leading-6 text-lien-text hover:text-lien-blue">
                         {next.title} →
                       </Link>

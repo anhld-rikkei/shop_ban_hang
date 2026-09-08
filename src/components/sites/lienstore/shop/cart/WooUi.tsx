@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 
 /** `.button` — blue WooCommerce button (9.888px 16px, 16px bold, radius 3px). */
 export const wooButtonClass =
-  "inline-block cursor-pointer rounded-[3px] border-0 bg-lien-blue px-4 py-[9.888px] text-center font-sans text-[16px] font-bold leading-4 text-white no-underline transition-[background] duration-200 hover:bg-lien-blue-hover hover:text-white disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-lien-blue";
+  "inline-flex cursor-pointer items-center justify-center rounded-full border-0 bg-lien-blue px-5 py-[10px] text-center font-sans text-[14px] font-semibold uppercase leading-5 tracking-[0.3px] text-white no-underline transition-[background] duration-200 hover:bg-lien-blue-hover hover:text-white disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-lien-blue";
 
 /** `.input-text` — 42.375px tall text input, Arial 16px, #d7d7d7 border. */
 export const wooInputClass =
@@ -79,8 +79,8 @@ export function WooHeading({ as = "h2", children, className }: { as?: "h2" | "h3
   return (
     <Tag
       className={cn(
-        "font-oswald font-light text-lien-heading",
-        as === "h2" ? "my-[21.58px] text-[26px] leading-[36.4px]" : "my-[22px] text-[22px] leading-[30.8px]",
+        "font-bold text-lien-heading",
+        as === "h2" ? "my-5 text-[22px] leading-8" : "my-4 text-[18px] leading-7",
         className,
       )}
     >

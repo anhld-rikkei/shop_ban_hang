@@ -23,7 +23,7 @@ interface OrderBySelectProps {
 export function OrderBySelect({ value, basePath, params = {} }: OrderBySelectProps) {
   const router = useRouter();
   return (
-    <form className="float-right mb-8 w-[250px] max-w-[250px] pt-[13px] pr-[15px] pb-3 pl-[15px]" onSubmit={(e) => e.preventDefault()}>
+    <form className="m-0" onSubmit={(e) => e.preventDefault()}>
       <label htmlFor="orderby" className="sr-only">
         Đơn hàng của cửa hàng
       </label>
@@ -38,7 +38,7 @@ export function OrderBySelect({ value, basePath, params = {} }: OrderBySelectPro
           const qs = q.toString();
           router.push(qs ? `${basePath}?${qs}` : basePath);
         }}
-        className="inline-block h-[33px] w-[220px] max-w-full rounded-[3px] border border-[#e8e8e8] bg-white pl-2.5 font-arial text-[16px] text-lien-input-text"
+        className="inline-block h-9 w-[220px] max-w-full rounded-full border border-lien-line bg-white pl-3 pr-8 text-[13px] text-lien-text outline-none focus:border-lien-blue"
       >
         {ORDER_OPTIONS.map((o) => (
           <option key={o.value} value={o.value}>

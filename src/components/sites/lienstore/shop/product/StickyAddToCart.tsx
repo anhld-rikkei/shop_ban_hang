@@ -59,7 +59,7 @@ export function StickyAddToCart({ product }: { product: CatalogProduct }) {
             <p className="m-0 px-8 py-4 text-[16px] leading-6 text-white">{product.name}</p>
           </div>
           <div className={cn(COL, DIVIDER, "flex items-center justify-center")}>
-            <span className="inline-block rounded-[32px] bg-[#cd534a] px-2 text-[18px] leading-[27px] text-white">{stickyPrice}</span>
+            <span className="inline-block rounded-[32px] bg-lien-sale px-2 text-[18px] leading-[27px] text-white">{stickyPrice}</span>
           </div>
           <div className={cn(COL, DIVIDER, "flex items-center justify-center")}>
             <span
@@ -75,7 +75,7 @@ export function StickyAddToCart({ product }: { product: CatalogProduct }) {
           <div className={cn(COL, "flex items-center justify-center")}>
             <span
               className={cn(
-                "inline-flex items-center rounded-[3px] bg-[#cd534a] px-5 py-1.5 text-[18px] leading-[27px] text-white transition-[background] duration-200 hover:bg-[#b8483f]",
+                "inline-flex items-center rounded-[3px] bg-lien-sale px-5 py-1.5 text-[18px] leading-[27px] text-white transition-[background] duration-200 hover:bg-[#b8483f]",
                 out && "opacity-50",
               )}
             >

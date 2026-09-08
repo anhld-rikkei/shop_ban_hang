@@ -1,37 +1,33 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Breadcrumb, type Crumb } from "@/components/sites/lienstore/shop/Breadcrumb";
+import { Fa } from "@/components/sites/lienstore/shared/icons";
 import { ProductGallery } from "@/components/sites/lienstore/shop/product/ProductGallery";
+import { ProductInfo2 } from "@/components/sites/lienstore/shop/product/ProductInfo2";
 import { ProductMeta } from "@/components/sites/lienstore/shop/product/ProductMeta";
 import { ProductPageNotice } from "@/components/sites/lienstore/shop/product/ProductPageNotice";
 import { ProductShare } from "@/components/sites/lienstore/shop/product/ProductShare";
-import { ProductSummary } from "@/components/sites/lienstore/shop/product/ProductSummary";
 import { ProductTabs } from "@/components/sites/lienstore/shop/product/ProductTabs";
 import { StickyAddToCart } from "@/components/sites/lienstore/shop/product/StickyAddToCart";
 import { ShopProductGrid, toCartProduct } from "@/components/sites/lienstore/shop/ShopProductCard";
-import { FullWidthShell, SiteChrome } from "@/components/sites/lienstore/shop/SiteChrome";
+import { SiteChrome } from "@/components/sites/lienstore/shop/SiteChrome";
 import { getCategories, getProductBySlug, getRelatedProducts } from "@/lib/db";
+
+export const dynamic = "force-dynamic";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
 function stripHtml(html: string): string {
-  return html
-    .replace(/<[^>]*>/g, " ")
-    .replace(/&nbsp;/g, " ")
-    .replace(/&amp;/g, "&")
-    .replace(/&quot;/g, '"')
-    .replace(/&#8217;|&rsquo;/g, "’")
-    .replace(/\s+/g, " ")
-    .trim();
+  return html.replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();
 }
 
 function metaDescription(shortDescription: string, description: string): string {
   const short = stripHtml(shortDescription);
-  if (short) return short;
+  if (short) return short.slice(0, 160);
   const long = stripHtml(description);
-  return long.length > 160 ? `${long.slice(0, 160).trimEnd()}…` : long;
+  return long.slice(0, 160);
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -44,50 +40,64 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     openGraph: {
       title: product.name,
       description: metaDescription(product.shortDescription, product.description),
-      images: product.images[0] ? [{ url: product.images[0] }] : undefined,
+      images: product.images.length ? [product.images[0]] : [product.thumb],
     },
   };
 }
 
-// Clone of https://linconnn.io.vn/product/<slug>/ (WooCommerce single product page).
 export default async function ProductPage({ params }: PageProps) {
   const { slug } = await params;
   const product = await getProductBySlug(slug);
   if (!product) notFound();
 
-  const [categories, related] = await Promise.all([getCategories(), getRelatedProducts(product, 4)]);
+  const [categories, related] = await Promise.all([getCategories(), getRelatedProducts(product, 6)]);
   const categoryNames = Object.fromEntries(categories.map((c) => [c.slug, c.name]));
   const firstCategory = product.categories[0];
 
-  const crumbs: Crumb[] = [];
-  if (firstCategory) {
-    crumbs.push({ label: categoryNames[firstCategory] ?? firstCategory, href: `/product-category/${firstCategory}/` });
-  }
-  crumbs.push({ label: product.name });
-
   return (
     <SiteChrome>
-      <FullWidthShell>
-        <Breadcrumb items={crumbs} />
+      <div className="border-b border-lien-line bg-lien-footer2">
+        <nav aria-label="Breadcrumb" className="mx-auto max-w-[1300px] px-4 py-2.5 text-[12px] leading-5 text-lien-muted">
+          <Link href="/" className="text-lien-muted no-underline hover:text-lien-blue">
+            Trang chủ
+          </Link>
+          {firstCategory ? (
+            <>
+              <Fa name="angle-right" className="mx-1.5 text-[10px]" />
+              <Link href={`/product-category/${firstCategory}/`} className="text-lien-muted no-underline hover:text-lien-blue">
+                {categoryNames[firstCategory] ?? firstCategory}
+              </Link>
+            </>
+          ) : null}
+          <Fa name="angle-right" className="mx-1.5 text-[10px]" />
+          <span className="text-lien-heading">{product.name}</span>
+        </nav>
+      </div>
+
+      <main id="main" className="mx-auto max-w-[1300px] px-4 py-6">
         <ProductPageNotice product={toCartProduct(product)} />
-        <div id={`product-${product.id}`} className="product type-product flow-root">
-          <ProductGallery images={product.images.length ? product.images : [product.thumb]} alt={product.name} />
-          <ProductSummary product={product} compareCategory={firstCategory}>
+        <div id={`product-${product.id}`} className="product type-product grid gap-8 lg:grid-cols-[minmax(0,460px)_minmax(0,1fr)] xl:grid-cols-[minmax(0,520px)_minmax(0,1fr)]">
+          <ProductGallery images={product.images.length ? product.images : [product.thumb]} alt={product.name} className="!float-none !mb-0 !w-full" />
+          <ProductInfo2 product={product} categoryNames={categoryNames}>
             <ProductMeta product={product} categoryNames={categoryNames} />
             <ProductShare name={product.name} slug={product.slug} />
-          </ProductSummary>
+          </ProductInfo2>
         </div>
         <StickyAddToCart product={product} />
-        <ProductTabs name={product.name} description={product.description} reviewCount={product.reviewCount} />
+
+        <div className="mt-10">
+          <ProductTabs name={product.name} description={product.description} reviewCount={product.reviewCount} />
+        </div>
+
         {related.length > 0 ? (
-          <section className="related products" aria-labelledby="related-heading">
-            <h2 id="related-heading" className="my-[21.58px] font-oswald text-[26px] font-light leading-[36.4px] text-lien-heading">
-              Sản phẩm tương tự
+          <section className="related products mt-12" aria-labelledby="related-heading">
+            <h2 id="related-heading" className="mb-6 text-center text-[22px] font-bold uppercase leading-8 text-lien-blue">
+              <span className="border-b-[3px] border-lien-blue pb-1">Có thể bạn quan tâm</span>
             </h2>
-            <ShopProductGrid products={related} />
+            <ShopProductGrid products={related} cols={6} />
           </section>
         ) : null}
-      </FullWidthShell>
+      </main>
     </SiteChrome>
   );
 }

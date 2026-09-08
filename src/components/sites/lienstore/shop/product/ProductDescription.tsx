@@ -74,7 +74,7 @@ export function ProductDescription({ name, description, className }: Props) {
       <div className="grid gap-4">
         {d.sections.map((s, i) => (
           <section key={`${s.key}-${i}`} id={`mo-ta-${s.key}-${i}`} className="scroll-mt-24 rounded-md border border-lien-widget-border bg-white">
-            <h3 className="m-0 flex items-center gap-2 border-b border-lien-widget-border bg-lien-blue-soft/50 px-4 py-2.5 font-oswald text-[18px] font-medium uppercase tracking-[1px] text-lien-heading">
+            <h3 className="m-0 flex items-center gap-2 border-b border-lien-line bg-white px-4 py-2.5 text-[15px] font-bold uppercase tracking-[0.3px] text-lien-blue">
               <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-lien-blue text-[13px] text-white">
                 <Fa name={ICONS[s.key]} />
               </span>

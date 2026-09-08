@@ -1,71 +1,89 @@
-import { CategoryGrid } from "@/components/sites/lienstore/root-8a5edab2/CategoryGrid";
+import Link from "next/link";
 import { HeroSlider } from "@/components/sites/lienstore/root-8a5edab2/HeroSlider";
-import { ProductGrid } from "@/components/sites/lienstore/root-8a5edab2/ProductGrid";
-import { SectionHeading } from "@/components/sites/lienstore/root-8a5edab2/SectionHeading";
-import { addToCartLabel, categoryGridTitle, sliderAssets, slides } from "@/components/sites/lienstore/root-8a5edab2/data";
-import { StoreSidebar } from "@/components/sites/lienstore/shop/cart/StoreSidebar";
-import { SiteChrome, TwoColumnShell } from "@/components/sites/lienstore/shop/SiteChrome";
-import { getAllProducts, getCategories, queryProducts } from "@/lib/db";
-import { formatAmount } from "@/lib/format";
-import type { CategoryCard, Product } from "@/types/lienstore";
-import type { CatalogProduct } from "@/types/shop";
+import { sliderAssets, slides } from "@/components/sites/lienstore/root-8a5edab2/data";
+import { ShopProductGrid } from "@/components/sites/lienstore/shop/ShopProductCard";
+import { FullWidthShell, getHeaderCategories, SiteChrome } from "@/components/sites/lienstore/shop/SiteChrome";
+import { CategoryTiles, NewsCards, SectionHeader2, UspStrip } from "@/components/sites/lienstore/ui2/HomeBlocks";
+import { Fa } from "@/components/sites/lienstore/shared/icons";
+import { getPosts, queryProducts } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
 
-/** Home-page product blocks (WooCommerce "Newest products" / "Products by category" blocks on the original). */
-const SECTIONS = [
-  { key: "new", title: "SẢN PHẨM MỚI NHẬP", href: "/shop/", perPage: 12, category: undefined as string | undefined },
-  { key: "functional", title: "THỰC PHẨM CHỨC NĂNG", href: "/product-category/thuc-pham-chuc-nang-functional-foods/", perPage: 12, category: "thuc-pham-chuc-nang-functional-foods" },
-  { key: "momBaby", title: "Mom And Baby", href: "/product-category/mom-and-baby/", perPage: 6, category: "mom-and-baby" },
-];
+/** How many category rows the home page shows (largest categories first). */
+const CATEGORY_ROWS = 6;
 
-function toHomeProduct(p: CatalogProduct): Product {
-  return {
-    title: p.name,
-    price: formatAmount(p.price),
-    currency: p.currency,
-    href: `/product/${p.slug}/`,
-    image: p.thumb || p.images[0] || "",
-    addToCartHref: `?add-to-cart=${p.id}`,
-  };
-}
-
-// Clone of https://linconnn.io.vn/ (home). Site key lienstore, page key root-8a5edab2.
 export default async function Home() {
-  const [categories, all] = await Promise.all([getCategories(), getAllProducts()]);
-  const cards: CategoryCard[] = categories.map((c) => ({
-    name: c.name,
-    count: c.count,
-    href: `/product-category/${c.slug}/`,
-    image: c.image ?? all.find((p) => p.categories.includes(c.slug))?.thumb ?? "/sites/lienstore/brand/icon-192.png",
-    alt: c.name,
-  }));
-  const sections = await Promise.all(
-    SECTIONS.map(async (s) => {
-      if (s.category && !categories.some((c) => c.slug === s.category)) return null;
-      const r = await queryProducts({ category: s.category, orderby: s.category ? "popularity" : "date", perPage: s.perPage });
-      return r.items.length ? { ...s, products: r.items.map(toHomeProduct) } : null;
-    }),
+  const categories = await getHeaderCategories();
+  const [fresh, popular, sale, posts] = await Promise.all([
+    queryProducts({ orderby: "date", perPage: 12 }),
+    queryProducts({ orderby: "rating", perPage: 12 }),
+    queryProducts({ orderby: "popularity", perPage: 60 }),
+    getPosts(),
+  ]);
+  const onSale = sale.items.filter((p) => p.regularPrice && p.regularPrice > p.price).slice(0, 6);
+  const topCategories = [...categories].filter((c) => c.count > 0).sort((a, b) => b.count - a.count).slice(0, CATEGORY_ROWS);
+  const rows = await Promise.all(
+    topCategories.map(async (c) => ({ cat: c, products: (await queryProducts({ category: c.slug, orderby: "date", perPage: 6 })).items })),
   );
 
   return (
     <SiteChrome>
-      <TwoColumnShell sidebar={<StoreSidebar />}>
-        <article className="entry-content">
-          <HeroSlider slides={slides} arrowSprite={sliderAssets.directionNav} />
+      <FullWidthShell className="pt-4">
+        <HeroSlider slides={slides} arrowSprite={sliderAssets.directionNav} className="overflow-hidden rounded-md" />
 
-          <CategoryGrid title={categoryGridTitle} categories={cards} />
+        <CategoryTiles categories={categories.filter((c) => c.count > 0)} />
 
-          {sections.map((section) =>
-            section ? (
-              <section key={section.key} aria-label={section.title}>
-                <SectionHeading title={section.title} href={section.href} />
-                <ProductGrid products={section.products} addToCartLabel={addToCartLabel} />
-              </section>
-            ) : null,
-          )}
-        </article>
-      </TwoColumnShell>
+        {onSale.length >= 3 ? (
+          <section className="mt-10" aria-label="Giảm giá">
+            <SectionHeader2 title="Giảm giá đặc biệt" icon="fire" tone="sale" href="/shop/?orderby=popularity" />
+            <ShopProductGrid products={onSale} cols={6} />
+          </section>
+        ) : null}
+
+        <section className="mt-10" aria-label="Sản phẩm mới">
+          <SectionHeader2 title="Hàng mới về" icon="bolt" href="/shop/?orderby=date" />
+          <ShopProductGrid products={fresh.items} cols={6} />
+        </section>
+
+        <section className="mt-10" aria-label="Bán chạy">
+          <SectionHeader2 title="Bán chạy nhất" icon="star" href="/shop/?orderby=rating" />
+          <ShopProductGrid products={popular.items.slice(0, 6)} cols={6} />
+        </section>
+
+        <div className="my-10 grid gap-4 md:grid-cols-2">
+          <Link href="/my-account/" className="flex items-center gap-4 rounded-md bg-lien-blue p-5 text-white no-underline hover:bg-lien-blue-hover">
+            <Fa name="gift" className="text-[34px]" />
+            <span>
+              <span className="block text-[16px] font-bold uppercase">Đăng kí tài khoản</span>
+              <span className="block text-[13px] opacity-90">Lưu địa chỉ, theo dõi đơn và nhận bill mua hàng tại Nhật ngay trong tài khoản.</span>
+            </span>
+          </Link>
+          <a href="https://zalo.me/0964839769" target="_blank" rel="noreferrer" className="flex items-center gap-4 rounded-md bg-lien-heading p-5 text-white no-underline hover:opacity-90">
+            <Fa name="comments-o" className="text-[34px]" />
+            <span>
+              <span className="block text-[16px] font-bold uppercase">Cần mua hộ hàng Nhật?</span>
+              <span className="block text-[13px] opacity-90">Gửi link sản phẩm qua Zalo 0964 839 769, LienStore báo giá trong ngày.</span>
+            </span>
+          </a>
+        </div>
+
+        {rows.map(({ cat, products }) =>
+          products.length ? (
+            <section key={cat.slug} className="mt-10" aria-label={cat.name}>
+              <SectionHeader2 title={cat.name.replace(/\s*\(.*?\)\s*/g, " ").trim()} href={`/product-category/${cat.slug}/`} />
+              <ShopProductGrid products={products} cols={6} />
+              <p className="mt-3 text-center">
+                <Link href={`/product-category/${cat.slug}/`} className="inline-flex items-center gap-1 rounded-full border border-lien-blue px-5 py-2 text-[13px] font-semibold text-lien-blue no-underline hover:bg-lien-blue hover:text-white">
+                  Xem tất cả {cat.count} sản phẩm <Fa name="angle-right" />
+                </Link>
+              </p>
+            </section>
+          ) : null,
+        )}
+
+        <UspStrip />
+        <NewsCards posts={posts} />
+      </FullWidthShell>
     </SiteChrome>
   );
 }

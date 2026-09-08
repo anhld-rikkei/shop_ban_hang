@@ -10,7 +10,7 @@ export async function StoreSidebar() {
   return (
     <>
       <Sidebar title={sidebarTitle} categories={items} priceFilter={priceFilter} />
-      <RecentlyViewedWidget />
+      <RecentlyViewedWidget className="mb-4 rounded-md border border-lien-line bg-white p-4" />
     </>
   );
 }

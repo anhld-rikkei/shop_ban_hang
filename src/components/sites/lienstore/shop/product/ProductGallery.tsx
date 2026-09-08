@@ -45,10 +45,10 @@ export function ProductGallery({ images, alt, className }: ProductGalleryProps) 
           ref={frame}
           onMouseMove={onMove}
           onMouseLeave={() => setLens(null)}
-          className="woocommerce-product-gallery__image relative aspect-square w-full overflow-visible"
+          className="woocommerce-product-gallery__image relative aspect-square w-full overflow-visible rounded-md border border-lien-line bg-white"
         >
-          <a href={current} target="_blank" rel="noreferrer" className="block">
-            <Image src={current} alt={alt} width={600} height={600} priority className="block h-auto w-full" />
+          <a href={current} target="_blank" rel="noreferrer" className="absolute inset-0 block p-3">
+            <Image src={current} alt={alt} width={600} height={600} priority className="block h-full w-full object-contain" />
           </a>
           {lens ? (
             <>
@@ -73,7 +73,7 @@ export function ProductGallery({ images, alt, className }: ProductGalleryProps) 
           ) : null}
         </div>
         {images.length > 1 ? (
-          <ol className="m-0 mt-2 grid list-none grid-cols-4 gap-2 p-0">
+          <ol className="m-0 mt-3 grid list-none grid-cols-5 gap-2 p-0 sm:grid-cols-6">
             {images.map((src, i) => {
               const active = i === index;
               return (
@@ -84,11 +84,11 @@ export function ProductGallery({ images, alt, className }: ProductGalleryProps) 
                     aria-label={`Ảnh ${i + 1} của ${images.length}`}
                     aria-current={active ? "true" : undefined}
                     className={cn(
-                      "block h-[100px] w-[100px] max-w-full cursor-pointer overflow-hidden border-2 bg-white p-0",
+                      "block aspect-square w-full cursor-pointer overflow-hidden rounded-md border-2 bg-white p-0",
                       active ? "border-lien-blue" : "border-transparent hover:border-lien-blue/50",
                     )}
                   >
-                    <Image src={src} alt="" width={100} height={100} className="block h-full w-full object-cover" />
+                    <Image src={src} alt="" width={100} height={100} className="block h-full w-full object-contain" />
                   </button>
                 </li>
               );

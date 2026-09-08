@@ -11,7 +11,7 @@ export default async function Checkout() {
   const customer = await getCurrentCustomer();
   return (
     <SiteChrome>
-      <TwoColumnShell sidebar={<StoreSidebar />}>
+      <TwoColumnShell sidebar={<StoreSidebar />} title="Thanh toán">
         <article className="entry-content">
           <CheckoutForm
             loggedIn={!!customer}

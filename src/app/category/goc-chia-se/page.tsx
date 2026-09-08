@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { StoreSidebar } from "@/components/sites/lienstore/shop/cart/StoreSidebar";
-import { Breadcrumb } from "@/components/sites/lienstore/shop/Breadcrumb";
 import { SiteChrome, TwoColumnShell } from "@/components/sites/lienstore/shop/SiteChrome";
 import { getPosts } from "@/lib/db";
 import { formatDate } from "@/lib/format";
@@ -15,15 +14,11 @@ export default async function BlogCategoryPage() {
   const posts = await getPosts();
   return (
     <SiteChrome>
-      <TwoColumnShell sidebar={<StoreSidebar />}>
-        <Breadcrumb items={[{ label: "Góc Chia Sẻ" }]} />
-        <h1 className="my-[20.1px] text-center font-oswald text-[30px] font-light leading-[42px] text-lien-heading after:mx-auto after:mt-[15px] after:block after:h-0.5 after:w-[90px] after:bg-lien-blue">
-          Góc Chia Sẻ
-        </h1>
+      <TwoColumnShell sidebar={<StoreSidebar />} title="Góc chia sẻ">
         <div className="space-y-6">
           {posts.map((post) => (
-            <article key={post.slug} className="rounded-[3px] bg-white p-6 shadow-[0_2px_18px_-4px_#cfcfcf]">
-              <h2 className="mb-1 font-oswald text-[24px] font-light leading-[33.6px] text-lien-heading">
+            <article key={post.slug} className="rounded-md border border-lien-line bg-white p-6">
+              <h2 className="mb-1 text-[20px] font-bold leading-7 text-lien-heading">
                 <Link href={`/${post.slug}/`} className="hover:text-lien-blue">
                   {post.title}
                 </Link>

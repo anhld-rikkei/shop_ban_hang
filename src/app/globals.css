@@ -2,6 +2,105 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+/* Roboto (self-hosted, latin + latin-ext + vietnamese) — body & heading font of the UI v2 */
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/sites/lienstore/shared/fonts/Roboto-400-vietnamese.woff2") format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/sites/lienstore/shared/fonts/Roboto-400-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/sites/lienstore/shared/fonts/Roboto-400-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/sites/lienstore/shared/fonts/Roboto-500-vietnamese.woff2") format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/sites/lienstore/shared/fonts/Roboto-500-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/sites/lienstore/shared/fonts/Roboto-500-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/sites/lienstore/shared/fonts/Roboto-600-vietnamese.woff2") format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/sites/lienstore/shared/fonts/Roboto-600-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/sites/lienstore/shared/fonts/Roboto-600-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/sites/lienstore/shared/fonts/Roboto-700-vietnamese.woff2") format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/sites/lienstore/shared/fonts/Roboto-700-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/sites/lienstore/shared/fonts/Roboto-700-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+
 /* ------------------------------------------------------------------ */
 /* Self-hosted fonts extracted from linconnn.io.vn (Google Fonts subsets  */
 /* + Font Awesome 4.7 icon font). Files live under public/sites/.../fonts */
@@ -147,10 +246,10 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "Google Sans", Arial, Helvetica, sans-serif;
+  --font-sans: "Roboto", "Google Sans", Arial, Helvetica, sans-serif;
   --font-mono: ui-monospace, monospace;
-  --font-heading: "Oswald", "Arial Narrow", Arial, sans-serif;
-  --font-oswald: "Oswald", "Arial Narrow", Arial, sans-serif;
+  --font-heading: "Roboto", Arial, sans-serif;
+  --font-oswald: "Roboto", Arial, sans-serif;
   --font-arial: Arial, Helvetica, sans-serif;
   --font-fa: "FontAwesome";
   --color-sidebar-ring: var(--sidebar-ring);
@@ -196,6 +295,14 @@
   --color-lien-blue-hover: var(--lien-blue-hover);
   --color-lien-blue-soft: var(--lien-blue-soft);
   --color-lien-blue-ring: var(--lien-blue-ring);
+  --color-lien-cream: var(--lien-cream);
+  --color-lien-footer2: var(--lien-footer2);
+  --color-lien-sale: var(--lien-sale);
+  --color-lien-sale-text: var(--lien-sale-text);
+  --color-lien-amber: var(--lien-amber);
+  --color-lien-info: var(--lien-info);
+  --color-lien-price: var(--lien-price);
+  --color-lien-success: var(--lien-success);
   --color-lien-text: var(--lien-text);
   --color-lien-muted: var(--lien-muted);
   --color-lien-heading: var(--lien-heading);
@@ -224,7 +331,7 @@
 
 :root {
   /* Site palette mapped onto shadcn tokens */
-  --background: #f3fafc; /* light aqua page background (ocean theme) */
+  --background: #ffffff;
   --foreground: #191919; /* rgb(25,25,25) body text */
   --card: #ffffff;
   --card-foreground: #191919;
@@ -258,11 +365,19 @@
   --sidebar-ring: #3fe0ff;
 
   /* lienstore specific values */
-  --lien-page: #f3fafc;
+  --lien-page: #ffffff;
   --lien-blue: #1c7f9e; /* ocean blue, primary actions */
   --lien-blue-hover: #166a85; /* darker ocean for hover */
   --lien-blue-soft: #e6f2f6; /* tinted backgrounds (tabs, pagination, payment box) */
   --lien-blue-ring: #3fe0ff; /* cyan hover ring */
+  --lien-cream: #f5f3ea; /* header / utility bar tint */
+  --lien-footer2: #f6f6f8; /* light footer */
+  --lien-sale: #ff4e00; /* discount badge */
+  --lien-sale-text: #ec0101; /* sale price */
+  --lien-amber: #ffb83a; /* register CTA */
+  --lien-info: #1878b9; /* "New" label */
+  --lien-price: #14607a; /* regular price (deep ocean) */
+  --lien-success: #228b22;
   --lien-text: #14313d;
   --lien-muted: #5b7079;
   --lien-heading: #0d2a35; /* deep ocean headings */
@@ -327,14 +442,8 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-size: 16px;
-    /* The theme uses line-height 1.15 on xs (<768px) and 1.5 from sm up. */
-    line-height: 18.4px;
-  }
-  @media (min-width: 768px) {
-    body {
-      line-height: 24px;
-    }
+    font-size: 14px;
+    line-height: 1.5;
   }
   /* The original theme (WordPress "New York Business") uses a 1200px Bootstrap 3 grid. */
 }

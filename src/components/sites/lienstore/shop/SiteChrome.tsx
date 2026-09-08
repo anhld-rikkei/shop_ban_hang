@@ -1,76 +1,80 @@
 import type { ReactNode } from "react";
 import { FacebookChat } from "@/components/sites/lienstore/shop/FacebookChat";
 import { FloatingWidgets } from "@/components/sites/lienstore/root-8a5edab2/FloatingWidgets";
-import { SiteFooter } from "@/components/sites/lienstore/root-8a5edab2/SiteFooter";
-import { SiteHeader } from "@/components/sites/lienstore/root-8a5edab2/SiteHeader";
-import {
-  branding,
-  categoriesMenuLabel,
-  contact,
-  footerColumns,
-  footerCopyright,
-  headerAssets,
-  mainMenu,
-  searchPlaceholder,
-} from "@/components/sites/lienstore/root-8a5edab2/data";
-import { getCategories } from "@/lib/db";
+import { branding, contact, footerCopyright } from "@/components/sites/lienstore/root-8a5edab2/data";
+import { PageBand } from "@/components/sites/lienstore/ui2/HomeBlocks";
+import { Footer2 } from "@/components/sites/lienstore/ui2/Footer2";
+import { Header2, type HeaderCategory, type HeaderLink } from "@/components/sites/lienstore/ui2/Header2";
+import { TopBar2 } from "@/components/sites/lienstore/ui2/TopBar2";
+import { getAllProducts, getCategories } from "@/lib/db";
 
-/**
- * Header + footer + floating widgets shared by every storefront page.
- * Categories (search select + "Product Categories" dropdown) come from the database so
- * changes made in /admin/categories are reflected everywhere.
- */
+export const SUPPORT_LINKS: HeaderLink[] = [
+  { label: "Hướng dẫn đặt hàng", href: "/huong-dan-dat-hang/" },
+  { label: "Chính sách đổi trả", href: "/chinh-sach-doi-tra/" },
+  { label: "Tra cứu đơn hàng", href: "/my-account/" },
+  { label: "Chính sách bảo mật", href: "/privacy-policy/" },
+  { label: "Liên hệ", href: "/lien-he/" },
+];
+
+export const ACCOUNT_LINKS: HeaderLink[] = [
+  { label: "Đăng nhập", href: "/my-account/" },
+  { label: "Đăng kí tài khoản", href: "/my-account/" },
+  { label: "Đơn hàng của tôi", href: "/my-account/?tab=orders" },
+  { label: "Tra cứu đơn hàng", href: "/my-account/" },
+  { label: "Danh sách yêu thích", href: "/wishlist/" },
+  { label: "Giỏ hàng", href: "/cart/" },
+];
+
+/** Categories with a representative image, shared by header mega-menu, home tiles and footer. */
+export async function getHeaderCategories(): Promise<HeaderCategory[]> {
+  const [categories, all] = await Promise.all([getCategories(), getAllProducts()]);
+  return categories.map((c) => ({
+    name: c.name,
+    slug: c.slug,
+    count: c.count,
+    image: c.image ?? all.find((p) => p.categories.includes(c.slug))?.thumb ?? null,
+  }));
+}
+
+/** Header + footer + floating widgets shared by every storefront page (sesofoods-style UI v2). */
 export async function SiteChrome({ children }: { children: ReactNode }) {
-  const categories = await getCategories();
-  const searchCategories = [{ label: "All Categories", value: "" }, ...categories.map((c) => ({ label: c.name, value: c.slug }))];
-  const dropdown = categories.map((c) => ({ label: c.name, href: `/product-category/${c.slug}/` }));
-
+  const categories = await getHeaderCategories();
+  const logo = { src: branding.logo, width: branding.logoWidth, height: branding.logoHeight, alt: branding.siteTitle };
   return (
-    <div id="page" className="relative">
-      <SiteHeader
-        contact={contact}
-        branding={branding}
-        searchCategories={searchCategories}
-        searchPlaceholder={searchPlaceholder}
-        selectArrow={headerAssets.selectArrow}
-        categoriesLabel={categoriesMenuLabel}
-        categoriesDropdown={dropdown}
-        mainMenu={mainMenu}
-      />
-      {children}
-      <SiteFooter columns={footerColumns} contact={contact} copyright={footerCopyright} />
+    <div id="page" className="relative flex min-h-screen flex-col">
+      <TopBar2 contact={contact} />
+      <Header2 logo={logo} categories={categories} supportLinks={SUPPORT_LINKS} aboutHref="/gioi-thieu-ve-lienstore/" newsHref="/category/goc-chia-se/" contactHref="/lien-he/" />
+      <div className="flex-1">{children}</div>
+      <Footer2 logo={logo} contact={contact} categories={categories} accountLinks={ACCOUNT_LINKS} supportLinks={SUPPORT_LINKS} copyright={footerCopyright} />
       <FloatingWidgets cartHref="/cart/" wishlistHref="/wishlist/" accountHref="/my-account/" />
       {process.env.NEXT_PUBLIC_FB_PAGE_ID ? <FacebookChat pageId={process.env.NEXT_PUBLIC_FB_PAGE_ID} /> : null}
     </div>
   );
 }
 
-/** `#content > .container.background` with a single full-width main column (shop, product, archive pages). */
-export function FullWidthShell({ children }: { children: ReactNode }) {
+/** Single full-width content column (max 1300px). */
+export function FullWidthShell({ children, className }: { children: ReactNode; className?: string }) {
   return (
     <div id="content" className="overflow-x-clip">
-      <div className="mx-auto my-5 max-w-[1170px] px-[15px] pt-5">
-        <div className="-mx-[15px]">
-          <div id="primary" className="relative w-full px-[15px]">
-            <main id="main">{children}</main>
-          </div>
+      <div className={"mx-auto max-w-[1300px] px-4 py-6 " + (className ?? "")}>
+        <div id="primary" className="relative w-full">
+          <main id="main">{children}</main>
         </div>
       </div>
     </div>
   );
 }
 
-/** Two-column layout (sidebar left, content right) used by the home, cart and checkout pages. */
-export function TwoColumnShell({ sidebar, children }: { sidebar: ReactNode; children: ReactNode }) {
+/** Content + right-hand sidebar (shown from lg). Used by cart / checkout / account / static pages. */
+export function TwoColumnShell({ sidebar, children, title }: { sidebar: ReactNode; children: ReactNode; title?: string }) {
   return (
     <div id="content" className="overflow-x-clip">
-      <div className="mx-auto my-5 max-w-[1170px] px-[15px] pt-5">
-        <div className="-mx-[15px] flex flex-wrap">
-          <div className="relative w-full px-[15px] sm:w-1/3">{sidebar}</div>
-          <div id="primary" className="relative w-full px-[15px] sm:w-2/3">
-            <main id="main">{children}</main>
-          </div>
+      {title ? <PageBand title={title} crumbs={[{ label: title }]} /> : null}
+      <div className="mx-auto max-w-[1300px] px-4 py-6 lg:flex lg:gap-8">
+        <div id="primary" className="relative min-w-0 flex-1">
+          <main id="main">{children}</main>
         </div>
+        <aside className="mt-8 w-full lg:mt-0 lg:w-[300px] lg:shrink-0">{sidebar}</aside>
       </div>
     </div>
   );

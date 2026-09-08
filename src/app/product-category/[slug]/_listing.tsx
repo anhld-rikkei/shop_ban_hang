@@ -34,6 +34,7 @@ export async function CategoryListing({ slug, page, searchParams }: CategoryList
       result={result}
       orderby={orderby}
       basePath={`/product-category/${slug}/`}
+      activeCategory={slug}
     />
   );
 }

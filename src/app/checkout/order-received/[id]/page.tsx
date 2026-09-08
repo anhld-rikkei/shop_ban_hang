@@ -28,7 +28,7 @@ export default async function OrderReceived({ params }: Props) {
 
   return (
     <SiteChrome>
-      <TwoColumnShell sidebar={<StoreSidebar />}>
+      <TwoColumnShell sidebar={<StoreSidebar />} title="Đơn hàng đã nhận">
         <article className="entry-content woocommerce">
           <ClearCartOnMount />
           <div className="woocommerce-order">

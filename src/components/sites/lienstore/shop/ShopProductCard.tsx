@@ -43,64 +43,84 @@ function toQuickView(p: CatalogProduct): QuickViewProduct {
   };
 }
 
+const NEW_DAYS = 45;
+
+export function discountPercent(p: Pick<CatalogProduct, "price" | "regularPrice">): number | null {
+  if (!p.regularPrice || p.regularPrice <= p.price || p.price <= 0) return null;
+  return Math.round((1 - p.price / p.regularPrice) * 100);
+}
+
+export function isNewProduct(p: Pick<CatalogProduct, "createdAt">): boolean {
+  const t = Date.parse(p.createdAt);
+  return Number.isFinite(t) && Date.now() - t < NEW_DAYS * 86400000;
+}
+
 /**
- * WooCommerce archive card (`ul.products li.product`) as used on /shop, category pages and
- * the "Sản phẩm tương tự" block: white card with soft shadow, 300×300 thumbnail, light title,
- * small grey price and the blue square "Mua hàng" button. Renders an `<li>`.
+ * Product card (sesofoods style): bordered white tile, square image with discount / "Mới" / "Hết hàng" labels,
+ * 2-line title, price (sale price highlighted, original struck through), hover actions (wishlist, quick view)
+ * and an add-to-cart button. Renders an `<li>`.
  */
 export function ShopProductCard({ product, className }: { product: CatalogProduct; className?: string }) {
   const out = product.stockStatus === "outofstock";
+  const pct = discountPercent(product);
+  const fresh = isNewProduct(product);
   return (
-    <li className={cn("group relative bg-white pb-[15px] text-center shadow-[0_2px_18px_-4px_#cfcfcf]", className)}>
-      <Link href={productHref(product)} className="block text-lien-muted no-underline">
-        <Image
-          src={product.thumb || product.images[0]}
-          alt={product.name}
-          width={300}
-          height={300}
-          className="mb-4 block h-auto w-full"
-        />
-        <h2 className="px-1 py-2 font-sans text-[16px] font-light leading-[22.4px] text-lien-heading">{product.name}</h2>
+    <li className={cn("group relative flex flex-col rounded-md border border-lien-line bg-white transition-shadow hover:shadow-[0_8px_24px_-12px_rgba(0,0,0,0.35)]", className)}>
+      <div className="relative">
+        <Link href={productHref(product)} className="block overflow-hidden rounded-t-md">
+          <Image
+            src={product.thumb || product.images[0]}
+            alt={product.name}
+            width={300}
+            height={300}
+            className="aspect-square h-auto w-full object-contain transition-transform duration-300 group-hover:scale-[1.04]"
+          />
+        </Link>
+        <div className="pointer-events-none absolute top-2 right-2 flex flex-col items-end gap-1">
+          {pct ? <span className="rounded bg-lien-sale px-1.5 py-0.5 text-[11px] font-bold leading-4 text-white">-{pct}%</span> : null}
+          {fresh && !out ? <span className="rounded bg-lien-info px-1.5 py-0.5 text-[11px] font-semibold leading-4 text-white">Mới</span> : null}
+          {out ? <span className="rounded bg-lien-muted px-1.5 py-0.5 text-[11px] font-semibold leading-4 text-white">Hết hàng</span> : null}
+        </div>
+        <div className="absolute top-2 left-2 flex flex-col gap-1 opacity-0 transition-opacity group-hover:opacity-100 [@media(hover:none)]:opacity-100">
+          <WishlistButton product={toCartProduct(product)} className="flex h-8 w-8 items-center justify-center rounded-full border border-lien-line bg-white text-[14px] text-lien-heading shadow-sm hover:bg-lien-blue hover:text-white" />
+          <QuickViewButton product={toQuickView(product)} className="flex h-8 w-8 items-center justify-center rounded-full border border-lien-line bg-white text-[13px] text-lien-heading shadow-sm hover:bg-lien-blue hover:text-white" iconOnly />
+        </div>
+      </div>
+      <div className="flex flex-1 flex-col px-3 pt-2 pb-3 text-center">
+        <Link href={productHref(product)} className="no-underline">
+          <h2 className="m-0 line-clamp-2 min-h-[42px] text-[14px] font-medium leading-[21px] text-lien-heading hover:text-lien-blue">{product.name}</h2>
+        </Link>
         {product.rating ? (
-          <span className="mb-[6.856px] block">
+          <span className="mt-1 block">
             <StarRating rating={product.rating} />
           </span>
         ) : null}
-        <span className="mb-[6.856px] block text-[13.712px] leading-[20.568px] text-[#4a4a4a]">
+        <p className="mt-1.5 mb-3 flex flex-wrap items-baseline justify-center gap-x-2 text-[15px] font-semibold leading-5">
           {product.regularPrice && product.regularPrice > product.price ? (
-            <del className="mr-1 opacity-70">
-              {formatAmount(product.regularPrice)}
-              <span>{product.currency}</span>
-            </del>
-          ) : null}
-          <span>
-            {formatAmount(product.price)}
-            <span>{product.currency}</span>
-          </span>
-        </span>
-      </Link>
-      <div className="mt-4">
-        <AddToCartButton product={toCartProduct(product)} variant="square" disabled={out} label={out ? "Hết hàng" : "Mua hàng"} />
+            <>
+              <del className="text-[12px] font-normal text-lien-muted">{formatAmount(product.regularPrice)}đ</del>
+              <span className="text-lien-sale-text">{formatAmount(product.price)}đ</span>
+            </>
+          ) : (
+            <span className="text-lien-price">{formatAmount(product.price)}đ</span>
+          )}
+        </p>
+        <div className="mt-auto">
+          <AddToCartButton product={toCartProduct(product)} variant="card" disabled={out} label={out ? "Hết hàng" : "Thêm vào giỏ"} showViewCart={false} />
+        </div>
       </div>
-      <QuickViewButton product={toQuickView(product)} />
-      <div className="absolute top-[15px] left-2.5 flex flex-col items-start pt-0.5 pr-1.5 pb-[3px] pl-0.5">
-        <WishlistButton product={toCartProduct(product)} />
-        <Link
-          href={productHref(product)}
-          aria-label={`Xem ${product.name}`}
-          className="mt-[3px] ml-px inline-block pt-[3px] text-lien-blue hover:text-lien-heart"
-        >
-          <Fa name="refresh" className="text-[14px] leading-[14px]" />
-        </Link>
-      </div>
+      <span className="sr-only">
+        <Fa name="shopping-cart" />
+      </span>
     </li>
   );
 }
 
-/** `ul.products.columns-4`: 4 cards of 251px with 43.3px gutters at 1140px; 2 columns below 992px. */
-export function ShopProductGrid({ products, className }: { products: CatalogProduct[]; className?: string }) {
+/** Responsive product grid: 2 columns on phones, 3 on tablets, `cols` on desktop (default 4). */
+export function ShopProductGrid({ products, className, cols = 4 }: { products: CatalogProduct[]; className?: string; cols?: 4 | 5 | 6 }) {
+  const desktop = cols === 6 ? "lg:grid-cols-6" : cols === 5 ? "lg:grid-cols-5" : "lg:grid-cols-4";
   return (
-    <ul className={cn("mb-4 grid list-none grid-cols-2 items-start gap-x-[3.8%] gap-y-[47.87px] p-0 md:grid-cols-4 md:gap-x-[43.3px]", className)}>
+    <ul className={cn("m-0 grid list-none grid-cols-2 gap-3 p-0 sm:grid-cols-3 md:gap-4", desktop, className)}>
       {products.map((p) => (
         <ShopProductCard key={p.id} product={p} />
       ))}

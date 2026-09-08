@@ -14,7 +14,7 @@ interface ProductTabsProps {
 
 type TabKey = "description" | "reviews";
 
-const H2 = "my-[21.58px] font-oswald text-[26px] font-light leading-[36.4px] text-lien-heading";
+const H2 = "sr-only";
 const FIELD =
   "box-border w-full rounded-[3px] border border-lien-input-border bg-white p-[5px] font-arial text-[16px] leading-6 text-lien-input-text focus:border-lien-blue focus:outline-none";
 const REQUIRED = <span className="required text-[#e2401c]">*</span>;
@@ -30,10 +30,10 @@ export function ProductTabs({ name, description, reviewCount }: ProductTabsProps
   ];
 
   return (
-    <div className="woocommerce-tabs wc-tabs-wrapper clear-both">
+    <div className="woocommerce-tabs wc-tabs-wrapper clear-both rounded-md bg-lien-cream/60 px-4 py-6 sm:px-8">
       <ul
         role="tablist"
-        className="tabs wc-tabs relative m-0 mb-[25.888px] list-none overflow-hidden p-0 pl-4 before:absolute before:right-0 before:bottom-0 before:left-0 before:z-[1] before:border-b before:border-[#d3ced2] before:content-['']"
+        className="tabs wc-tabs m-0 mb-6 flex list-none flex-wrap justify-center gap-2 p-0"
       >
         {tabs.map(({ key, label }) => {
           const active = tab === key;
@@ -41,10 +41,7 @@ export function ProductTabs({ name, description, reviewCount }: ProductTabsProps
             <li
               key={key}
               role="presentation"
-              className={cn(
-                "relative -mx-[5px] inline-block rounded-t-[4px] border border-[#d3ced2] px-4",
-                active ? "z-[2] border-b-white bg-white" : "z-0 bg-lien-blue-soft",
-              )}
+              className={cn("inline-block rounded-full border", active ? "border-lien-heading bg-white" : "border-transparent bg-transparent")}
             >
               <button
                 type="button"
@@ -54,8 +51,8 @@ export function ProductTabs({ name, description, reviewCount }: ProductTabsProps
                 aria-controls={`${base}-panel-${key}`}
                 onClick={() => setTab(key)}
                 className={cn(
-                  "inline-block cursor-pointer border-0 bg-transparent p-0 py-2 text-[16px] leading-6 font-bold no-underline",
-                  active ? "text-lien-text" : "text-[#515151] hover:text-lien-text",
+                  "inline-block cursor-pointer border-0 bg-transparent px-5 py-2 text-[13px] font-semibold uppercase tracking-[0.3px] leading-5 no-underline",
+                  active ? "text-lien-heading" : "text-lien-muted hover:text-lien-heading",
                 )}
               >
                 {label}

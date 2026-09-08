@@ -5,7 +5,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { useCart, type CartProduct } from "./CartProvider";
 
-type Variant = "pill" | "square" | "sticky";
+type Variant = "pill" | "square" | "sticky" | "card" | "primary";
 
 interface AddToCartButtonProps {
   product: CartProduct;
@@ -21,11 +21,14 @@ interface AddToCartButtonProps {
 }
 
 const VARIANT_CLASS: Record<Variant, string> = {
-  pill: "inline-flex flex-col items-center justify-center rounded-full border-0 bg-lien-dark px-[26px] py-[14px] font-sans text-[18px] font-normal leading-[20.7px] text-white no-underline hover:text-lien-blue sm:leading-[27px]",
+  pill: "inline-flex items-center justify-center rounded-full border-0 bg-lien-blue px-6 py-3 font-sans text-[15px] font-semibold leading-5 text-white no-underline hover:bg-lien-blue-hover",
   square:
-    "relative inline-block rounded-[3px] border-0 bg-lien-blue px-4 py-[9.888px] font-sans text-[16px] font-bold leading-4 text-white no-underline transition-[background] duration-200 hover:bg-lien-blue-hover",
+    "relative inline-flex items-center justify-center rounded-full border-0 bg-lien-blue px-5 py-[10px] font-sans text-[14px] font-semibold uppercase leading-5 tracking-[0.3px] text-white no-underline transition-[background] duration-200 hover:bg-lien-blue-hover",
   sticky:
-    "inline-block rounded-[3px] bg-[#cd534a] px-5 py-1.5 font-sans text-[18px] leading-[27px] text-white no-underline hover:bg-[#b8483f]",
+    "inline-flex items-center justify-center rounded-full bg-lien-blue px-5 py-2 font-sans text-[14px] font-semibold uppercase leading-5 text-white no-underline hover:bg-lien-blue-hover",
+  card: "inline-flex w-full items-center justify-center gap-1.5 rounded-full border border-lien-blue bg-white px-3 py-[7px] font-sans text-[13px] font-semibold leading-5 text-lien-blue no-underline transition-colors hover:bg-lien-blue hover:text-white",
+  primary:
+    "inline-flex h-11 items-center justify-center gap-2 rounded-full border-0 bg-lien-blue px-7 font-sans text-[14px] font-bold uppercase leading-5 tracking-[0.4px] text-white no-underline shadow-[0_6px_16px_-8px_rgba(28,127,158,0.8)] transition-[background] hover:bg-lien-blue-hover",
 };
 
 export function AddToCartButton({
@@ -51,6 +54,8 @@ export function AddToCartButton({
     window.setTimeout(() => {
       setBusy(false);
       setAdded(true);
+      // cards have no "view cart" link: flash a confirmation on the button instead
+      if (!withLink) window.setTimeout(() => setAdded(false), 1800);
     }, 250);
   };
 
@@ -64,7 +69,7 @@ export function AddToCartButton({
         aria-live="polite"
         className={cn(VARIANT_CLASS[variant], busy && "opacity-70", disabled && "cursor-not-allowed opacity-50", className)}
       >
-        {busy ? "Đang thêm…" : label}
+        {busy ? "Đang thêm…" : added && !withLink ? "✓ Đã thêm" : label}
       </button>
       {added && withLink ? (
         <Link

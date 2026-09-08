@@ -6,7 +6,7 @@ export default function NotFound() {
     <SiteChrome>
       <FullWidthShell>
         <section className="py-16 text-center">
-          <h1 className="mb-4 font-oswald text-[30px] font-light leading-[42px] text-lien-heading">Rất tiếc! Không tìm thấy trang này.</h1>
+          <h1 className="mb-4 text-[26px] font-bold leading-9 text-lien-heading">Rất tiếc! Không tìm thấy trang này.</h1>
           <p className="mb-8 text-lien-muted">Trang bạn tìm không tồn tại hoặc đã được di chuyển.</p>
           <Link
             href="/shop/"

@@ -9,7 +9,7 @@ export const metadata: Metadata = { title: "Quên mật khẩu – LienStore" };
 export default function LostPassword() {
   return (
     <SiteChrome>
-      <TwoColumnShell sidebar={<StoreSidebar />}>
+      <TwoColumnShell sidebar={<StoreSidebar />} title="Quên mật khẩu">
         <article className="entry-content">
           <WooHeading as="h2">Quên mật khẩu</WooHeading>
           <LostPasswordForm />

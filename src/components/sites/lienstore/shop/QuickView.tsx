@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { formatAmount } from "@/lib/format";
 import { cn } from "@/lib/utils";
+import { Fa } from "@/components/sites/lienstore/shared/icons";
 import { AddToCartButton } from "./AddToCartButton";
 import { WishlistButton } from "./WishlistButton";
 
@@ -25,16 +26,21 @@ export interface QuickViewProduct {
 }
 
 /** YITH-style "Quick View" button shown on card hover; opens a modal with the product summary. */
-export function QuickViewButton({ product }: { product: QuickViewProduct }) {
+export function QuickViewButton({ product, className, iconOnly = false }: { product: QuickViewProduct; className?: string; iconOnly?: boolean }) {
   const [open, setOpen] = useState(false);
   return (
     <>
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="yith-wcqv-button absolute top-[45%] left-1/2 z-[2] -translate-x-1/2 rounded-[3px] bg-lien-blue px-4 py-2 text-[14px] font-bold leading-4 text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100 focus:opacity-100"
+        aria-label="Xem nhanh"
+        title="Xem nhanh"
+        className={cn(
+          className ??
+            "yith-wcqv-button absolute top-[45%] left-1/2 z-[2] -translate-x-1/2 rounded-[3px] bg-lien-blue px-4 py-2 text-[14px] font-bold leading-4 text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100 focus:opacity-100",
+        )}
       >
-        Quick View
+        {iconOnly ? <Fa name="eye" /> : "Quick View"}
       </button>
       {open ? <QuickViewModal product={product} onClose={() => setOpen(false)} /> : null}
     </>
@@ -75,7 +81,7 @@ function QuickViewModal({ product, onClose }: { product: QuickViewProduct; onClo
           <Image src={product.image || product.thumb} alt={product.name} width={600} height={600} className="block h-auto w-full" />
         </div>
         <div className="summary w-full p-6 sm:w-1/2 sm:p-8">
-          <h1 className="mb-3 font-oswald text-[26px] font-light leading-[36px] text-lien-heading">{product.name}</h1>
+          <h1 className="mb-3 text-[22px] font-bold leading-8 text-lien-heading">{product.name}</h1>
           <p className="price mb-3 text-[20px] leading-[30px] text-[#77a464]">
             {product.regularPrice && product.regularPrice > product.price ? (
               <del className="mr-2 opacity-50">

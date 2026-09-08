@@ -52,7 +52,7 @@ export function PriceFilterWidget({
 
   return (
     <div className={className}>
-      <h3 className="mt-[22px] mb-[22px] font-oswald text-[22px] font-light leading-[30.8px] text-lien-heading">
+      <h3 className="m-0 mb-3 border-b-2 border-lien-blue pb-2 text-[14px] font-bold uppercase tracking-[0.3px] text-lien-heading">
         {title}
       </h3>
 

@@ -21,7 +21,7 @@
 ## Tính năng
 
 ### Cửa hàng (khách hàng)
-- **Trang chủ**: slider, danh mục sản phẩm dạng sidebar và lưới, các khối sản phẩm theo danh mục, bộ lọc giá, widget "sản phẩm vừa xem".
+- **Trang chủ**: slider, ô danh mục có ảnh, khối "Hàng mới về" / "Bán chạy nhất" / "Giảm giá đặc biệt" (khi có ≥ 3 sản phẩm giảm giá), 6 danh mục lớn nhất mỗi danh mục một hàng 6 sản phẩm, băng cam kết (hàng Nhật nội địa, vận chuyển, Zalo, chính hãng), tin tức "Góc chia sẻ".
 - **Danh sách sản phẩm**: `/shop/`, theo danh mục `/product-category/<slug>/`, theo tag `/product-tag/<slug>/`, phân trang, sắp xếp (mới nhất, giá tăng/giảm, đánh giá, phổ biến), tìm kiếm không dấu tiếng Việt.
 - **Tìm kiếm nhanh**: modal tìm kiếm gợi ý theo từ khoá và danh mục.
 - **Chi tiết sản phẩm**: gallery có zoom, giá/giá gốc, tồn kho, sản phẩm liên quan, nút thêm vào giỏ cố định khi cuộn, chia sẻ mạng xã hội, Quick View từ danh sách. **Mô tả có cấu trúc**: tự tách thành thẻ Thông tin nhanh (xuất xứ, nhà sản xuất, quy cách) và các mục Công dụng / Thành phần / Hướng dẫn sử dụng / Đối tượng / Lưu ý với mục lục nhảy nhanh; mô tả không nhận diện được vẫn hiển thị nguyên bản.
@@ -31,7 +31,7 @@
 - **Thanh toán**: form địa chỉ giao hàng, chọn COD hoặc chuyển khoản, giá được tính lại phía server, trang "đã nhận đơn", tra cứu đơn bằng mã đơn + số điện thoại.
 - **Tài khoản khách hàng**: đăng ký, đăng nhập, quên mật khẩu, cập nhật thông tin, lịch sử đơn hàng; tuỳ chọn tạo tài khoản ngay khi thanh toán. Mật khẩu băm scrypt, phiên đăng nhập ký HMAC.
 - **Nội dung**: trang tĩnh (giới thiệu, hướng dẫn đặt hàng, chính sách đổi trả, liên hệ, chính sách bảo mật), blog "Góc chia sẻ" với bình luận.
-- **Giao diện**: tông xanh nước biển (ocean blue) đồng nhất cho storefront và admin, responsive cho điện thoại và máy tính.
+- **Giao diện (UI v2, kiểu sesofoods.com)**: chữ Roboto tự host (không phụ thuộc Google Fonts), thanh liên hệ màu kem + header dính có menu "Danh mục" thả xuống 3 cột, ô tìm kiếm tròn, icon tài khoản/yêu thích/giỏ với badge đỏ; thẻ sản phẩm viền mỏng với nhãn "-x%" / "Mới" / "Hết hàng", nút bo tròn; trang danh mục có cột trái danh mục; trang sản phẩm 2 cột (gallery vuông + khối giá/số lượng/CTA + hộp COD, bill Nhật, Zalo), tab Mô tả/Đánh giá dạng pill; footer xám nhạt 5 cột. Tông xanh nước biển (ocean blue) và logo LienStore giữ nguyên; màu sắc gom trong token `--lien-*` ở `src/app/globals.css`. Responsive cho điện thoại và máy tính.
 - **Khác**: responsive theo breakpoint gốc, thanh liên hệ (hotline VN/JP, email, địa chỉ, giờ mở cửa), icon Facebook/Zalo/Messenger, chat Messenger tuỳ chọn, PWA manifest, robots.txt, sitemap.xml, trang 404.
 
 ### Trang quản trị `/admin/`

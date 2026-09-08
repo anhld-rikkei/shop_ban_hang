@@ -21,28 +21,28 @@ export interface SidebarProps {
   className?: string;
 }
 
-const widgetClass = "rounded-b-[3px] bg-white px-[25px] pb-[25px]";
+const widgetClass = "mb-4 rounded-md border border-lien-line bg-white p-4";
 
 /** "Danh mục sản phẩm" product-category list widget. */
 export function CategoryWidget({ title, categories, className }: CategoryWidgetProps) {
   return (
     <section className={cn("widget_product_categories", widgetClass, className)}>
-      <h2 className="-mx-[25px] mb-[10px] block rounded-t-[8px] border-b-2 border-solid border-lien-widget-border px-[15px] py-[10px] text-left font-oswald text-[16px] font-medium uppercase leading-[22.4px] tracking-[2.9088px] text-lien-widget-title">
+      <h2 className="m-0 mb-3 border-b-2 border-lien-blue pb-2 text-[14px] font-bold uppercase tracking-[0.3px] text-lien-heading">
         {title}
       </h2>
       <ul className="product-categories m-0 list-none p-0">
         {categories.map((category) => (
           <li
             key={category.href}
-            className="block py-[7px] text-[14px] leading-[22.4px] not-first:-mt-px"
+            className="block py-1 text-[13px] leading-5"
           >
             <Link
               href={category.href}
-              className="inline font-sans text-[14px] font-normal leading-[22.4px] text-lien-muted no-underline transition-none hover:text-lien-blue"
+              className="inline text-[13px] text-lien-text no-underline hover:text-lien-blue"
             >
               {category.name}
             </Link>{" "}
-            <span className="count inline text-lien-text">({category.count})</span>
+            <span className="count inline text-[12px] text-lien-muted">({category.count})</span>
           </li>
         ))}
       </ul>

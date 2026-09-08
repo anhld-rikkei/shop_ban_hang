@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { FullWidthShell, SiteChrome } from "@/components/sites/lienstore/shop/SiteChrome";
+import { SiteChrome } from "@/components/sites/lienstore/shop/SiteChrome";
 import { ShopListing, parsePageNumber, type SearchParams } from "../../_listing";
 
 export const metadata: Metadata = {
@@ -20,9 +20,7 @@ export default async function Page({ params, searchParams }: PageProps) {
 
   return (
     <SiteChrome>
-      <FullWidthShell>
         <ShopListing page={page} searchParams={sp} />
-      </FullWidthShell>
     </SiteChrome>
   );
 }

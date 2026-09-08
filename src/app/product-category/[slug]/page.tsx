@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { FullWidthShell, SiteChrome } from "@/components/sites/lienstore/shop/SiteChrome";
+import { SiteChrome } from "@/components/sites/lienstore/shop/SiteChrome";
 import type { SearchParams } from "@/app/shop/_listing";
 import { CategoryListing, categoryMetadata } from "./_listing";
 
@@ -18,9 +18,7 @@ export default async function Page({ params, searchParams }: PageProps) {
   const [{ slug }, sp] = await Promise.all([params, searchParams]);
   return (
     <SiteChrome>
-      <FullWidthShell>
         <CategoryListing slug={slug} page={1} searchParams={sp} />
-      </FullWidthShell>
     </SiteChrome>
   );
 }

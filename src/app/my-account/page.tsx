@@ -37,7 +37,7 @@ export default async function MyAccount({ searchParams }: Props) {
 
   return (
     <SiteChrome>
-      <TwoColumnShell sidebar={<StoreSidebar />}>
+      <TwoColumnShell sidebar={<StoreSidebar />} title="Tài khoản">
         <article className="entry-content">
           {customer ? (
             <div className="woocommerce sm:flex sm:gap-8">
