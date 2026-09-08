@@ -26,6 +26,7 @@ ap.add_argument("--sheet", default="Sản phẩm mới")
 ap.add_argument("--apply", action="store_true")
 ap.add_argument("--force", action="store_true", help="re-lookup rows that already have a JPY price")
 ap.add_argument("--limit", type=int, default=0)
+ap.add_argument("--allow-unsized", action="store_true", help="also apply rows whose Japanese name has no pack size")
 ap.add_argument("--names", help="ad-hoc: '|'-separated Japanese names, print candidates and exit")
 args = ap.parse_args()
 
@@ -161,7 +162,7 @@ with sync_playwright() as p:
         rep.append([r, ws.cell(r, C["stt"]).value if C["stt"] else None, str(name)[:80], str(jp), best["asin"] if best else "", best["title"][:120] if best else "",
                     price, f"https://www.amazon.co.jp/dp/{best['asin']}" if best else "", big(best["img"]) if best else "", fit,
                     alt[0] if alt else "", alt[1] if len(alt) > 1 else "", "" if best else "không tìm thấy"])
-        apply_ok = bool(best and price) and (fit == "có" or not toks)
+        apply_ok = bool(best and price) and (fit == "có" or (not toks and args.allow_unsized))
         if best and price:
             filled += 1
             print(f"  row {r}: {best['asin']} ¥{price:,} fit={fit} {best['title'][:50]}" + ("" if apply_ok else "  (not applied: pack size mismatch)"))

@@ -75,6 +75,18 @@ if "Danh mục" in wb.sheetnames:
             categories.append(new); cat_by_key[key] = slug; cat_by_key[slug] = slug
             print(f"+ category {new['name']} ({slug})")
 
+# --- pricing parameters (optional sheet "Tham số": rate JPY→VND, shipping fee %) used when "Giá vốn" cells are formulas
+# that Excel has not recalculated yet (e.g. right after a script wrote "Giá Nhật (JPY)").
+RATE, FEE = None, 0.0
+if "Tham số" in wb.sheetnames:
+    for r in wb["Tham số"].iter_rows(values_only=True):
+        cells = [str(x or "") for x in r]
+        nums = [x for x in r if isinstance(x, (int, float))]
+        label = norm(" ".join(cells))
+        if "ty gia" in label and nums: RATE = float(nums[0])
+        elif ("phi van chuyen" in label or "van chuyen" in label) and nums: FEE = float(nums[0]); FEE = FEE / 100 if FEE > 1 else FEE
+    if RATE: print(f"pricing params: 1 JPY = {RATE} VND, shipping {FEE*100:.0f}%")
+
 # --- products sheet
 def find_header(ws):
     rows = list(ws.iter_rows(values_only=True))
@@ -96,7 +108,8 @@ C = {
     "id": next((i for i, x in enumerate(H) if norm(x) == "id"), None), "name": col(H, "Tên sản phẩm"), "slug": col(H, "Đường dẫn"), "cats": col(H, "Danh mục"),
     "price": col(H, "Giá bán", "Giá (VNĐ)"), "regular": col(H, "Giá gốc"), "cost": col(H, "Giá vốn"), "sku": col(H, "Mã SKU"),
     "stock": col(H, "Tồn kho"), "oos": col(H, "Hết hàng"), "status": col(H, "Trạng thái"), "tags": col(H, "Từ khóa"),
-    "images": col(H, "Ảnh", "Danh sách ảnh"), "short": col(H, "Mô tả ngắn"), "desc": col(H, "Mô tả chi tiết"),
+    "images": col(H, "Danh sách ảnh", "Ảnh (URL", "Ảnh"), "short": col(H, "Mô tả ngắn"), "desc": col(H, "Mô tả chi tiết"),
+    "jpy": col(H, "Giá Nhật"),
 }
 missing = [k for k in ("name",) if C[k] is None]
 if missing: sys.exit(f"missing required columns: {missing}; headers seen: {H}")
@@ -163,6 +176,10 @@ for r in rows[hdr_idx + 1:]:
         raw = get(r, key)
         if raw is None or str(raw).strip() == "": continue
         p[field] = None if str(raw).strip() == "-" else to_int(raw)
+    # cost fallback: Giá vốn empty (formula not yet calculated) but Giá Nhật + rate known → compute here, rounded to 1.000đ
+    jpy = to_int(get(r, "jpy"))
+    if p.get("costPrice") is None and jpy and RATE:
+        p["costPrice"] = int(round(jpy * RATE * (1 + FEE), -3))
     if p.get("regularPrice") is not None and p["regularPrice"] <= p["price"]: p["regularPrice"] = None
     sku = get(r, "sku")
     if sku is not None and str(sku).strip(): p["sku"] = str(sku).strip()
