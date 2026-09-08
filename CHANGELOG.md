@@ -5,6 +5,17 @@ Tất cả thay đổi đáng chú ý của LienStore được ghi tại đây.
 
 ## [Unreleased]
 
+## [1.4.0] - 2026-09-08
+
+### Added
+- Hoàn tất định danh 138 sản phẩm fanpage: 96 sản phẩm có giá vốn (Amazon JP × 168 + 12%), 95 có ảnh chính hãng nền trắng, **100 sản phẩm chuyển sang Đang bán** với giá bán tạm = giá vốn × 1,35 (làm tròn 5.000đ, ghi chú "cần rà soát"). Tổng cửa hàng: 220 sản phẩm đang bán / 258.
+- 38 sản phẩm còn Bản nháp có ghi chú "CHƯA ĐỊNH DANH" kèm lý do (không có trên Amazon JP, đã ngừng sản xuất, hàng Úc/Mỹ, không rõ hãng, set combo).
+- `amazon_jp_lookup.py`: tuỳ chọn `--rows`, ghi đè dòng báo cáo khi tra lại, quy tắc nhận diện set mua sỉ theo hệ số "×N" (750g×6袋, 54袋×10個入), chỉ điền khi khớp đúng quy cách.
+
+### Changed
+- `import_products_xlsx.py`: chọn đúng cột "Giá (VNĐ) *" khi workbook có thêm cột "Giá bán đề xuất".
+- Tên sản phẩm cập nhật theo quy cách hiện hành của hãng (Frugra 700g, Rohto Bofutsushosan 372 viên, Allie Chrono Beauty 90g, DHC Lip Cream 1.5g…).
+
 ## [1.3.0] - 2026-09-08
 
 ### Added
@@ -51,7 +62,8 @@ Bản phát hành đầu tiên.
 - Số hotline VN, link Zalo/Facebook/Messenger còn là placeholder trong `src/components/sites/lienstore/root-8a5edab2/data.ts`.
 - Dự án khởi tạo từ [ai-website-cloner-template](https://github.com/JCodesMore/ai-website-cloner-template) (MIT).
 
-[Unreleased]: https://github.com/anhld-rikkei/shop_ban_hang/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/anhld-rikkei/shop_ban_hang/compare/v1.4.0...HEAD
+[1.4.0]: https://github.com/anhld-rikkei/shop_ban_hang/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/anhld-rikkei/shop_ban_hang/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/anhld-rikkei/shop_ban_hang/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/anhld-rikkei/shop_ban_hang/compare/v1.0.0...v1.1.0
