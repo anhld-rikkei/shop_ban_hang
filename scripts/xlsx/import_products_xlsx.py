@@ -61,12 +61,13 @@ wb = openpyxl.load_workbook(args.xlsx, data_only=True)
 # --- categories sheet (optional)
 if "Danh mục" in wb.sheetnames:
     ws = wb["Danh mục"]; rows = list(ws.iter_rows(values_only=True))
-    if rows:
-        h = [str(x or "") for x in rows[0]]
+    hi = next((i for i, r in enumerate(rows) if any(norm(x) in ("danh muc", "ten danh muc", "ten danh muc *") for x in r if x)), None)
+    if hi is not None:
+        h = [str(x or "") for x in rows[hi]]
         ci = {"name": col(h, "Tên danh mục", "Danh mục"), "slug": col(h, "Slug"), "desc": col(h, "Mô tả"), "img": col(h, "Ảnh")}
-        for r in rows[1:]:
+        for r in rows[hi + 1:]:
             name = (r[ci["name"]] if ci["name"] is not None else None)
-            if not name: continue
+            if not name or not str(name).strip() or str(name).strip().isdigit(): continue
             slug = (str(r[ci["slug"]]).strip() if ci["slug"] is not None and r[ci["slug"]] else "") or slugify(name)
             key = norm(name)
             if key in cat_by_key: continue
@@ -75,14 +76,24 @@ if "Danh mục" in wb.sheetnames:
             print(f"+ category {new['name']} ({slug})")
 
 # --- products sheet
-sheet = args.sheet or ("Sản phẩm" if "Sản phẩm" in wb.sheetnames else wb.sheetnames[0])
-ws = wb[sheet]
-rows = list(ws.iter_rows(values_only=True))
-# header row = first row containing "Tên sản phẩm"
-hdr_idx = next(i for i, r in enumerate(rows) if any(norm(x).startswith("ten san pham") for x in r if x))
+def find_header(ws):
+    rows = list(ws.iter_rows(values_only=True))
+    idx = next((i for i, r in enumerate(rows) if any(norm(x).startswith("ten san pham") for x in r if x)), None)
+    return rows, idx
+
+if args.sheet:
+    rows, hdr_idx = find_header(wb[args.sheet]); sheet = args.sheet
+else:
+    sheet = None
+    for cand in ["Sản phẩm", "Sản phẩm mới"] + wb.sheetnames:
+        if cand in wb.sheetnames:
+            rows, hdr_idx = find_header(wb[cand])
+            if hdr_idx is not None: sheet = cand; break
+if sheet is None or hdr_idx is None: sys.exit("no sheet with a 'Tên sản phẩm' header column found")
+print(f"reading sheet '{sheet}' (header row {hdr_idx + 1})")
 H = [str(x or "") for x in rows[hdr_idx]]
 C = {
-    "id": col(H, "ID", "STT"), "name": col(H, "Tên sản phẩm"), "slug": col(H, "Đường dẫn"), "cats": col(H, "Danh mục"),
+    "id": next((i for i, x in enumerate(H) if norm(x) == "id"), None), "name": col(H, "Tên sản phẩm"), "slug": col(H, "Đường dẫn"), "cats": col(H, "Danh mục"),
     "price": col(H, "Giá bán", "Giá (VNĐ)"), "regular": col(H, "Giá gốc"), "cost": col(H, "Giá vốn"), "sku": col(H, "Mã SKU"),
     "stock": col(H, "Tồn kho"), "oos": col(H, "Hết hàng"), "status": col(H, "Trạng thái"), "tags": col(H, "Từ khóa"),
     "images": col(H, "Ảnh", "Danh sách ảnh"), "short": col(H, "Mô tả ngắn"), "desc": col(H, "Mô tả chi tiết"),
@@ -132,12 +143,18 @@ for r in rows[hdr_idx + 1:]:
     cats_raw = get(r, "cats")
     if cats_raw:
         cats = []
+        leftovers = []
         for cn in re.split(r"[;\n|]+", str(cats_raw)):
             key = norm(cn)
             if not key: continue
             if key in cat_by_key: cats.append(cat_by_key[key])
             elif cn.strip() in cat_by_key: cats.append(cat_by_key[cn.strip()])
-            else: unknown_cats.add(cn.strip())
+            else: leftovers.append(cn)
+        for cn in leftovers:  # legacy comma-separated cell: find every known category name inside it (longest first)
+            rest = norm(cn); found = False
+            for key in sorted((k for k in cat_by_key if " " in k), key=len, reverse=True):
+                if key in rest: cats.append(cat_by_key[key]); rest = rest.replace(key, " "); found = True
+            if not found: unknown_cats.add(cn.strip())
         if cats: p["categories"] = list(dict.fromkeys(cats))
     # prices / stock
     price = to_int(get(r, "price"))
@@ -168,6 +185,9 @@ for r in rows[hdr_idx + 1:]:
         out = []
         for i, u in enumerate([x.strip() for x in re.split(r"[;\n]+", str(imgs_raw)) if x.strip()][:6]):
             if u.startswith("http"):
+                # Facebook CDN links expire and were already downloaded on the first import — keep the local copy.
+                if "fbcdn.net" in u and any(x.startswith("/sites/") for x in p.get("images", [])):
+                    out.extend(x for x in p["images"] if x not in out); continue
                 try:
                     out.append(fetch_image(u, f"{p['slug']}{'' if i == 0 else f'-{i+1}'}")); stats["img_ok"] += 1
                 except Exception as e:
