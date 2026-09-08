@@ -31,7 +31,7 @@ args = ap.parse_args()
 
 # "×3" / "(×5)" / "2個セット" mean a multi-pack; "2g×20包" / "500ml×2本" is just the pack description, so an "×N"
 # directly followed by a content unit does not count as a bundle.
-BUNDLE = re.compile(r"(セット|まとめ買い|\d+\s?(個|本|袋|箱)セット|[×x]\s?\d+(?!\s?(包|袋|錠|粒|g|ml|mL|枚|回|カプセル|本入|個入)))", re.I)
+BUNDLE = re.compile(r"(セット|まとめ買い|\d+\s?(個|本|袋|箱)セット|[×x]\s?\d+(?!\d)(?!\s?(包|袋|錠|粒|g|ml|mL|枚|回|カプセル|本入|個入)))", re.I)
 SIZE = re.compile(r"(\d+(?:\.\d+)?)\s?(ml|mL|g|kg|錠|粒|包|袋|枚|本|回分|カプセル|日分|個)", re.I)
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36"
 
@@ -161,10 +161,11 @@ with sync_playwright() as p:
         rep.append([r, ws.cell(r, C["stt"]).value if C["stt"] else None, str(name)[:80], str(jp), best["asin"] if best else "", best["title"][:120] if best else "",
                     price, f"https://www.amazon.co.jp/dp/{best['asin']}" if best else "", big(best["img"]) if best else "", fit,
                     alt[0] if alt else "", alt[1] if len(alt) > 1 else "", "" if best else "không tìm thấy"])
+        apply_ok = bool(best and price) and (fit == "có" or not toks)
         if best and price:
             filled += 1
-            print(f"  row {r}: {best['asin']} ¥{price:,} fit={fit} {best['title'][:50]}")
-            if args.apply:
+            print(f"  row {r}: {best['asin']} ¥{price:,} fit={fit} {best['title'][:50]}" + ("" if apply_ok else "  (not applied: pack size mismatch)"))
+            if args.apply and apply_ok:
                 ws.cell(r, C["jpy"]).value = price
                 if not m: ws.cell(r, C["link"]).value = f"https://www.amazon.co.jp/dp/{best['asin']}"
                 if C["img"] and best["img"]:
