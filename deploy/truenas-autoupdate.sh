@@ -32,9 +32,9 @@ version="$(docker image inspect -f '{{index .Config.Labels "org.opencontainers.i
 log "new image for $IMAGE (version=${version:-?} digest=${digest:-?}) → redeploying app"
 
 # TrueNAS 25.04+: app.redeploy; 24.10: app.pull_images with redeploy. Try both, keep the error text for the log.
-if out="$(midclt call -job app.redeploy "$APP" 2>&1)"; then
+if out="$(midclt call -j app.redeploy "$APP" 2>&1)"; then
   :
-elif out2="$(midclt call -job app.pull_images "$APP" '{"redeploy": true}' 2>&1)"; then
+elif out2="$(midclt call -j app.pull_images "$APP" '{"redeploy": true}' 2>&1)"; then
   :
 else
   log "redeploy failed. app.redeploy → $(printf '%s' "$out" | oneline)"

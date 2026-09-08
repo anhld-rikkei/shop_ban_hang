@@ -84,6 +84,6 @@ jobs:
           script: |
             APP="${{ secrets.TRUENAS_APP_NAME || 'lienstore' }}"
             # TrueNAS SCALE 24.10+/25.04: pull the images referenced by the app and redeploy it.
-            sudo midclt call -job app.pull_images "$APP" '{"redeploy": true}'
+            sudo midclt call -j app.pull_images "$APP" '{"redeploy": true}'
             sleep 20
             curl -fsS http://127.0.0.1:30080/api/health/

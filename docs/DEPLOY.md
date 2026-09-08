@@ -58,7 +58,7 @@ Khi cần chạy nhiều instance song song hoặc full-text search lớn. Cách
 ### Tự động redeploy trên TrueNAS
 Job `deploy-truenas` cần 3–4 secrets: `TRUENAS_HOST`, `TRUENAS_USER`, `TRUENAS_SSH_KEY`, `TRUENAS_APP_NAME` (mặc định `lienstore`).
 - Tạo khoá: `ssh-keygen -t ed25519 -f truenas_deploy`; thêm public key vào Credentials → Users → truenas_admin → Authorized Keys; bật SSH service; cho user dùng `sudo` không mật khẩu với `midclt`.
-- Job chạy `sudo midclt call -job app.pull_images lienstore '{"redeploy": true}'`. Nếu bản TrueNAS của bạn không có lệnh này, thay bằng `midclt call -job app.redeploy lienstore` sau khi đổi tag image trong app sang phiên bản mới, hoặc bấm **Update** trong giao diện Apps.
+- Job chạy `sudo midclt call -j app.pull_images lienstore '{"redeploy": true}'`. Nếu bản TrueNAS của bạn không có lệnh này, thay bằng `midclt call -job app.redeploy lienstore` sau khi đổi tag image trong app sang phiên bản mới, hoặc bấm **Update** trong giao diện Apps.
 - Vì TrueNAS thường nằm sau NAT, đặt `TRUENAS_HOST` là địa chỉ **Tailscale** của NAS (app Tailscale đã có trong danh sách apps của bạn) và cài Tailscale trong runner bằng `tailscale/github-action`, hoặc dùng **self-hosted runner** chạy ngay trên TrueNAS. Nếu không muốn mở đường SSH, bỏ job này và cập nhật thủ công: Apps → lienstore → Update.
 
 ## 4. Đưa lên domain linconnn.io.vn
