@@ -26,6 +26,7 @@ ap.add_argument("--sheet", default="Sản phẩm mới")
 ap.add_argument("--apply", action="store_true")
 ap.add_argument("--force", action="store_true", help="re-lookup rows that already have a JPY price")
 ap.add_argument("--limit", type=int, default=0)
+ap.add_argument("--rows", help="comma-separated sheet row numbers to (re)process, e.g. 12,74,100")
 ap.add_argument("--allow-unsized", action="store_true", help="also apply rows whose Japanese name has no pack size")
 ap.add_argument("--names", help="ad-hoc: '|'-separated Japanese names, print candidates and exit")
 args = ap.parse_args()
@@ -71,6 +72,15 @@ def rank(cands, name):
     for it in cands:
         t = it["title"]
         if not want_bundle and BUNDLE.search(t): continue
+        # "750g×6袋" / "54袋入×10袋入": a multiplier after the content size is a multi-pack unless the multiplier itself is
+        # the count the name asks for (e.g. "2g×20包" when the name says 20包).
+        if not want_bundle:
+            # every "×N" in the title is a multi-pack unless N is a count the name itself asks for (2g×20包 ↔ "20包");
+            # with no size in the name, small multipliers (≤12) are still treated as multi-packs.
+            tt = t.translate(str.maketrans("０１２３４５６７８９", "0123456789"))
+            nums = {num for num, _ in toks}
+            mults = [m.group(1) for m in re.finditer(r"[×x]\s?(\d+)", tt)]
+            if any(n not in nums and int(n) >= 2 and (toks or int(n) <= 12) for n in mults): continue
         score = 0
         if toks and toks & size_tokens(t): score += 10
         elif toks: score -= 20          # wrong pack size must never win just because it shows a price
@@ -134,11 +144,19 @@ with sync_playwright() as p:
         for c in rep[1]: c.font = Font(bold=True, color="FFFFFF"); c.fill = PatternFill("solid", fgColor="1C7F9E")
         for col, w in zip("ABCDEFGHIJKLM", (6, 6, 40, 40, 13, 60, 10, 44, 60, 12, 50, 50, 40)): rep.column_dimensions[col].width = w
     done_rows = {r[0] for r in rep.iter_rows(min_row=2, values_only=True) if r and r[0]}
+    rep_row_of = {rep.cell(i, 1).value: i for i in range(2, rep.max_row + 1) if rep.cell(i, 1).value}
+    def write_report(values):
+        i = rep_row_of.get(values[0])
+        if i:
+            for j, v in enumerate(values, 1): rep.cell(i, j).value = v
+        else:
+            rep.append(values)
 
     n = 0; filled = 0; nomatch = 0
     for r in range(hdr_row + 1, ws.max_row + 1):
         name = ws.cell(r, C["name"]).value; jp = ws.cell(r, C["jp"]).value
         if not name or not jp: continue
+        if args.rows and r not in {int(x) for x in args.rows.split(",") if x.strip()}: continue
         if ws.cell(r, C["jpy"]).value and not args.force: continue
         if r in done_rows and not args.force: continue
         if args.limit and n >= args.limit: break
@@ -159,7 +177,7 @@ with sync_playwright() as p:
         fit = "có" if best and toks and (toks & size_tokens(best["title"])) else ("?" if best else "")
         price = yen(best["price"]) if best else None
         alt = [f"{c['asin']} | {c['price']} | {c['title'][:60]}" for c in cands[1:3]]
-        rep.append([r, ws.cell(r, C["stt"]).value if C["stt"] else None, str(name)[:80], str(jp), best["asin"] if best else "", best["title"][:120] if best else "",
+        write_report([r, ws.cell(r, C["stt"]).value if C["stt"] else None, str(name)[:80], str(jp), best["asin"] if best else "", best["title"][:120] if best else "",
                     price, f"https://www.amazon.co.jp/dp/{best['asin']}" if best else "", big(best["img"]) if best else "", fit,
                     alt[0] if alt else "", alt[1] if len(alt) > 1 else "", "" if best else "không tìm thấy"])
         apply_ok = bool(best and price) and (fit == "có" or (not toks and args.allow_unsized))

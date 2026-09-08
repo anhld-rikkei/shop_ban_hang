@@ -106,7 +106,7 @@ print(f"reading sheet '{sheet}' (header row {hdr_idx + 1})")
 H = [str(x or "") for x in rows[hdr_idx]]
 C = {
     "id": next((i for i, x in enumerate(H) if norm(x) == "id"), None), "name": col(H, "Tên sản phẩm"), "slug": col(H, "Đường dẫn"), "cats": col(H, "Danh mục"),
-    "price": col(H, "Giá bán", "Giá (VNĐ)"), "regular": col(H, "Giá gốc"), "cost": col(H, "Giá vốn"), "sku": col(H, "Mã SKU"),
+    "price": col(H, "Giá (VNĐ)", "Giá bán (VNĐ)", "Giá bán"), "regular": col(H, "Giá gốc"), "cost": col(H, "Giá vốn"), "sku": col(H, "Mã SKU"),
     "stock": col(H, "Tồn kho"), "oos": col(H, "Hết hàng"), "status": col(H, "Trạng thái"), "tags": col(H, "Từ khóa"),
     "images": col(H, "Danh sách ảnh", "Ảnh (URL", "Ảnh"), "short": col(H, "Mô tả ngắn"), "desc": col(H, "Mô tả chi tiết"),
     "jpy": col(H, "Giá Nhật"),
