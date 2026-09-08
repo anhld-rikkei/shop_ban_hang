@@ -151,6 +151,7 @@ for r in rows[hdr_idx + 1:]:
         name = name.replace("#", "").strip(" .:-–")  # only tidy brand-new rows; existing names are taken as typed
     p = by_id.get(rid) if rid else None
     if p is None and slug_in: p = by_slug.get(slug_in)
+    if p is None and not slug_in: p = by_slug.get(slugify(name))   # same name re-imported → same product, not a "-2" copy
     creating = p is None
     if creating:
         slug = slug_in or slugify(name)

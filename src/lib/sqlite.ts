@@ -168,7 +168,7 @@ export interface SeedFile {
   orders?: Array<Record<string, unknown> & { id: string; number: number; items?: Array<Record<string, unknown>> }>;
   pages?: Array<{ slug: string; title: string; content: string; date: string }>;
   posts?: Array<{ slug: string; title: string; content: string; excerpt: string; date: string }>;
-  meta?: { nextOrderNumber?: number; seededAt?: string };
+  meta?: { nextOrderNumber?: number; seededAt?: string; removedSlugs?: string[] };
 }
 
 type SqliteModule = typeof import("node:sqlite");
@@ -300,17 +300,29 @@ function syncSeed(db: DatabaseSync) {
   } else if (mode === "update") {
     withTransaction(db, () => {
       importCatalogue(db, seed, "INSERT OR REPLACE");
+      removeListed(db, seed);
       setSetting(db, "seed_version", version);
     });
   } else {
     withTransaction(db, () => {
       importCatalogue(db, seed, "INSERT OR IGNORE");
+      removeListed(db, seed);
       setSetting(db, "seed_version", version);
     });
   }
   console.info(
     `[db] seed sync (${mode}) → products ${before.products}→${count(db, "products")}, categories ${before.categories}→${count(db, "categories")}, pages ${before.pages}→${count(db, "pages")}, posts ${before.posts}→${count(db, "posts")}`,
   );
+}
+
+/** Delete products the seed marks as removed (duplicates merged away). Order lines keep their snapshot, so this is safe. */
+function removeListed(db: DatabaseSync, seed: SeedFile) {
+  const slugs = (seed.meta?.removedSlugs ?? []).filter((s) => typeof s === "string" && s);
+  if (slugs.length === 0) return;
+  const del = db.prepare("DELETE FROM products WHERE slug = ?");
+  let n = 0;
+  for (const slug of slugs) n += Number(del.run(slug).changes);
+  if (n) console.info(`[db] seed sync removed ${n} product(s) listed in meta.removedSlugs`);
 }
 
 function count(db: DatabaseSync, table: string): number {
