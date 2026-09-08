@@ -81,6 +81,17 @@ Chỉ sửa giá trị ô, không đổi tên cột, không thêm/xoá cột, kh
 
 Sau khi Claude xong: kiểm tra sheet "Báo cáo", gộp các dòng trùng nếu cần (đặt dòng thừa thành `Bản nháp`), rồi chạy `npm run xlsx:import`.
 
+## Tra giá Nhật và ảnh từ Amazon.co.jp (tự động)
+
+Claude trong Excel chỉ đọc được đoạn trích tìm kiếm nên tra giá rất chậm. Thay vào đó, để Claude điền cột **"Tên tiếng Nhật"** (tên như trên bao bì, kèm quy cách: `DHC ディープクレンジングオイル 70ml`), rồi chạy:
+
+```bash
+python scripts/xlsx/amazon_jp_lookup.py "D:\danh-sach-san-pham-fanpage.xlsx"            # báo cáo ra sheet "Amazon tra cứu" (file -amazon.xlsx)
+python scripts/xlsx/amazon_jp_lookup.py "D:\danh-sach-san-pham-fanpage.xlsx" --apply    # điền Giá Nhật (JPY), Link tham khảo, ảnh Amazon (đóng Excel trước)
+```
+
+Script mở Amazon JP bằng trình duyệt ẩn, loại các kết quả dạng set/mua sỉ, ưu tiên tiêu đề khớp quy cách, ghi 3 ứng viên để đối chiếu. Cột "Giá vốn (VNĐ)" và "Giá bán đề xuất" là công thức trong sheet Tham số (tỷ giá, phí vận chuyển, hệ số) nên tự tính khi có Giá Nhật. Sau đó `xlsx:import` sẽ tải ảnh Amazon về kho web và đưa giá vốn vào admin.
+
 ## Đưa lên prod
 
 `data/seed.json` sau khi nhập được commit và phát hành bằng tag. Container prod có `LIEN_SEED_SYNC=update` (đã đặt trong `deploy/truenas-app.yaml`) sẽ ghi đè các sản phẩm có trong seed bằng giá trị mới, giữ nguyên đơn hàng, khách hàng và sản phẩm chỉ có trong DB. Nếu bạn muốn sửa sản phẩm trực tiếp trên admin prod và không bị seed ghi đè, đổi thành `LIEN_SEED_SYNC=add`.
