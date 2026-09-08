@@ -1,7 +1,8 @@
 # LienStore on TrueNAS SCALE (24.10 Electric Eel / 25.04 Fangtooth+)
 # Apps → Discover Apps → ⋮ (top right) → "Install via YAML" → paste this file.
 #
-# Variant A — image published to GitHub Container Registry by .github/workflows/release.yml.
+# Variant A — PROD. Follows the `latest` tag that release.yml publishes when you push a version tag (v1.x.y).
+# Auto-update: TrueNAS Cron Job every 5 min →  sh /mnt/apps-pool/lienstore/truenas-autoupdate.sh lienstore-prod ghcr.io/anhld-rikkei/lienstore:latest
 #   If the package is private, add the registry
 #   under Apps → Settings → Manage Container Images / Registries (ghcr.io + a PAT with read:packages).
 #

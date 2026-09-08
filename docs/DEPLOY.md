@@ -78,6 +78,25 @@ Khuyến nghị **Cloudflare Tunnel** vì không cần mở port trên router v�
 
 Phương án thay thế: mở port 443 trên router → app **Nginx Proxy Manager** trên TrueNAS → Proxy Host `linconnn.io.vn` → `http://<ip-truenas>:30080`, chứng chỉ Let's Encrypt; DNS A record trỏ về IP công cộng (dùng DDNS nếu IP động).
 
+## 4b. Tự động cập nhật (pull-based, không mở port NAS)
+
+GitHub không gọi vào được NAS ở nhà, nên NAS tự kéo image mới:
+
+| Môi trường | App TrueNAS | Image theo dõi | Khi nào có bản mới |
+| --- | --- | --- | --- |
+| dev.linconnn.io.vn | `lienstore` (port 30080) | `ghcr.io/anhld-rikkei/lienstore:dev` | **mỗi commit lên `main`** (job `publish-dev` trong `ci.yml`, sau khi lint/test/smoke pass) |
+| linconnn.io.vn | `lienstore-prod` (port 30081) | `ghcr.io/anhld-rikkei/lienstore:latest` | **mỗi tag `vX.Y.Z`** (`release.yml`) |
+
+Thiết lập một lần trên TrueNAS:
+
+1. Chép `deploy/truenas-autoupdate.sh` vào dataset, ví dụ `/mnt/apps-pool/lienstore/truenas-autoupdate.sh` (`chmod +x`).
+2. **System → Advanced Settings → Cron Jobs → Add** (2 job, chạy bằng `root`, Schedule `*/5 * * * *`, tắt "Hide Standard Output"):
+   - `sh /mnt/apps-pool/lienstore/truenas-autoupdate.sh lienstore-prod ghcr.io/anhld-rikkei/lienstore:latest`
+   - `sh /mnt/apps-pool/lienstore/truenas-autoupdate.sh lienstore ghcr.io/anhld-rikkei/lienstore:dev`
+3. Cài app bằng `deploy/truenas-app.yaml` (prod, tag `latest`) và `deploy/truenas-app.dev.yaml` (dev, tag `dev`).
+
+Script chỉ redeploy khi image id thay đổi (không restart vô ích), gọi qua `midclt` để Apps UI của TrueNAS vẫn đúng trạng thái (không dùng Watchtower cạnh ix-apps), chờ `/api/health/` và ghi log ở `/var/log/lienstore-autoupdate.log`. Đặt `TELEGRAM_BOT_TOKEN`/`TELEGRAM_CHAT_ID` trong Cron Job để nhận thông báo. Migration schema và seed sync chạy tự động khi container mới khởi động; DB và uploads nằm trong dataset nên không mất. Muốn khoá prod ở một phiên bản cụ thể thì đổi image sang `:1.5.1` và tắt cron job của prod.
+
 ## 5. Checklist trước khi mở công khai
 - [ ] Đổi `ADMIN_PASSWORD`, `ADMIN_SESSION_SECRET`.
 - [ ] Snapshot dataset `apps/lienstore` theo lịch.
