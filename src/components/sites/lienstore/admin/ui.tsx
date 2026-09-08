@@ -44,7 +44,7 @@ export function ProductStatusBadge({ status, outOfStock }: { status: "publish" |
 }
 
 export const btnPrimary =
-  "inline-flex items-center gap-2 rounded-md bg-lien-blue px-4 py-2 text-[14px] font-medium leading-5 text-white no-underline hover:bg-[#2a6bc0] disabled:cursor-not-allowed disabled:opacity-50";
+  "inline-flex items-center gap-2 rounded-md bg-lien-blue px-4 py-2 text-[14px] font-medium leading-5 text-white no-underline hover:bg-lien-blue-hover disabled:cursor-not-allowed disabled:opacity-50";
 export const btnSecondary =
   "inline-flex items-center gap-2 rounded-md border border-[#d1d5db] bg-white px-4 py-2 text-[14px] font-medium leading-5 text-lien-text no-underline hover:bg-[#f3f4f6]";
 export const btnDanger =

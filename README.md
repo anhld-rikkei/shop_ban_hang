@@ -30,6 +30,7 @@
 - **Thanh toán**: form địa chỉ giao hàng, chọn COD hoặc chuyển khoản, giá được tính lại phía server, trang "đã nhận đơn", tra cứu đơn bằng mã đơn + số điện thoại.
 - **Tài khoản khách hàng**: đăng ký, đăng nhập, quên mật khẩu, cập nhật thông tin, lịch sử đơn hàng; tuỳ chọn tạo tài khoản ngay khi thanh toán. Mật khẩu băm scrypt, phiên đăng nhập ký HMAC.
 - **Nội dung**: trang tĩnh (giới thiệu, hướng dẫn đặt hàng, chính sách đổi trả, liên hệ, chính sách bảo mật), blog "Góc chia sẻ" với bình luận.
+- **Giao diện**: tông xanh nước biển (ocean blue) đồng nhất cho storefront và admin, responsive cho điện thoại và máy tính.
 - **Khác**: responsive theo breakpoint gốc, thanh liên hệ (hotline VN/JP, email, địa chỉ, giờ mở cửa), icon Facebook/Zalo/Messenger, chat Messenger tuỳ chọn, PWA manifest, robots.txt, sitemap.xml, trang 404.
 
 ### Trang quản trị `/admin/`
@@ -92,6 +93,7 @@ Lần chạy đầu ứng dụng tạo `data/lienstore.db` và nhập `data/seed
 | `ADMIN_SESSION_SECRET` | ngẫu nhiên mỗi lần chạy | khoá ký cookie admin, cần đặt cố định khi chạy thật |
 | `LIEN_DB_PATH` | `data/lienstore.db` | file SQLite (`/app/data/lienstore.db` trong container) |
 | `LIEN_SEED_PATH` | `data/seed.json` | seed nhập khi DB trống |
+| `LIEN_SEED_SYNC` | `add` | đồng bộ seed mới vào DB đang có: `add` chèn thiếu, `overwrite` thay catalogue, `off` tắt |
 | `NEXT_PUBLIC_SITE_URL` | `http://localhost:3000` | URL công khai cho robots/sitemap |
 | `NEXT_PUBLIC_FB_PAGE_ID` | rỗng | bật chat Messenger |
 

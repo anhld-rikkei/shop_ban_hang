@@ -5,6 +5,17 @@ Tất cả thay đổi đáng chú ý của LienStore được ghi tại đây.
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-09-08
+
+### Added
+- 138 sản phẩm mới từ fanpage (file `danh-sach-san-pham-fanpage.xlsx`) vào `data/seed.json` ở trạng thái **nháp**, ảnh tải về `public/sites/lienstore/shared/products/fanpage/` kèm thumbnail 300×300. 7 sản phẩm có giá, còn lại giá 0 cần điền trong admin trước khi chuyển sang "Đang bán".
+- Đồng bộ seed vào DB đang chạy (`LIEN_SEED_SYNC`: `add` mặc định / `overwrite` / `off`): image mới mang seed mới sẽ tự thêm sản phẩm, danh mục, trang, bài viết còn thiếu mà không đụng đơn hàng, khách hàng hay bản admin đã sửa.
+
+### Changed
+- Giao diện đổi sang tông **xanh nước biển** (tham chiếu jifish.org): màu chính `#1c7f9e`, nền trang `#f3fafc`, footer và sidebar admin `#0d2a35`, viền/tab/pagination dùng tông aqua; toàn bộ đi qua token CSS (`--lien-*`) nên storefront và admin đổi đồng bộ, bố cục responsive giữ nguyên.
+- Các màu hover/nền cứng (`#2a6bc0`, `#ebe9eb`, `#dfdcde`) chuyển thành token `lien-blue-hover`, `lien-blue-soft`.
+- PWA `theme_color`/`background_color` theo bảng màu mới.
+
 ## [1.0.0] - 2026-09-04
 
 Bản phát hành đầu tiên.
@@ -24,5 +35,6 @@ Bản phát hành đầu tiên.
 - Số hotline VN, link Zalo/Facebook/Messenger còn là placeholder trong `src/components/sites/lienstore/root-8a5edab2/data.ts`.
 - Dự án khởi tạo từ [ai-website-cloner-template](https://github.com/JCodesMore/ai-website-cloner-template) (MIT).
 
-[Unreleased]: https://github.com/anhld-rikkei/shop_ban_hang/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/anhld-rikkei/shop_ban_hang/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/anhld-rikkei/shop_ban_hang/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/anhld-rikkei/shop_ban_hang/releases/tag/v1.0.0

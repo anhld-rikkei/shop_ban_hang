@@ -10,7 +10,7 @@ export default function NotFound() {
           <p className="mb-8 text-lien-muted">Trang bạn tìm không tồn tại hoặc đã được di chuyển.</p>
           <Link
             href="/shop/"
-            className="inline-block rounded-[3px] bg-lien-blue px-4 py-[9.888px] text-[16px] font-bold leading-4 text-white hover:bg-[#2a6bc0]"
+            className="inline-block rounded-[3px] bg-lien-blue px-4 py-[9.888px] text-[16px] font-bold leading-4 text-white hover:bg-lien-blue-hover"
           >
             Quay trở lại cửa hàng
           </Link>

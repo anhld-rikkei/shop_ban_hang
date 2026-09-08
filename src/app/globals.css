@@ -193,6 +193,8 @@
   /* lienstore design tokens (exact computed values from the live site) */
   --color-lien-page: var(--lien-page);
   --color-lien-blue: var(--lien-blue);
+  --color-lien-blue-hover: var(--lien-blue-hover);
+  --color-lien-blue-soft: var(--lien-blue-soft);
   --color-lien-blue-ring: var(--lien-blue-ring);
   --color-lien-text: var(--lien-text);
   --color-lien-muted: var(--lien-muted);
@@ -222,67 +224,69 @@
 
 :root {
   /* Site palette mapped onto shadcn tokens */
-  --background: #fff9f9; /* rgb(255,249,249) page background */
+  --background: #f3fafc; /* light aqua page background (ocean theme) */
   --foreground: #191919; /* rgb(25,25,25) body text */
   --card: #ffffff;
   --card-foreground: #191919;
   --popover: #ffffff;
   --popover-foreground: #222222;
-  --primary: #327cdb; /* rgb(50,124,219) brand blue */
+  --primary: #1c7f9e; /* ocean blue (jifish.org) */
   --primary-foreground: #ffffff;
-  --secondary: #32373c; /* rgb(50,55,60) add-to-cart button */
+  --secondary: #0d2a35; /* deep ocean — add-to-cart button */
   --secondary-foreground: #ffffff;
-  --muted: #eeeeee;
+  --muted: #e6f2f6;
   --muted-foreground: #656464; /* rgb(101,100,100) link grey */
-  --accent: #327cdb;
+  --accent: #1c7f9e;
   --accent-foreground: #ffffff;
   --destructive: #e82016;
-  --border: #dddddd;
-  --input: #e6e6e6;
-  --ring: #3ba0f4;
-  --chart-1: #327cdb;
-  --chart-2: #32373c;
+  --border: #d6e6ec;
+  --input: #d6e6ec;
+  --ring: #3fe0ff;
+  --chart-1: #1c7f9e;
+  --chart-2: #0d2a35;
   --chart-3: #656464;
   --chart-4: #a8739d;
   --chart-5: #191919;
   --radius: 0.25rem;
   --sidebar: #ffffff;
   --sidebar-foreground: #191919;
-  --sidebar-primary: #327cdb;
+  --sidebar-primary: #1c7f9e;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #eeeeee;
+  --sidebar-accent: #e6f2f6;
   --sidebar-accent-foreground: #191919;
-  --sidebar-border: #e6e6e6;
-  --sidebar-ring: #3ba0f4;
+  --sidebar-border: #d6e6ec;
+  --sidebar-ring: #3fe0ff;
 
   /* lienstore specific values */
-  --lien-page: #fff9f9;
-  --lien-blue: #327cdb;
-  --lien-blue-ring: #3ba0f4; /* rgb(59,160,244) product image hover ring */
-  --lien-text: #191919;
-  --lien-muted: #656464;
-  --lien-heading: #0d0f1a; /* rgb(13,15,26) section headings */
-  --lien-nav: #222222; /* rgb(34,34,34) menu text */
-  --lien-dark: #32373c;
-  --lien-footer: #1a1b1c; /* rgb(26,27,28) */
-  --lien-topbar: #121212; /* rgb(18,18,18) */
-  --lien-tagline: #727272; /* rgb(114,114,114) */
-  --lien-widget-title: #181818; /* rgb(24,24,24) */
-  --lien-widget-border: #e6e6e6; /* rgb(230,230,230) */
-  --lien-hr: #bababa; /* rgb(186,186,186) */
-  --lien-hr-border: #eeeeee;
-  --lien-price-track: #e1e1e1; /* rgb(225,225,225) */
-  --lien-price-progress: #a8739d; /* rgb(168,115,157) */
+  --lien-page: #f3fafc;
+  --lien-blue: #1c7f9e; /* ocean blue, primary actions */
+  --lien-blue-hover: #166a85; /* darker ocean for hover */
+  --lien-blue-soft: #e6f2f6; /* tinted backgrounds (tabs, pagination, payment box) */
+  --lien-blue-ring: #3fe0ff; /* cyan hover ring */
+  --lien-text: #14313d;
+  --lien-muted: #5b7079;
+  --lien-heading: #0d2a35; /* deep ocean headings */
+  --lien-nav: #123b4a; /* menu text */
+  --lien-dark: #0d2a35;
+  --lien-footer: #0d2a35; /* deep ocean footer / admin sidebar */
+  --lien-topbar: #0b2530;
+  --lien-tagline: #5b7079;
+  --lien-widget-title: #0d2a35;
+  --lien-widget-border: #d6e6ec;
+  --lien-hr: #b5cfd8;
+  --lien-hr-border: #e1eef3;
+  --lien-price-track: #d6e6ec;
+  --lien-price-progress: #1c7f9e;
   --lien-facebook: #3b5998; /* rgb(59,89,152) */
   --lien-heart: #e82016; /* rgb(232,32,22) */
-  --lien-card-shadow: #cfcfcf; /* rgb(207,207,207) */
-  --lien-input-border: #d7d7d7; /* rgb(215,215,215) */
-  --lien-input-text: #333333;
-  --lien-line: #eeeeee;
-  --lien-toggle: #353232; /* rgb(53,50,50) mobile Menu button */
-  --lien-header-border: #d9d9d9; /* rgb(217,217,217) */
-  --lien-search-icon: #eeeeee;
-  --lien-footer-hover: #cccccc; /* rgb(204,204,204) */
+  --lien-card-shadow: #c5dbe3;
+  --lien-input-border: #c9dde5;
+  --lien-input-text: #14313d;
+  --lien-line: #e1eef3;
+  --lien-toggle: #0d2a35; /* mobile Menu button */
+  --lien-header-border: #cfe2e9;
+  --lien-search-icon: #cfe2e9;
+  --lien-footer-hover: #7fe0f5; /* cyan accent on dark */
 }
 
 .dark {
@@ -378,7 +382,7 @@
     list-style: decimal;
   }
   .lien-prose a {
-    color: #327cdb;
+    color: var(--lien-blue);
   }
   .lien-prose a:hover {
     text-decoration: underline;
@@ -405,7 +409,7 @@
     padding: 6px 8px;
   }
   .lien-prose blockquote {
-    border-left: 4px solid #327cdb;
+    border-left: 4px solid var(--lien-blue);
     margin: 0 0 16px;
     padding-left: 16px;
     color: #656464;

@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 
 /** `.button` — blue WooCommerce button (9.888px 16px, 16px bold, radius 3px). */
 export const wooButtonClass =
-  "inline-block cursor-pointer rounded-[3px] border-0 bg-lien-blue px-4 py-[9.888px] text-center font-sans text-[16px] font-bold leading-4 text-white no-underline transition-[background] duration-200 hover:bg-[#2a6bc0] hover:text-white disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-lien-blue";
+  "inline-block cursor-pointer rounded-[3px] border-0 bg-lien-blue px-4 py-[9.888px] text-center font-sans text-[16px] font-bold leading-4 text-white no-underline transition-[background] duration-200 hover:bg-lien-blue-hover hover:text-white disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-lien-blue";
 
 /** `.input-text` — 42.375px tall text input, Arial 16px, #d7d7d7 border. */
 export const wooInputClass =

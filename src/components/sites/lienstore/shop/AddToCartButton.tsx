@@ -23,7 +23,7 @@ interface AddToCartButtonProps {
 const VARIANT_CLASS: Record<Variant, string> = {
   pill: "inline-flex flex-col items-center justify-center rounded-full border-0 bg-lien-dark px-[26px] py-[14px] font-sans text-[18px] font-normal leading-[20.7px] text-white no-underline hover:text-lien-blue sm:leading-[27px]",
   square:
-    "relative inline-block rounded-[3px] border-0 bg-lien-blue px-4 py-[9.888px] font-sans text-[16px] font-bold leading-4 text-white no-underline transition-[background] duration-200 hover:bg-[#2a6bc0]",
+    "relative inline-block rounded-[3px] border-0 bg-lien-blue px-4 py-[9.888px] font-sans text-[16px] font-bold leading-4 text-white no-underline transition-[background] duration-200 hover:bg-lien-blue-hover",
   sticky:
     "inline-block rounded-[3px] bg-[#cd534a] px-5 py-1.5 font-sans text-[18px] leading-[27px] text-white no-underline hover:bg-[#b8483f]",
 };

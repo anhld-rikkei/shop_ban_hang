@@ -233,7 +233,7 @@ export function CheckoutForm({ defaults = {}, loggedIn = false }: { defaults?: C
             </tfoot>
           </table>
 
-          <div id="payment" className="woocommerce-checkout-payment rounded-[5px] bg-[#ebe9eb]">
+          <div id="payment" className="woocommerce-checkout-payment rounded-[5px] bg-lien-blue-soft">
             <ul className="wc_payment_methods payment_methods methods m-0 list-none border-b border-[#d3ced2] p-4 text-left">
               <li className="wc_payment_method leading-8">
                 <input
@@ -249,7 +249,7 @@ export function CheckoutForm({ defaults = {}, loggedIn = false }: { defaults?: C
                   Chuyển khoản ngân hàng
                 </label>
                 {payment === "bacs" ? (
-                  <div className="payment_box my-[14.72px] rounded-[2px] bg-[#dfdcde] p-[14.72px] text-[14.72px] leading-[22.08px] text-[#515151]">
+                  <div className="payment_box my-[14.72px] rounded-[2px] bg-white p-[14.72px] text-[14.72px] leading-[22.08px] text-[#515151]">
                     <p className="m-0">
                       Thực hiện thanh toán vào ngay tài khoản ngân hàng của chúng tôi. Vui lòng sử dụng Mã đơn hàng của bạn trong phần Nội dung thanh toán. Đơn
                       hàng sẽ được giao sau khi tiền đã chuyển.
@@ -271,7 +271,7 @@ export function CheckoutForm({ defaults = {}, loggedIn = false }: { defaults?: C
                   Thanh toán khi nhận hàng
                 </label>
                 {payment === "cod" ? (
-                  <div className="payment_box my-[14.72px] rounded-[2px] bg-[#dfdcde] p-[14.72px] text-[14.72px] leading-[22.08px] text-[#515151]">
+                  <div className="payment_box my-[14.72px] rounded-[2px] bg-white p-[14.72px] text-[14.72px] leading-[22.08px] text-[#515151]">
                     <p className="m-0">Trả tiền mặt khi giao hàng.</p>
                   </div>
                 ) : null}

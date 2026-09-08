@@ -21,7 +21,7 @@ export function WishlistButton({ product, variant = "icon", className }: Wishlis
         type="button"
         onClick={() => toggleWishlist(product)}
         className={cn(
-          "relative mb-2.5 inline-block bg-lien-blue px-3 py-1.5 font-sans text-[14px] leading-[21px] text-white transition-all duration-300 hover:bg-[#2a6bc0]",
+          "relative mb-2.5 inline-block bg-lien-blue px-3 py-1.5 font-sans text-[14px] leading-[21px] text-white transition-all duration-300 hover:bg-lien-blue-hover",
           className,
         )}
       >

@@ -15,31 +15,31 @@ export function TopBar({ contact, className }: TopBarProps) {
   return (
     <div
       className={cn(
-        "relative hidden min-h-[33px] border-b border-lien-line py-0.5 text-[15px] leading-[22.5px] sm:block",
+        "relative hidden min-h-[33px] bg-lien-footer py-0.5 text-[15px] leading-[22.5px] text-white sm:block",
         className,
       )}
     >
       <div className="mx-auto flex min-h-7 max-w-[1200px] items-center px-[15px]">
         <div className="relative w-3/4 px-[15px]">
-          <ul className="inline text-lien-topbar">
+          <ul className="inline text-white">
             <li className="inline">
               <Fa name="phone" className={cn(iconClass, "ml-[7px]")} />
               {contact.phones.map((p, i) => (
-                <span key={p.label} className={cn("ml-[7px]", i > 0 && "before:mr-[7px] before:text-lien-muted before:content-['|']")}>
+                <span key={p.label} className={cn("ml-[7px]", i > 0 && "before:mr-[7px] before:text-white/40 before:content-['|']")}>
                   <span className="font-semibold">{p.label}:</span>{" "}
                   {p.href ? (
-                    <a href={p.href} className="text-lien-topbar hover:text-lien-blue">
+                    <a href={p.href} className="text-white hover:text-lien-footer-hover">
                       {p.number}
                     </a>
                   ) : (
-                    <span className="text-lien-muted">{p.number}</span>
+                    <span className="text-lien-footer-hover">{p.number}</span>
                   )}
                 </span>
               ))}
             </li>
             <li className="ml-[7px] inline">
               <Fa name="envelope" className={iconClass} />
-              <a href={`mailto:${contact.email}`} className="text-lien-topbar hover:text-lien-blue">
+              <a href={`mailto:${contact.email}`} className="text-white hover:text-lien-footer-hover">
                 <span className="ml-[7px]">{contact.email}</span>
               </a>
             </li>
@@ -63,7 +63,7 @@ export function TopBar({ contact, className }: TopBarProps) {
                   rel="noreferrer"
                   aria-label={s.label}
                   title={s.label}
-                  className="mx-px inline-flex h-7 min-w-7 items-center justify-center rounded-[25px] px-1 text-center text-lien-topbar transition-all duration-300 ease-in-out hover:text-lien-blue"
+                  className="mx-px inline-flex h-7 min-w-7 items-center justify-center rounded-[25px] px-1 text-center text-white transition-all duration-300 ease-in-out hover:text-lien-blue"
                 >
                   <SocialIcon kind={s.kind} className="text-[18px] leading-[26px]" />
                 </a>

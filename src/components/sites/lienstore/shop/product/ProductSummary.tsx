@@ -111,7 +111,7 @@ export function ProductSummary({ product, compareCategory, children }: ProductSu
       <Link
         href={compareCategory ? `/shop/?product_cat=${compareCategory}` : "/shop/"}
         title="So sánh"
-        className="compare button mb-[15px] inline-block rounded-[3px] bg-lien-blue px-4 py-[9.888px] text-[16px] leading-4 font-bold text-white no-underline transition-[background] duration-200 hover:bg-[#2a6bc0]"
+        className="compare button mb-[15px] inline-block rounded-[3px] bg-lien-blue px-4 py-[9.888px] text-[16px] leading-4 font-bold text-white no-underline transition-[background] duration-200 hover:bg-lien-blue-hover"
       >
         Compare
       </Link>

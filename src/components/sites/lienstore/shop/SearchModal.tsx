@@ -52,7 +52,7 @@ export function SearchModal({ triggerClassName }: SearchModalProps) {
                 placeholder="Search …"
                 className="search-field h-[46px] flex-1 border-0 bg-transparent px-3 font-arial text-[16px] text-lien-input-text outline-none"
               />
-              <button type="submit" className="search-submit h-[46px] w-[60px] bg-lien-blue text-white hover:bg-[#2a6bc0]" aria-label="Search">
+              <button type="submit" className="search-submit h-[46px] w-[60px] bg-lien-blue text-white hover:bg-lien-blue-hover" aria-label="Search">
                 <Fa name="search" className="text-[21px] leading-[21px]" />
               </button>
             </form>

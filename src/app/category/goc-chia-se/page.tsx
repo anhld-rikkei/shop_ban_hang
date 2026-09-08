@@ -32,7 +32,7 @@ export default async function BlogCategoryPage() {
               <p className="mb-4 text-[16px] leading-6 text-lien-text">{post.excerpt}</p>
               <Link
                 href={`/${post.slug}/`}
-                className="inline-block rounded-[3px] bg-lien-blue px-4 py-[9.888px] text-[16px] font-bold leading-4 text-white hover:bg-[#2a6bc0]"
+                className="inline-block rounded-[3px] bg-lien-blue px-4 py-[9.888px] text-[16px] font-bold leading-4 text-white hover:bg-lien-blue-hover"
               >
                 Đọc tiếp
               </Link>

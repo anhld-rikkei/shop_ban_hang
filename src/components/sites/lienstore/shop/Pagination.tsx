@@ -25,7 +25,7 @@ export function Pagination({ page, totalPages, basePath, query, className }: Pag
       <ul className="m-px inline-flex list-none border-y border-l border-[#d3ced2] p-0 text-lien-text">
         {page > 1 ? (
           <li className="border-r border-[#d3ced2]">
-            <Link href={hrefFor(basePath, page - 1, query)} className={cn(cell, "text-lien-muted hover:bg-[#ebe9eb] hover:text-[#8a7e88]")} aria-label="Trang trước">
+            <Link href={hrefFor(basePath, page - 1, query)} className={cn(cell, "text-lien-muted hover:bg-lien-blue-soft hover:text-[#8a7e88]")} aria-label="Trang trước">
               ←
             </Link>
           </li>
@@ -33,11 +33,11 @@ export function Pagination({ page, totalPages, basePath, query, className }: Pag
         {pages.map((n) => (
           <li key={n} className="border-r border-[#d3ced2]">
             {n === page ? (
-              <span aria-current="page" className={cn(cell, "bg-[#ebe9eb] text-[#8a7e88]")}>
+              <span aria-current="page" className={cn(cell, "bg-lien-blue-soft text-[#8a7e88]")}>
                 {n}
               </span>
             ) : (
-              <Link href={hrefFor(basePath, n, query)} className={cn(cell, "text-lien-muted hover:bg-[#ebe9eb] hover:text-[#8a7e88]")}>
+              <Link href={hrefFor(basePath, n, query)} className={cn(cell, "text-lien-muted hover:bg-lien-blue-soft hover:text-[#8a7e88]")}>
                 {n}
               </Link>
             )}
@@ -45,7 +45,7 @@ export function Pagination({ page, totalPages, basePath, query, className }: Pag
         ))}
         {page < totalPages ? (
           <li className="border-r border-[#d3ced2]">
-            <Link href={hrefFor(basePath, page + 1, query)} className={cn(cell, "text-lien-muted hover:bg-[#ebe9eb] hover:text-[#8a7e88]")} aria-label="Trang sau">
+            <Link href={hrefFor(basePath, page + 1, query)} className={cn(cell, "text-lien-muted hover:bg-lien-blue-soft hover:text-[#8a7e88]")} aria-label="Trang sau">
               →
             </Link>
           </li>

@@ -15,11 +15,11 @@ export default async function AdminLayout({ children }: { children: ReactNode })
   const admin = await isAdmin();
 
   if (!admin) {
-    return <div className="flex min-h-screen items-center justify-center bg-[#f5f5f7] px-4 py-10">{children}</div>;
+    return <div className="flex min-h-screen items-center justify-center bg-lien-page px-4 py-10">{children}</div>;
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#f5f5f7] md:flex-row">
+    <div className="flex min-h-screen flex-col bg-lien-page md:flex-row">
       <AdminNav />
       <main className="flex-1 px-4 py-6 md:px-8">
         <div className="mx-auto max-w-[1200px]">

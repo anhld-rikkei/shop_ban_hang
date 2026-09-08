@@ -141,7 +141,7 @@ export interface SeedFile {
   orders?: Array<Record<string, unknown> & { id: string; number: number; items?: Array<Record<string, unknown>> }>;
   pages?: Array<{ slug: string; title: string; content: string; date: string }>;
   posts?: Array<{ slug: string; title: string; content: string; excerpt: string; date: string }>;
-  meta?: { nextOrderNumber?: number };
+  meta?: { nextOrderNumber?: number; seededAt?: string };
 }
 
 type SqliteModule = typeof import("node:sqlite");
@@ -165,6 +165,7 @@ function open(): DatabaseSync {
   db.exec("PRAGMA synchronous = NORMAL");
   migrate(db);
   seedIfEmpty(db);
+  syncSeed(db);
   return db;
 }
 
@@ -227,26 +228,83 @@ function seedIfEmpty(db: DatabaseSync) {
   }
   const seed = JSON.parse(fs.readFileSync(SEED_PATH, "utf8")) as SeedFile;
   importSeed(db, seed);
+  setSetting(db, "seed_version", seedVersion(seed));
   console.info(`[db] seeded ${seed.products?.length ?? 0} products, ${seed.categories?.length ?? 0} categories from ${SEED_PATH}`);
+}
+
+function seedVersion(seed: SeedFile): string {
+  return seed.meta?.seededAt ?? "";
+}
+
+/**
+ * Keep an already-seeded database in step with a newer seed file shipped in a new image.
+ *  - default ("add"):   insert categories/products/pages/posts that do not exist yet (matched by slug); never touches
+ *                       rows the admin may have edited, and never touches orders/customers.
+ *  - LIEN_SEED_SYNC=overwrite: replace the whole catalogue (products, categories, pages, posts) with the seed.
+ *  - LIEN_SEED_SYNC=off:       never sync.
+ * Runs once per seed version (meta.seededAt), so it costs nothing on normal restarts.
+ */
+function syncSeed(db: DatabaseSync) {
+  const mode = (process.env.LIEN_SEED_SYNC ?? "add").toLowerCase();
+  if (mode === "off" || !fs.existsSync(SEED_PATH)) return;
+  let seed: SeedFile;
+  try {
+    seed = JSON.parse(fs.readFileSync(SEED_PATH, "utf8")) as SeedFile;
+  } catch (e) {
+    console.warn(`[db] cannot read seed at ${SEED_PATH}: ${e instanceof Error ? e.message : e}`);
+    return;
+  }
+  const version = seedVersion(seed);
+  if (!version || getSetting(db, "seed_version") === version) return;
+  const before = {
+    products: count(db, "products"),
+    categories: count(db, "categories"),
+    pages: count(db, "pages"),
+    posts: count(db, "posts"),
+  };
+  if (mode === "overwrite") {
+    withTransaction(db, () => {
+      db.exec("DELETE FROM product_categories; DELETE FROM products; DELETE FROM categories; DELETE FROM pages; DELETE FROM posts;");
+      importCatalogue(db, seed, "INSERT OR REPLACE");
+      setSetting(db, "seed_version", version);
+    });
+  } else {
+    withTransaction(db, () => {
+      importCatalogue(db, seed, "INSERT OR IGNORE");
+      setSetting(db, "seed_version", version);
+    });
+  }
+  console.info(
+    `[db] seed sync (${mode}) → products ${before.products}→${count(db, "products")}, categories ${before.categories}→${count(db, "categories")}, pages ${before.pages}→${count(db, "pages")}, posts ${before.posts}→${count(db, "posts")}`,
+  );
+}
+
+function count(db: DatabaseSync, table: string): number {
+  return (db.prepare(`SELECT COUNT(*) AS n FROM ${table}`).get() as { n: number }).n;
 }
 
 const str = (v: unknown, fallback = ""): string => (typeof v === "string" ? v : fallback);
 const num = (v: unknown, fallback: number | null = null): number | null => (typeof v === "number" && Number.isFinite(v) ? v : fallback);
 const arr = (v: unknown): string => JSON.stringify(Array.isArray(v) ? v : []);
 
-/** Import a seed/export file into an (assumed empty) database. */
-export function importSeed(db: DatabaseSync, seed: SeedFile) {
-  withTransaction(db, () => {
-    const insCat = db.prepare("INSERT OR REPLACE INTO categories (slug, name, description, image, sort_order) VALUES (?, ?, ?, ?, ?)");
+type InsertVerb = "INSERT OR REPLACE" | "INSERT OR IGNORE";
+
+/** Categories, products (+ their category links), pages and posts from a seed file. */
+function importCatalogue(db: DatabaseSync, seed: SeedFile, verb: InsertVerb) {
+  {
+    const insCat = db.prepare(`${verb} INTO categories (slug, name, description, image, sort_order) VALUES (?, ?, ?, ?, ?)`);
     (seed.categories ?? []).forEach((c, i) => insCat.run(c.slug, c.name, c.description ?? "", c.image ?? null, i));
 
-    const insProd = db.prepare(`INSERT OR REPLACE INTO products
+    const insProd = db.prepare(`${verb} INTO products
       (id, slug, name, price, regular_price, currency, sku, stock, stock_status, tags, images, thumb, short_description, description,
        related, rating, review_count, status, created_at, updated_at)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`);
     const insPC = db.prepare("INSERT OR REPLACE INTO product_categories (product_id, category_slug, position) VALUES (?, ?, ?)");
+    const exists = db.prepare("SELECT id FROM products WHERE slug = ?");
     const now = new Date().toISOString();
     for (const p of seed.products ?? []) {
+      // In "add" mode skip products already present (by slug) so admin edits and their category links survive.
+      if (verb === "INSERT OR IGNORE" && exists.get(p.slug)) continue;
       insProd.run(
         p.id,
         p.slug,
@@ -271,6 +329,19 @@ export function importSeed(db: DatabaseSync, seed: SeedFile) {
       );
       (p.categories ?? []).forEach((slug, i) => insPC.run(p.id, slug, i));
     }
+
+    const insPage = db.prepare(`${verb} INTO pages (slug, title, content, date) VALUES (?, ?, ?, ?)`);
+    for (const p of seed.pages ?? []) insPage.run(p.slug, p.title, p.content, p.date);
+    const insPost = db.prepare(`${verb} INTO posts (slug, title, content, excerpt, date) VALUES (?, ?, ?, ?, ?)`);
+    for (const p of seed.posts ?? []) insPost.run(p.slug, p.title, p.content, p.excerpt, p.date);
+  }
+}
+
+/** Import a seed/export file into an (assumed empty) database. */
+export function importSeed(db: DatabaseSync, seed: SeedFile) {
+  withTransaction(db, () => {
+    importCatalogue(db, seed, "INSERT OR REPLACE");
+    const now = new Date().toISOString();
 
     const insCust = db.prepare(`INSERT OR REPLACE INTO customers
       (id, email, password_hash, salt, first_name, last_name, phone, address, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`);
@@ -306,11 +377,6 @@ export function importSeed(db: DatabaseSync, seed: SeedFile) {
         insItem.run(o.id, num(it.productId, 0), str(it.slug), str(it.name), num(it.price, 0), str(it.image), Math.max(1, num(it.quantity, 1) ?? 1));
       }
     }
-
-    const insPage = db.prepare("INSERT OR REPLACE INTO pages (slug, title, content, date) VALUES (?, ?, ?, ?)");
-    for (const p of seed.pages ?? []) insPage.run(p.slug, p.title, p.content, p.date);
-    const insPost = db.prepare("INSERT OR REPLACE INTO posts (slug, title, content, excerpt, date) VALUES (?, ?, ?, ?, ?)");
-    for (const p of seed.posts ?? []) insPost.run(p.slug, p.title, p.content, p.excerpt, p.date);
 
     const maxOrder = (db.prepare("SELECT COALESCE(MAX(number), 1000) AS n FROM orders").get() as { n: number }).n;
     setSetting(db, "next_order_number", String(Math.max(seed.meta?.nextOrderNumber ?? 1001, maxOrder + 1)));

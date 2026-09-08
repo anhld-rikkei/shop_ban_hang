@@ -49,6 +49,7 @@ Trình duyệt
   | `pages`, `posts` | trang tĩnh và bài viết |
 
 - **Nâng cấp schema sau này**: thêm phần tử mới vào `MIGRATIONS` (ví dụ `{ version: 2, name: "product-variants", up: ["ALTER TABLE …", "CREATE TABLE …"] }`). Khi container khởi động với DB cũ, migration mới tự chạy trong transaction; `/api/health/` trả `db.schemaVersion` để kiểm tra.
+- **Đồng bộ seed** (`LIEN_SEED_SYNC`, mặc định `add`): khi image mới mang `seed.json` có `meta.seededAt` mới hơn, lúc khởi động app chèn thêm sản phẩm/danh mục/trang/bài viết còn thiếu (so theo slug), không đụng bản admin đã sửa, không đụng đơn hàng/khách hàng. `overwrite` thay toàn bộ catalogue theo seed; `off` tắt. Nhờ đó sản phẩm thêm trên dev rồi commit sẽ tự xuất hiện trên prod ở lần release sau.
 - **Seed**: DB trống → `sqlite.ts` nhập `data/seed.json` (`LIEN_SEED_PATH`; trong image là `/app/seed/seed.json`). File seed chỉ chứa catalogue (sản phẩm, danh mục, trang, bài viết), không chứa đơn/tài khoản. `npm run db:export` tạo lại seed từ DB đang chạy (`-- --all file.json` để backup kèm khách hàng/đơn hàng); `npm run db:reset` xoá DB local để seed lại.
 - **Truy cập**: `src/lib/db.ts` (`import "server-only"`) — các hàm `getAllProducts`, `queryProducts`, `saveProduct`, `createOrder`, `createCustomer`… đều `async` và giữ nguyên chữ ký cũ, nên UI/actions không đổi khi thay engine. Ghi nhiều bước dùng `withTransaction` (BEGIN IMMEDIATE … COMMIT).
 - **Ảnh**: `public/sites/lienstore/**` (ảnh trang chủ, ảnh sản phẩm 300px và gốc, font). Admin nhập ảnh mới bằng đường dẫn/URL.

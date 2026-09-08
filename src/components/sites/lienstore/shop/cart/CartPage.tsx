@@ -156,10 +156,10 @@ export function CartPage() {
                 </td>
               </tr>
               <tr className="order-total">
-                <th className={cn(shopTdClass, "border-t border-[#ebe9eb] font-bold align-top")} scope="row">
+                <th className={cn(shopTdClass, "border-t border-lien-widget-border font-bold align-top")} scope="row">
                   Tổng
                 </th>
-                <td className={cn(shopTdClass, "border-t border-[#ebe9eb] align-top")}>
+                <td className={cn(shopTdClass, "border-t border-lien-widget-border align-top")}>
                   <strong>
                     <Price value={subtotal} />
                   </strong>
@@ -170,7 +170,7 @@ export function CartPage() {
           <div className="wc-proceed-to-checkout py-4">
             <Link
               href="/checkout/"
-              className="checkout-button mb-5 block w-full rounded-[3px] bg-lien-blue p-5 text-center font-sans text-[20px] font-bold leading-5 text-white no-underline hover:bg-[#2a6bc0]"
+              className="checkout-button mb-5 block w-full rounded-[3px] bg-lien-blue p-5 text-center font-sans text-[20px] font-bold leading-5 text-white no-underline hover:bg-lien-blue-hover"
             >
               Tiến hành thanh toán
             </Link>

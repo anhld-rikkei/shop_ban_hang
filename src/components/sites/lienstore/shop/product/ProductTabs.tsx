@@ -42,7 +42,7 @@ export function ProductTabs({ name, description, reviewCount }: ProductTabsProps
               role="presentation"
               className={cn(
                 "relative -mx-[5px] inline-block rounded-t-[4px] border border-[#d3ced2] px-4",
-                active ? "z-[2] border-b-white bg-white" : "z-0 bg-[#ebe9eb]",
+                active ? "z-[2] border-b-white bg-white" : "z-0 bg-lien-blue-soft",
               )}
             >
               <button
@@ -185,7 +185,7 @@ function ReviewForm({ name }: { name: string }) {
         <p className="form-submit">
           <button
             type="submit"
-            className="submit inline-block cursor-pointer rounded-[3px] border-0 bg-lien-blue px-4 py-[9.888px] font-arial text-[16px] leading-4 font-bold text-white transition-[background] duration-200 hover:bg-[#2a6bc0]"
+            className="submit inline-block cursor-pointer rounded-[3px] border-0 bg-lien-blue px-4 py-[9.888px] font-arial text-[16px] leading-4 font-bold text-white transition-[background] duration-200 hover:bg-lien-blue-hover"
           >
             Gửi đi
           </button>
