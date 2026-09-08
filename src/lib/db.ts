@@ -6,6 +6,8 @@ import type {
   Customer,
   Order,
   OrderCustomer,
+  OrderFile,
+  OrderFileKind,
   OrderStatus,
   PaymentMethod,
   ProductQuery,
@@ -30,6 +32,8 @@ interface ProductRow {
   price: number;
   regular_price: number | null;
   cost_price: number | null;
+  supplier_url: string | null;
+  min_stock: number | null;
   currency: string;
   sku: string | null;
   stock: number | null;
@@ -69,6 +73,8 @@ function rowToProduct(r: ProductRow): CatalogProduct {
     price: r.price,
     regularPrice: r.regular_price,
     costPrice: r.cost_price ?? null,
+    supplierUrl: r.supplier_url ?? null,
+    minStock: r.min_stock ?? null,
     currency: r.currency,
     sku: r.sku,
     stock: r.stock,
@@ -118,6 +124,7 @@ interface OrderRow {
   subtotal: number;
   total: number;
   currency: string;
+  admin_note: string | null;
   created_at: string;
   updated_at: string;
 }
@@ -158,6 +165,7 @@ function hydrateOrders(rows: OrderRow[]): Order[] {
     subtotal: r.subtotal,
     total: r.total,
     currency: r.currency,
+    adminNote: r.admin_note ?? "",
   }));
 }
 
@@ -284,7 +292,7 @@ export async function saveProduct(input: ProductInput): Promise<CatalogProduct> 
     if (id) {
       const exists = db.prepare("SELECT id FROM products WHERE id = ?").get(id);
       if (!exists) throw new Error(`Product ${id} not found`);
-      db.prepare(`UPDATE products SET slug = ?, name = ?, price = ?, regular_price = ?, cost_price = ?, currency = ?, sku = ?, stock = ?, stock_status = ?,
+      db.prepare(`UPDATE products SET slug = ?, name = ?, price = ?, regular_price = ?, cost_price = ?, supplier_url = ?, min_stock = ?, currency = ?, sku = ?, stock = ?, stock_status = ?,
         tags = ?, images = ?, thumb = ?, short_description = ?, description = ?, related = ?, rating = ?, review_count = ?, status = ?, updated_at = ?
         WHERE id = ?`).run(
         input.slug,
@@ -292,6 +300,8 @@ export async function saveProduct(input: ProductInput): Promise<CatalogProduct> 
         input.price,
         input.regularPrice,
         input.costPrice,
+        input.supplierUrl,
+        input.minStock,
         input.currency,
         input.sku,
         input.stock,
@@ -310,14 +320,16 @@ export async function saveProduct(input: ProductInput): Promise<CatalogProduct> 
       );
       db.prepare("DELETE FROM product_categories WHERE product_id = ?").run(id);
     } else {
-      const res = db.prepare(`INSERT INTO products (slug, name, price, regular_price, cost_price, currency, sku, stock, stock_status, tags, images, thumb,
+      const res = db.prepare(`INSERT INTO products (slug, name, price, regular_price, cost_price, supplier_url, min_stock, currency, sku, stock, stock_status, tags, images, thumb,
         short_description, description, related, rating, review_count, status, created_at, updated_at)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(
         input.slug,
         input.name,
         input.price,
         input.regularPrice,
         input.costPrice,
+        input.supplierUrl,
+        input.minStock,
         input.currency,
         input.sku,
         input.stock,
@@ -490,6 +502,7 @@ export async function createOrder(input: CreateOrderInput): Promise<Order> {
       subtotal,
       total: subtotal,
       currency: "VNĐ",
+      adminNote: "",
     };
   });
 }
@@ -519,6 +532,177 @@ export async function findOrder(number: number, phone: string): Promise<Order | 
 export async function updateOrderStatus(id: string, status: OrderStatus): Promise<Order | null> {
   const res = getDb().prepare("UPDATE orders SET status = ?, updated_at = ? WHERE id = ?").run(status, new Date().toISOString(), id);
   return Number(res.changes) > 0 ? getOrderById(id) : null;
+}
+
+export async function updateOrderAdminNote(id: string, note: string): Promise<boolean> {
+  const res = getDb().prepare("UPDATE orders SET admin_note = ?, updated_at = ? WHERE id = ?").run(note, new Date().toISOString(), id);
+  return Number(res.changes) > 0;
+}
+
+// ---------- Order files (receipts from Japan etc.) ----------
+
+interface OrderFileRow {
+  id: number;
+  order_id: string;
+  kind: OrderFileKind;
+  file_name: string;
+  path: string;
+  mime: string;
+  size: number;
+  note: string;
+  amount_jpy: number | null;
+  created_at: string;
+}
+
+const rowToOrderFile = (r: OrderFileRow): OrderFile => ({
+  id: r.id,
+  orderId: r.order_id,
+  kind: r.kind,
+  fileName: r.file_name,
+  path: r.path,
+  mime: r.mime,
+  size: r.size,
+  note: r.note,
+  amountJpy: r.amount_jpy,
+  createdAt: r.created_at,
+});
+
+export async function getOrderFiles(orderId: string): Promise<OrderFile[]> {
+  return (getDb().prepare("SELECT * FROM order_files WHERE order_id = ? ORDER BY id").all(orderId) as unknown as OrderFileRow[]).map(rowToOrderFile);
+}
+
+export async function getOrderFileByPath(path: string): Promise<OrderFile | null> {
+  const row = getDb().prepare("SELECT * FROM order_files WHERE path = ?").get(path) as OrderFileRow | undefined;
+  return row ? rowToOrderFile(row) : null;
+}
+
+export async function addOrderFile(input: Omit<OrderFile, "id" | "createdAt">): Promise<OrderFile> {
+  const db = getDb();
+  const now = new Date().toISOString();
+  const res = db
+    .prepare("INSERT INTO order_files (order_id, kind, file_name, path, mime, size, note, amount_jpy, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)")
+    .run(input.orderId, input.kind, input.fileName, input.path, input.mime, input.size, input.note, input.amountJpy, now);
+  return { ...input, id: Number(res.lastInsertRowid), createdAt: now };
+}
+
+export async function deleteOrderFile(id: number): Promise<OrderFile | null> {
+  const db = getDb();
+  const row = db.prepare("SELECT * FROM order_files WHERE id = ?").get(id) as OrderFileRow | undefined;
+  if (!row) return null;
+  db.prepare("DELETE FROM order_files WHERE id = ?").run(id);
+  return rowToOrderFile(row);
+}
+
+/** Number of attached files per order (for list badges). */
+export async function countOrderFiles(): Promise<Map<string, number>> {
+  const rows = getDb().prepare("SELECT order_id, COUNT(*) AS n FROM order_files GROUP BY order_id").all() as unknown as Array<{ order_id: string; n: number }>;
+  return new Map(rows.map((r) => [r.order_id, r.n]));
+}
+
+// ---------- Inventory ----------
+
+export async function updateProductStock(id: number, stock: number | null, minStock?: number | null): Promise<boolean> {
+  const db = getDb();
+  const status = stock === 0 ? "outofstock" : stock === null ? null : "instock";
+  const res =
+    minStock === undefined
+      ? db.prepare("UPDATE products SET stock = ?, stock_status = COALESCE(?, stock_status), updated_at = ? WHERE id = ?").run(stock, status, new Date().toISOString(), id)
+      : db
+          .prepare("UPDATE products SET stock = ?, stock_status = COALESCE(?, stock_status), min_stock = ?, updated_at = ? WHERE id = ?")
+          .run(stock, status, minStock, new Date().toISOString(), id);
+  return Number(res.changes) > 0;
+}
+
+export interface DemandLine {
+  productId: number;
+  needed: number;
+  orders: Array<{ id: string; number: number; status: OrderStatus; quantity: number }>;
+}
+
+/** Quantities still to be sourced for open (pending/processing) orders, grouped by product. */
+export async function getOpenOrderDemand(): Promise<Map<number, DemandLine>> {
+  const rows = getDb()
+    .prepare(
+      `SELECT oi.product_id, oi.quantity, o.id, o.number, o.status FROM order_items oi JOIN orders o ON o.id = oi.order_id
+       WHERE o.status IN ('pending','processing') ORDER BY o.number`,
+    )
+    .all() as unknown as Array<{ product_id: number; quantity: number; id: string; number: number; status: OrderStatus }>;
+  const map = new Map<number, DemandLine>();
+  for (const r of rows) {
+    const line = map.get(r.product_id) ?? { productId: r.product_id, needed: 0, orders: [] };
+    line.needed += r.quantity;
+    line.orders.push({ id: r.id, number: r.number, status: r.status, quantity: r.quantity });
+    map.set(r.product_id, line);
+  }
+  return map;
+}
+
+// ---------- Customers overview (registered + guests from orders) ----------
+
+export interface CustomerOverview {
+  /** `c:<customerId>` for registered accounts, `g:<email or phone>` for guests. */
+  key: string;
+  registered: boolean;
+  customerId: string | null;
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  ordersCount: number;
+  totalSpent: number;
+  lastOrderAt: string | null;
+  createdAt: string | null;
+}
+
+export async function getCustomerOverview(): Promise<CustomerOverview[]> {
+  const db = getDb();
+  const map = new Map<string, CustomerOverview>();
+  for (const c of (db.prepare("SELECT * FROM customers ORDER BY created_at").all() as unknown as CustomerRow[]).map(rowToCustomer)) {
+    map.set(`c:${c.id}`, {
+      key: `c:${c.id}`,
+      registered: true,
+      customerId: c.id,
+      name: `${c.lastName} ${c.firstName}`.trim(),
+      email: c.email,
+      phone: c.phone,
+      address: c.address,
+      ordersCount: 0,
+      totalSpent: 0,
+      lastOrderAt: null,
+      createdAt: c.createdAt,
+    });
+  }
+  const emailToKey = new Map([...map.values()].map((c) => [c.email.toLowerCase(), c.key] as const));
+  const orders = (db.prepare("SELECT * FROM orders ORDER BY created_at DESC").all() as unknown as OrderRow[]);
+  for (const o of orders) {
+    const email = o.email.trim().toLowerCase();
+    const key = (o.customer_id && map.has(`c:${o.customer_id}`) ? `c:${o.customer_id}` : null) ?? emailToKey.get(email) ?? `g:${email || o.phone.replace(/\D/g, "")}`;
+    let c = map.get(key);
+    if (!c) {
+      c = { key, registered: false, customerId: null, name: `${o.last_name} ${o.first_name}`.trim(), email: o.email, phone: o.phone, address: o.address, ordersCount: 0, totalSpent: 0, lastOrderAt: null, createdAt: null };
+      map.set(key, c);
+    }
+    c.ordersCount += 1;
+    if (o.status !== "cancelled") c.totalSpent += o.total;
+    if (!c.lastOrderAt || o.created_at > c.lastOrderAt) c.lastOrderAt = o.created_at;
+    if (!c.phone && o.phone) c.phone = o.phone;
+    if (!c.address && o.address) c.address = o.address;
+  }
+  return [...map.values()].sort((a, b) => (b.lastOrderAt ?? b.createdAt ?? "").localeCompare(a.lastOrderAt ?? a.createdAt ?? ""));
+}
+
+export async function getOrdersForCustomerKey(key: string): Promise<Order[]> {
+  const db = getDb();
+  if (key.startsWith("c:")) {
+    const c = await getCustomerById(key.slice(2));
+    if (!c) return [];
+    return getOrdersForCustomer({ id: c.id, email: c.email });
+  }
+  const ident = key.slice(2);
+  const rows = (ident.includes("@")
+    ? db.prepare(`SELECT * FROM orders WHERE LOWER(TRIM(email)) = ? ${ORDER_ORDER}`).all(ident)
+    : db.prepare(`SELECT * FROM orders WHERE REPLACE(REPLACE(phone, ' ', ''), '.', '') = ? ${ORDER_ORDER}`).all(ident)) as unknown as OrderRow[];
+  return hydrateOrders(rows);
 }
 
 // ---------- Customers ----------

@@ -24,7 +24,8 @@
 - **Trang chủ**: slider, danh mục sản phẩm dạng sidebar và lưới, các khối sản phẩm theo danh mục, bộ lọc giá, widget "sản phẩm vừa xem".
 - **Danh sách sản phẩm**: `/shop/`, theo danh mục `/product-category/<slug>/`, theo tag `/product-tag/<slug>/`, phân trang, sắp xếp (mới nhất, giá tăng/giảm, đánh giá, phổ biến), tìm kiếm không dấu tiếng Việt.
 - **Tìm kiếm nhanh**: modal tìm kiếm gợi ý theo từ khoá và danh mục.
-- **Chi tiết sản phẩm**: gallery có zoom, giá/giá gốc, tồn kho, mô tả, tab thông tin, sản phẩm liên quan, nút thêm vào giỏ cố định khi cuộn, chia sẻ mạng xã hội, Quick View từ danh sách.
+- **Chi tiết sản phẩm**: gallery có zoom, giá/giá gốc, tồn kho, sản phẩm liên quan, nút thêm vào giỏ cố định khi cuộn, chia sẻ mạng xã hội, Quick View từ danh sách. **Mô tả có cấu trúc**: tự tách thành thẻ Thông tin nhanh (xuất xứ, nhà sản xuất, quy cách) và các mục Công dụng / Thành phần / Hướng dẫn sử dụng / Đối tượng / Lưu ý với mục lục nhảy nhanh; mô tả không nhận diện được vẫn hiển thị nguyên bản.
+- **Bill mua hàng tại Nhật**: khách xem/tải chứng từ cửa hàng đính kèm ngay trong trang “Đơn hàng đã nhận”, mục Đơn hàng của tài khoản và khi tra cứu đơn (link có chữ ký, không cần đăng nhập).
 - **Giỏ hàng**: thêm/sửa số lượng/xoá, lưu trong trình duyệt, badge số lượng trên header, widget giỏ nổi.
 - **Wishlist**: lưu sản phẩm yêu thích, chuyển sang giỏ hàng.
 - **Thanh toán**: form địa chỉ giao hàng, chọn COD hoặc chuyển khoản, giá được tính lại phía server, trang "đã nhận đơn", tra cứu đơn bằng mã đơn + số điện thoại.
@@ -39,7 +40,10 @@
 - **Sản phẩm**: danh sách có lọc/tìm, thêm, sửa, xoá, ảnh, giá, tồn kho, danh mục, tag, trạng thái nháp/đăng. Cột **giá vốn** và **lợi nhuận** (số tiền + % biên) trên từng dòng, tổng vốn tồn kho và lợi nhuận tồn kho ở đầu trang; giá vốn không bao giờ hiển thị ra cửa hàng.
 - **Excel**: `npm run xlsx:export` xuất catalogue ra Excel, điền tay hoặc giao Claude điền, `npm run xlsx:import` nhập lại (tạo/cập nhật sản phẩm, danh mục mới, tải ảnh URL). Xem [docs/EXCEL_IMPORT.md](docs/EXCEL_IMPORT.md).
 - **Danh mục**: thêm, sửa (đổi slug tự cập nhật sản phẩm), xoá, ảnh và mô tả.
-- **Đơn hàng**: danh sách theo trạng thái, chi tiết đơn, đổi trạng thái (chờ xử lý → đang xử lý → hoàn thành / huỷ).
+- **Đơn hàng**: danh sách theo trạng thái, chi tiết đơn, đổi trạng thái (chờ xử lý → đang xử lý → hoàn thành / huỷ), ghi chú nội bộ, **đính kèm bill mua hàng tại Nhật** (ảnh/PDF) để khách xem lại trong trang đơn hàng.
+- **Khách hàng**: danh sách khách có tài khoản và khách vãng lai (gộp theo email/điện thoại), số đơn, tổng chi tiêu; trang chi tiết liệt kê từng đơn với sản phẩm đã mua và trạng thái đã gửi bill.
+- **Kho hàng**: tồn kho, sắp hết, hết hàng, không theo dõi; cập nhật tồn và mức tối thiểu ngay trên bảng; **danh sách cần đặt hàng** tính từ các đơn đang mở trừ tồn kho, kèm link mua (Amazon JP) và xuất CSV.
+- **Ảnh sản phẩm**: tải ảnh từ máy ngay trong form (tự thu nhỏ về 1200px + thumbnail 300×300), thêm bằng URL, sắp thứ tự, đặt ảnh đại diện, xoá; file lưu trong thư mục dữ liệu, phục vụ qua `/api/files/…`.
 
 ### Vận hành
 - **Một image Docker tự chứa**: Next.js standalone + seed catalogue; lần chạy đầu tự tạo DB SQLite, chạy migration và nhập 120 sản phẩm mẫu. Không cần MySQL/Postgres.
@@ -96,6 +100,8 @@ Lần chạy đầu ứng dụng tạo `data/lienstore.db` và nhập `data/seed
 | `LIEN_DB_PATH` | `data/lienstore.db` | file SQLite (`/app/data/lienstore.db` trong container) |
 | `LIEN_SEED_PATH` | `data/seed.json` | seed nhập khi DB trống |
 | `LIEN_SEED_SYNC` | `add` | đồng bộ seed mới vào DB đang có: `add` chèn thiếu, `update` ghi đè các dòng có trong seed (Excel là nguồn sự thật), `overwrite` thay catalogue, `off` tắt |
+| `LIEN_UPLOAD_DIR` | `<thư mục DB>/uploads` | nơi lưu ảnh sản phẩm tải lên và bill đơn hàng (`/app/data/uploads` trong container) |
+| `LIEN_MIN_STOCK` | `2` | mức tồn tối thiểu mặc định để cảnh báo sắp hết |
 | `NEXT_PUBLIC_SITE_URL` | `http://localhost:3000` | URL công khai cho robots/sitemap |
 | `NEXT_PUBLIC_FB_PAGE_ID` | rỗng | bật chat Messenger |
 

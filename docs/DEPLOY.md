@@ -16,7 +16,7 @@ Vì vậy **không cần dựng thêm MySQL/Postgres** để chạy. Việc cầ
    ```
 2. **Tạo secrets**: đổi `ADMIN_PASSWORD`, `ADMIN_SESSION_SECRET` (chuỗi ngẫu nhiên ≥ 32 ký tự, ví dụ `openssl rand -base64 32`).
 3. **Cài app**: Apps → Discover Apps → menu ⋮ → **Install via YAML** → dán `deploy/truenas-app.yaml` sau khi thay `<owner>`, `<pool>`, mật khẩu. Cổng LAN mặc định `30080`.
-4. **Lần chạy đầu**: app thấy `/app/data/lienstore.db` chưa có sẽ tạo DB, chạy migration và nhập seed (120 sản phẩm) từ `/app/seed/seed.json` trong image. Từ đó mọi đơn hàng, tài khoản, chỉnh sửa admin được ghi vào dataset này; image mới có migration mới sẽ tự nâng schema khi khởi động.
+4. **Lần chạy đầu**: app thấy `/app/data/lienstore.db` chưa có sẽ tạo DB, chạy migration và nhập seed từ `/app/seed/seed.json` trong image. Ảnh admin tải lên và bill đơn hàng nằm ở `/app/data/uploads` — cùng dataset, nên snapshot dataset là đủ để backup cả DB lẫn file. Từ đó mọi đơn hàng, tài khoản, chỉnh sửa admin được ghi vào dataset này; image mới có migration mới sẽ tự nâng schema khi khởi động.
 5. **Kiểm tra**: `http://<ip-truenas>:30080/api/health/` trả `{"ok":true,"db":{"engine":"sqlite","schemaVersion":1,...}}`; đăng nhập `/admin/login/`.
 6. **Backup**: bật Periodic Snapshot cho dataset `apps/lienstore` (mỗi ngày, giữ 30 bản). Muốn khôi phục: Stop app, copy `lienstore.db` từ snapshot, Start.
 

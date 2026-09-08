@@ -134,6 +134,28 @@ export const MIGRATIONS: Migration[] = [
     name: "product-cost-price",
     up: [`ALTER TABLE products ADD COLUMN cost_price INTEGER`],
   },
+  {
+    version: 3,
+    name: "inventory-customers-files",
+    up: [
+      `ALTER TABLE products ADD COLUMN supplier_url TEXT`,
+      `ALTER TABLE products ADD COLUMN min_stock INTEGER`,
+      `ALTER TABLE orders ADD COLUMN admin_note TEXT NOT NULL DEFAULT ''`,
+      `CREATE TABLE order_files (
+        id         INTEGER PRIMARY KEY AUTOINCREMENT,
+        order_id   TEXT NOT NULL REFERENCES orders(id) ON DELETE CASCADE,
+        kind       TEXT NOT NULL DEFAULT 'receipt' CHECK (kind IN ('receipt','other')),
+        file_name  TEXT NOT NULL,
+        path       TEXT NOT NULL UNIQUE,
+        mime       TEXT NOT NULL,
+        size       INTEGER NOT NULL,
+        note       TEXT NOT NULL DEFAULT '',
+        amount_jpy INTEGER,
+        created_at TEXT NOT NULL
+      )`,
+      `CREATE INDEX idx_order_files_order ON order_files(order_id)`,
+    ],
+  },
 ];
 
 export const SCHEMA_VERSION = MIGRATIONS[MIGRATIONS.length - 1].version;
@@ -308,9 +330,9 @@ function importCatalogue(db: DatabaseSync, seed: SeedFile, verb: InsertVerb) {
     (seed.categories ?? []).forEach((c, i) => insCat.run(c.slug, c.name, c.description ?? "", c.image ?? null, i));
 
     const insProd = db.prepare(`${verb} INTO products
-      (id, slug, name, price, regular_price, cost_price, currency, sku, stock, stock_status, tags, images, thumb, short_description, description,
+      (id, slug, name, price, regular_price, cost_price, supplier_url, min_stock, currency, sku, stock, stock_status, tags, images, thumb, short_description, description,
        related, rating, review_count, status, created_at, updated_at)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`);
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`);
     const insPC = db.prepare("INSERT OR REPLACE INTO product_categories (product_id, category_slug, position) VALUES (?, ?, ?)");
     const exists = db.prepare("SELECT id FROM products WHERE slug = ?");
     const now = new Date().toISOString();
@@ -330,6 +352,8 @@ function importCatalogue(db: DatabaseSync, seed: SeedFile, verb: InsertVerb) {
         num(p.price, 0),
         num(p.regularPrice),
         num(p.costPrice),
+        typeof p.supplierUrl === "string" && p.supplierUrl ? p.supplierUrl : null,
+        num(p.minStock),
         str(p.currency, "VNĐ"),
         typeof p.sku === "string" ? p.sku : null,
         num(p.stock),

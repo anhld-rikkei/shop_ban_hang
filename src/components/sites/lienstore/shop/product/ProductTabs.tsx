@@ -2,6 +2,7 @@
 
 import { useId, useState, type FormEvent } from "react";
 import { Fa } from "@/components/sites/lienstore/shared/icons";
+import { ProductDescription } from "./ProductDescription";
 import { cn } from "@/lib/utils";
 
 interface ProductTabsProps {
@@ -72,7 +73,7 @@ export function ProductTabs({ name, description, reviewCount }: ProductTabsProps
           className="woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content mb-8"
         >
           <h2 className={H2}>Mô tả</h2>
-          <div className="lien-prose" dangerouslySetInnerHTML={{ __html: description }} />
+          <ProductDescription name={name} description={description} />
         </div>
       ) : (
         <div

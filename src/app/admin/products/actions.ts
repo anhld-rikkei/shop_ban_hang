@@ -5,6 +5,8 @@ import { redirect } from "next/navigation";
 import { isAdmin } from "@/lib/auth";
 import { deleteProduct, getProductById, saveProduct, slugExists } from "@/lib/db";
 import { slugify } from "@/lib/format";
+import { deleteUpload, relFromUrl, resolveThumbFor } from "@/lib/uploads";
+import { getAllProducts } from "@/lib/db";
 import type { CatalogProduct } from "@/types/shop";
 
 export type ProductFormState = { error?: string; fields?: Record<string, string> } | null;
@@ -43,6 +45,12 @@ export async function saveProductAction(_prev: ProductFormState, formData: FormD
   const costPrice = costRaw ? parseIntField(costRaw) : null;
   if (costRaw && costPrice === null) fields.costPrice = "Giá vốn không hợp lệ.";
 
+  const supplierUrl = get("supplierUrl");
+  if (supplierUrl && !/^https?:\/\//i.test(supplierUrl)) fields.supplierUrl = "Link nhà cung cấp phải bắt đầu bằng http(s)://";
+  const minRaw = get("minStock");
+  const minStock = minRaw === "" ? null : parseIntField(minRaw);
+  if (minRaw !== "" && (minStock === null || minStock < 0)) fields.minStock = "Mức tồn tối thiểu phải là số nguyên ≥ 0.";
+
   const stockRaw = get("stock");
   const stock = stockRaw === "" ? null : parseIntField(stockRaw);
   if (stockRaw !== "" && (stock === null || stock < 0)) fields.stock = "Tồn kho phải là số nguyên ≥ 0 hoặc để trống.";
@@ -54,7 +62,7 @@ export async function saveProductAction(_prev: ProductFormState, formData: FormD
     .split(/\r?\n/)
     .map((s) => s.trim())
     .filter(Boolean);
-  const thumb = get("thumb") || images[0] || "";
+  const thumb = get("thumb") || (images[0] ? await resolveThumbFor(images[0]) : "");
   if (!thumb) fields.images = "Cần ít nhất một ảnh (đường dẫn /sites/... hoặc https://...).";
 
   const tags = get("tags")
@@ -74,6 +82,8 @@ export async function saveProductAction(_prev: ProductFormState, formData: FormD
     price: price ?? 0,
     regularPrice: regularPrice && regularPrice > (price ?? 0) ? regularPrice : null,
     costPrice,
+    supplierUrl: supplierUrl || null,
+    minStock,
     currency: existing?.currency ?? "VNĐ",
     sku: get("sku") || null,
     stock,
@@ -90,14 +100,31 @@ export async function saveProductAction(_prev: ProductFormState, formData: FormD
     status,
   });
 
+  if (existing) await cleanupRemovedUploads(existing.images, saved.images, saved.id);
   revalidatePath("/", "layout");
   redirect(`/admin/products/?saved=${saved.id}`);
+}
+
+/** Delete uploaded files that were removed from a product and are not referenced by any other product. */
+async function cleanupRemovedUploads(before: string[], after: string[], productId: number): Promise<void> {
+  const removed = before.filter((u) => !after.includes(u) && relFromUrl(u));
+  if (removed.length === 0) return;
+  const others = (await getAllProducts(true)).filter((p) => p.id !== productId);
+  for (const url of removed) {
+    if (others.some((p) => p.images.includes(url) || p.thumb === url)) continue;
+    const rel = relFromUrl(url);
+    if (!rel) continue;
+    await deleteUpload(rel);
+    await deleteUpload(rel.replace(/(\.[a-z0-9]+)$/i, "-300x300$1"));
+  }
 }
 
 export async function deleteProductAction(formData: FormData): Promise<void> {
   if (!(await isAdmin())) redirect("/admin/login/");
   const id = Number.parseInt(String(formData.get("id") ?? ""), 10);
   if (Number.isInteger(id)) {
+    const existing = await getProductById(id);
+    if (existing) await cleanupRemovedUploads(existing.images, [], id);
     await deleteProduct(id);
     revalidatePath("/", "layout");
   }

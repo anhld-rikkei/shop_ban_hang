@@ -6,6 +6,7 @@ import { StoreSidebar } from "@/components/sites/lienstore/shop/cart/StoreSideba
 import { Price, WooHeading } from "@/components/sites/lienstore/shop/cart/WooUi";
 import { SiteChrome, TwoColumnShell } from "@/components/sites/lienstore/shop/SiteChrome";
 import { getOrderById } from "@/lib/db";
+import { receiptLinksFor } from "@/lib/order-files";
 import { formatDate } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
@@ -20,6 +21,7 @@ export default async function OrderReceived({ params }: Props) {
   const { id } = await params;
   const order = await getOrderById(id);
   if (!order) notFound();
+  const receipts = await receiptLinksFor(order.id);
 
   const detail = "flex-1 basis-auto border-r border-dashed border-[#d3ced2] pr-6 mr-6 mb-4 text-[11.7px] uppercase leading-5 text-[#767676] last:mr-0 last:border-0";
   const value = "block text-[16px] normal-case leading-6 text-lien-text";
@@ -62,7 +64,7 @@ export default async function OrderReceived({ params }: Props) {
                 </p>
               </section>
             ) : null}
-            <OrderSummary order={order} />
+            <OrderSummary order={order} receipts={receipts} />
           </div>
         </article>
       </TwoColumnShell>

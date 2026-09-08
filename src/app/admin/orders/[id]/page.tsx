@@ -2,10 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { updateOrderStatusAction } from "@/app/admin/orders/actions";
-import { ADMIN_STATUS_LABELS, ADMIN_STATUSES, adminInput, btnPrimary, Card, Flash, PageHeader, StatusBadge, tableClass, tdClass, thClass } from "@/components/sites/lienstore/admin/ui";
+import { deleteOrderFileAction, saveAdminNoteAction, uploadOrderFilesAction } from "@/app/admin/orders/files-actions";
+import { ConfirmSubmit } from "@/components/sites/lienstore/admin/ConfirmSubmit";
+import { ADMIN_STATUS_LABELS, ADMIN_STATUSES, adminInput, adminLabel, btnPrimary, btnSecondary, Card, Flash, PageHeader, StatusBadge, tableClass, tdClass, thClass } from "@/components/sites/lienstore/admin/ui";
+import { Fa } from "@/components/sites/lienstore/shared/icons";
 import { requireAdmin } from "@/lib/auth";
-import { getOrderById } from "@/lib/db";
+import { getCustomerOverview, getOrderById, getOrderFiles } from "@/lib/db";
 import { formatDateTime, formatPrice } from "@/lib/format";
+import { FILES_URL_PREFIX, formatBytes, orderFileToken } from "@/lib/uploads";
 
 export const dynamic = "force-dynamic";
 
@@ -15,13 +19,21 @@ interface Props {
 }
 
 const PAYMENT: Record<string, string> = { bacs: "Chuyển khoản ngân hàng", cod: "Thanh toán khi nhận hàng" };
+const first = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v) ?? "";
 
 export default async function AdminOrderDetail({ params, searchParams }: Props) {
   await requireAdmin();
   const [{ id }, sp] = await Promise.all([params, searchParams]);
-  const order = await getOrderById(id);
+  const [order, files, overview] = await Promise.all([getOrderById(id), getOrderFiles(id), getCustomerOverview()]);
   if (!order) notFound();
   const c = order.customer;
+  const customerKey =
+    overview.find((x) => (order.customerId && x.customerId === order.customerId) || (x.email && x.email.toLowerCase() === c.email.trim().toLowerCase()))?.key ??
+    `g:${c.email.trim().toLowerCase() || c.phone.replace(/\D/g, "")}`;
+  const token = orderFileToken(order.id);
+  const publicReceiptUrl = (path: string) => `${FILES_URL_PREFIX}${path}?t=${token}`;
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "";
+  const totalJpy = files.reduce((s, f) => s + (f.amountJpy ?? 0), 0);
 
   return (
     <>
@@ -32,6 +44,10 @@ export default async function AdminOrderDetail({ params, searchParams }: Props) 
         actions={<StatusBadge status={order.status} />}
       />
       {sp.updated ? <Flash>Đã cập nhật trạng thái đơn hàng.</Flash> : null}
+      {sp.files ? <Flash>Đã đính kèm {first(sp.files)} file vào đơn hàng.</Flash> : null}
+      {sp.fileDeleted ? <Flash>Đã xoá file.</Flash> : null}
+      {sp.noted ? <Flash>Đã lưu ghi chú nội bộ.</Flash> : null}
+      {sp.fileError ? <Flash kind="warning">{first(sp.fileError)}</Flash> : null}
 
       <div className="grid gap-6 lg:grid-cols-3">
         <div className="space-y-6 lg:col-span-2">
@@ -56,7 +72,12 @@ export default async function AdminOrderDetail({ params, searchParams }: Props) 
                       <Link href={`/product/${it.slug}/`} target="_blank" className="text-lien-heading hover:text-lien-blue">
                         {it.name}
                       </Link>
-                      <div className="text-[12px] text-lien-muted">#{it.productId}</div>
+                      <div className="text-[12px] text-lien-muted">
+                        #{it.productId} ·{" "}
+                        <Link href={`/admin/products/${it.productId}/`} className="hover:text-lien-blue">
+                          sửa sản phẩm
+                        </Link>
+                      </div>
                     </td>
                     <td className={`${tdClass} whitespace-nowrap`}>{formatPrice(it.price, order.currency)}</td>
                     <td className={tdClass}>{it.quantity}</td>
@@ -80,6 +101,91 @@ export default async function AdminOrderDetail({ params, searchParams }: Props) 
               </tfoot>
             </table>
           </Card>
+
+          <div id="bill">
+            <Card
+              title="Bill mua hàng tại Nhật"
+              actions={files.length ? <span className="text-[13px] text-lien-muted">{files.length} file{totalJpy ? ` · ¥${totalJpy.toLocaleString("ja-JP")}` : ""}</span> : null}
+            >
+              <p className="mb-4 text-[13px] leading-5 text-lien-muted">
+                Đính kèm hoá đơn/ảnh chụp đơn mua bên Nhật. Khách xem được các file này trong trang <em>Đơn hàng đã nhận</em>, mục <em>Đơn hàng</em> của tài khoản và khi tra cứu đơn.
+              </p>
+              {files.length ? (
+                <ul className="mb-5 grid list-none gap-2 p-0">
+                  {files.map((f) => (
+                    <li key={f.id} className="flex flex-wrap items-center gap-3 rounded-md border border-[#e5e7eb] px-3 py-2">
+                      <Fa name={f.mime === "application/pdf" ? "file-pdf-o" : "file-image-o"} className="text-[18px] text-lien-blue" />
+                      <div className="min-w-0 flex-1">
+                        <a href={publicReceiptUrl(f.path)} target="_blank" rel="noreferrer" className="font-semibold text-lien-heading hover:text-lien-blue">
+                          {f.fileName}
+                        </a>
+                        <div className="text-[12px] text-lien-muted">
+                          {formatBytes(f.size)} · {formatDateTime(f.createdAt)}
+                          {f.amountJpy ? ` · ¥${f.amountJpy.toLocaleString("ja-JP")}` : ""}
+                          {f.note ? ` · ${f.note}` : ""}
+                        </div>
+                      </div>
+                      <form action={deleteOrderFileAction}>
+                        <input type="hidden" name="fileId" value={f.id} />
+                        <input type="hidden" name="orderId" value={order.id} />
+                        <ConfirmSubmit message={`Xoá file “${f.fileName}”?`} className="text-[13px] text-lien-heart hover:underline">
+                          Xoá
+                        </ConfirmSubmit>
+                      </form>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="mb-5 rounded-md border border-dashed border-[#d1d5db] p-3 text-center text-[13px] text-lien-muted">Chưa có bill nào cho đơn này.</p>
+              )}
+              <form action={uploadOrderFilesAction} className="grid gap-3 md:grid-cols-[1fr_160px_1fr_auto]">
+                <input type="hidden" name="orderId" value={order.id} />
+                <div>
+                  <label className={adminLabel} htmlFor="files">
+                    File (ảnh hoặc PDF, nhiều file)
+                  </label>
+                  <input id="files" name="files" type="file" accept="image/*,application/pdf" multiple required className={adminInput} />
+                </div>
+                <div>
+                  <label className={adminLabel} htmlFor="amountJpy">
+                    Số tiền (JPY)
+                  </label>
+                  <input id="amountJpy" name="amountJpy" inputMode="numeric" placeholder="vd 2280" className={adminInput} />
+                </div>
+                <div>
+                  <label className={adminLabel} htmlFor="note">
+                    Ghi chú cho khách
+                  </label>
+                  <input id="note" name="note" placeholder="vd Amazon JP 08/09, 2 món" className={adminInput} />
+                </div>
+                <div className="flex items-end">
+                  <button type="submit" className={btnPrimary}>
+                    <Fa name="upload" /> Đính kèm
+                  </button>
+                </div>
+              </form>
+              {files.length ? (
+                <p className="mt-4 text-[12px] leading-5 text-lien-muted">
+                  Link gửi khách (không cần đăng nhập):{" "}
+                  <code className="rounded bg-[#f3f4f6] px-1.5 py-0.5">
+                    {siteUrl}/checkout/order-received/{order.id}/
+                  </code>
+                </p>
+              ) : null}
+            </Card>
+          </div>
+
+          <Card title="Ghi chú nội bộ">
+            <form action={saveAdminNoteAction} className="grid gap-3">
+              <input type="hidden" name="orderId" value={order.id} />
+              <textarea name="adminNote" rows={3} defaultValue={order.adminNote} placeholder="Chỉ admin thấy: mã vận đơn, đã mua ở đâu, còn thiếu gì…" className={adminInput} />
+              <div>
+                <button type="submit" className={btnSecondary}>
+                  Lưu ghi chú
+                </button>
+              </div>
+            </form>
+          </Card>
         </div>
 
         <div className="space-y-6">
@@ -98,7 +204,14 @@ export default async function AdminOrderDetail({ params, searchParams }: Props) 
               </button>
             </form>
           </Card>
-          <Card title="Khách hàng">
+          <Card
+            title="Khách hàng"
+            actions={
+              <Link href={`/admin/customers/${encodeURIComponent(customerKey)}/`} className="text-[13px] text-lien-blue hover:underline">
+                Lịch sử mua →
+              </Link>
+            }
+          >
             <dl className="grid gap-2 text-[14px] leading-5">
               <div>
                 <dt className="text-[12px] font-semibold uppercase text-[#6b7280]">Họ tên</dt>
@@ -132,7 +245,7 @@ export default async function AdminOrderDetail({ params, searchParams }: Props) 
               </div>
               {c.note ? (
                 <div>
-                  <dt className="text-[12px] font-semibold uppercase text-[#6b7280]">Ghi chú</dt>
+                  <dt className="text-[12px] font-semibold uppercase text-[#6b7280]">Ghi chú của khách</dt>
                   <dd className="whitespace-pre-wrap">{c.note}</dd>
                 </div>
               ) : null}

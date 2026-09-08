@@ -6,6 +6,7 @@ import { deleteProductAction, saveProductAction, type ProductFormState } from "@
 import { cn } from "@/lib/utils";
 import type { CatalogProduct, ShopCategory } from "@/types/shop";
 import { ConfirmSubmit } from "./ConfirmSubmit";
+import { ProductImageManager } from "./ProductImageManager";
 import { adminInput, adminLabel, btnDanger, btnPrimary, btnSecondary, Card, Flash } from "./ui";
 
 interface ProductFormProps {
@@ -29,16 +30,10 @@ function FieldError({ msg }: { msg?: string }) {
 
 export function ProductForm({ product, categories }: ProductFormProps) {
   const [state, action, pending] = useActionState<ProductFormState, FormData>(saveProductAction, null);
-  const [images, setImages] = useState((product?.images ?? []).join("\n"));
   const [priceText, setPriceText] = useState(String(product?.price ?? ""));
   const [costText, setCostText] = useState(String(product?.costPrice ?? ""));
   const margin = computeMargin(priceText, costText);
   const fields = state?.fields ?? {};
-  const previews = images
-    .split(/\r?\n/)
-    .map((s) => s.trim())
-    .filter(Boolean)
-    .slice(0, 8);
 
   return (
     <>
@@ -79,27 +74,11 @@ export function ProductForm({ product, categories }: ProductFormProps) {
           </Card>
 
           <Card title="Hình ảnh">
-            <label className={adminLabel} htmlFor="images">
-              Danh sách ảnh — mỗi dòng một đường dẫn (/sites/… hoặc https://…). Ảnh đầu tiên là ảnh đại diện.
-            </label>
-            <textarea
-              id="images"
-              name="images"
-              rows={5}
-              value={images}
-              onChange={(e) => setImages(e.target.value)}
-              className={cn(adminInput, "font-mono text-[13px]", fields.images && "border-red-500")}
+            <ProductImageManager
+              initial={product?.images ?? []}
+              initialThumbs={product?.thumb && product.images[0] ? { [product.images[0]]: product.thumb } : {}}
+              error={fields.images}
             />
-            <FieldError msg={fields.images} />
-            <input type="hidden" name="thumb" value={product?.thumb && (product.images[0] === product.thumb || previews.includes(product.thumb)) ? product.thumb : ""} readOnly />
-            {previews.length ? (
-              <div className="mt-4 flex flex-wrap gap-3">
-                {previews.map((src) => (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img key={src} src={src} alt="" className="h-20 w-20 rounded border border-[#e5e7eb] object-cover" />
-                ))}
-              </div>
-            ) : null}
           </Card>
         </div>
 
@@ -131,6 +110,20 @@ export function ProductForm({ product, categories }: ProductFormProps) {
                     Lợi nhuận/sp: {margin.profit.toLocaleString("vi-VN")}đ ({margin.pct}%)
                   </p>
                 ) : null}
+              </div>
+              <div>
+                <label className={adminLabel} htmlFor="supplierUrl">
+                  Link nhà cung cấp (Amazon JP, trang hãng…)
+                </label>
+                <input id="supplierUrl" name="supplierUrl" type="url" defaultValue={product?.supplierUrl ?? ""} placeholder="https://www.amazon.co.jp/dp/…" className={cn(adminInput, fields.supplierUrl && "border-red-500")} />
+                <FieldError msg={fields.supplierUrl} />
+              </div>
+              <div>
+                <label className={adminLabel} htmlFor="minStock">
+                  Mức tồn tối thiểu (cảnh báo sắp hết)
+                </label>
+                <input id="minStock" name="minStock" inputMode="numeric" defaultValue={product?.minStock ?? ""} placeholder="Mặc định 2" className={cn(adminInput, fields.minStock && "border-red-500")} />
+                <FieldError msg={fields.minStock} />
               </div>
               <div>
                 <label className={adminLabel} htmlFor="sku">

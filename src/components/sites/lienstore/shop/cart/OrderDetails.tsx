@@ -100,10 +100,41 @@ export function OrderAddress({ customer, className }: { customer: OrderCustomer;
   );
 }
 
+export interface OrderReceiptLink {
+  name: string;
+  url: string;
+  note?: string;
+  amountJpy?: number | null;
+  createdAt?: string;
+}
+
+/** "Hoá đơn mua hàng tại Nhật" — files the shop attached to the order (receipts of the purchase in Japan). */
+export function OrderReceipts({ files }: { files: OrderReceiptLink[] }) {
+  if (files.length === 0) return null;
+  return (
+    <section className="woocommerce-order-receipts mb-8">
+      <WooHeading as="h2">Hoá đơn mua hàng tại Nhật</WooHeading>
+      <p className="mb-3 text-[15px] leading-6 text-lien-muted">Cửa hàng đã đính kèm chứng từ mua hàng cho đơn này. Bấm để xem hoặc tải về.</p>
+      <ul className="m-0 list-none p-0">
+        {files.map((f) => (
+          <li key={f.url} className="mb-2 flex flex-wrap items-center gap-2 rounded-[3px] border border-lien-widget-border bg-white px-3 py-2 text-[15px] leading-6">
+            <a href={f.url} target="_blank" rel="noreferrer" className="font-semibold text-lien-blue no-underline hover:underline">
+              {f.name}
+            </a>
+            {f.amountJpy ? <span className="text-lien-muted">¥{f.amountJpy.toLocaleString("ja-JP")}</span> : null}
+            {f.note ? <span className="text-lien-muted">· {f.note}</span> : null}
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
 /** "Chi tiết đơn hàng" + "Địa chỉ thanh toán" sections shared by the thank-you page and the order lookup. */
-export function OrderSummary({ order }: { order: Order }) {
+export function OrderSummary({ order, receipts = [] }: { order: Order; receipts?: OrderReceiptLink[] }) {
   return (
     <>
+      <OrderReceipts files={receipts} />
       <section className="woocommerce-order-details">
         <WooHeading as="h2" className="woocommerce-order-details__title">
           Chi tiết đơn hàng

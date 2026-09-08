@@ -11,6 +11,10 @@ export interface CatalogProduct {
   regularPrice: number | null;
   /** Purchase/cost price in VND used for profit reporting in admin; null = unknown. */
   costPrice: number | null;
+  /** Where to buy it (Amazon JP / brand page) — admin only, used by the purchase list. */
+  supplierUrl: string | null;
+  /** Reorder threshold for tracked stock; null = store default. */
+  minStock: number | null;
   currency: string;
   sku: string | null;
   /** Units in stock; null = not tracked. */
@@ -92,6 +96,25 @@ export interface Order {
   subtotal: number;
   total: number;
   currency: string;
+  /** Internal note, admin only. */
+  adminNote: string;
+}
+
+export type OrderFileKind = "receipt" | "other";
+
+/** A file attached to an order by the admin (e.g. the Japanese purchase receipt sent back to the customer). */
+export interface OrderFile {
+  id: number;
+  orderId: string;
+  kind: OrderFileKind;
+  fileName: string;
+  /** Storage path relative to the uploads dir, e.g. orders/<orderId>/<file>. */
+  path: string;
+  mime: string;
+  size: number;
+  note: string;
+  amountJpy: number | null;
+  createdAt: string;
 }
 
 export interface StaticPage {

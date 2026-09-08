@@ -109,7 +109,7 @@ C = {
     "price": col(H, "Giá (VNĐ)", "Giá bán (VNĐ)", "Giá bán"), "regular": col(H, "Giá gốc"), "cost": col(H, "Giá vốn"), "sku": col(H, "Mã SKU"),
     "stock": col(H, "Tồn kho"), "oos": col(H, "Hết hàng"), "status": col(H, "Trạng thái"), "tags": col(H, "Từ khóa"),
     "images": col(H, "Danh sách ảnh", "Ảnh (URL", "Ảnh"), "short": col(H, "Mô tả ngắn"), "desc": col(H, "Mô tả chi tiết"),
-    "jpy": col(H, "Giá Nhật"),
+    "jpy": col(H, "Giá Nhật"), "supplier": col(H, "Link tham khảo", "Link nhà cung cấp", "Link mua"),
 }
 missing = [k for k in ("name",) if C[k] is None]
 if missing: sys.exit(f"missing required columns: {missing}; headers seen: {H}")
@@ -180,6 +180,8 @@ for r in rows[hdr_idx + 1:]:
     jpy = to_int(get(r, "jpy"))
     if p.get("costPrice") is None and jpy and RATE:
         p["costPrice"] = int(round(jpy * RATE * (1 + FEE), -3))
+    sup = get(r, "supplier")
+    if sup and str(sup).strip().startswith("http"): p["supplierUrl"] = str(sup).strip()
     if p.get("regularPrice") is not None and p["regularPrice"] <= p["price"]: p["regularPrice"] = None
     sku = get(r, "sku")
     if sku is not None and str(sku).strip(): p["sku"] = str(sku).strip()

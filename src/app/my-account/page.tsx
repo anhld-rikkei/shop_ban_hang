@@ -9,6 +9,7 @@ import { Price, shopTableClass, shopTdClass, shopThClass, WooHeading, WooNotice,
 import { SiteChrome, TwoColumnShell } from "@/components/sites/lienstore/shop/SiteChrome";
 import { getCurrentCustomer } from "@/lib/customer-auth";
 import { getOrderById, getOrdersForCustomer } from "@/lib/db";
+import { receiptLinksFor } from "@/lib/order-files";
 import { formatDate } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
@@ -151,7 +152,7 @@ async function OrdersTab({ customerId, email, viewId }: { customerId: string; em
             Đơn hàng <mark className="bg-transparent font-bold">#{order.number}</mark> đã được đặt vào <mark className="bg-transparent font-bold">{formatDate(order.createdAt)}</mark> và hiện tại{" "}
             <mark className="bg-transparent font-bold">{STATUS_LABEL[order.status]}</mark>.
           </p>
-          <OrderSummary order={order} />
+          <OrderSummary order={order} receipts={await receiptLinksFor(order.id)} />
           <p className="mt-4">
             <Link href="/my-account/?tab=orders" className="text-lien-blue hover:underline">
               ← Tất cả đơn hàng

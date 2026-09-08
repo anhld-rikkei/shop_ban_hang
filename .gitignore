@@ -60,3 +60,6 @@ docs/design-references/
 
 # Excel working copies
 /*.xlsx
+
+# Admin uploads (product images, order receipts) live next to the DB
+data/uploads/

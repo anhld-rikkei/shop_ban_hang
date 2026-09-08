@@ -3,7 +3,7 @@
  "note": "Seed catalogue imported into SQLite on first start and synced (add-only) on newer versions. Regenerate with `npm run db:export`.",
  "meta": {
   "nextOrderNumber": 1001,
-  "seededAt": "2026-09-08T05:18:41Z"
+  "seededAt": "2026-09-08T05:52:49Z"
  },
  "categories": [
   {
@@ -4722,8 +4722,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 428000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 428000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B09QBS1X8S"
   },
   {
    "id": 2002,
@@ -4766,8 +4767,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 95000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 95000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B000V2FFAW"
   },
   {
    "id": 2003,
@@ -4806,8 +4808,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 561000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 561000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B08L7P92WS"
   },
   {
    "id": 2004,
@@ -4884,8 +4887,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 136000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 136000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0DT3XJRLS"
   },
   {
    "id": 2006,
@@ -4926,8 +4930,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 373000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 373000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0HHD66TKN"
   },
   {
    "id": 2007,
@@ -4968,8 +4973,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 637000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 637000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0070SUSC0"
   },
   {
    "id": 2008,
@@ -5009,8 +5015,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 390000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 390000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0040EQV1O"
   },
   {
    "id": 2009,
@@ -5091,8 +5098,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 637000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 637000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0070SUSC0"
   },
   {
    "id": 2011,
@@ -5136,8 +5144,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 211000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 211000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B071JRD29V"
   },
   {
    "id": 2012,
@@ -5180,8 +5189,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 88000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 88000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B01HSVDQMW"
   },
   {
    "id": 2013,
@@ -5220,8 +5230,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 561000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 561000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B08L7P92WS"
   },
   {
    "id": 2014,
@@ -5261,8 +5272,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 429000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 429000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B000FP354S"
   },
   {
    "id": 2015,
@@ -5300,8 +5312,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 186000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 186000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0GMPJ2SSM"
   },
   {
    "id": 2016,
@@ -5340,8 +5353,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 127000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 127000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0GL1VTYJS"
   },
   {
    "id": 2017,
@@ -5380,8 +5394,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 335000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 335000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B07R2C17T6"
   },
   {
    "id": 2018,
@@ -5460,8 +5475,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 6209000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 6209000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0DZCWH5PL"
   },
   {
    "id": 2020,
@@ -5504,8 +5520,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 104000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 104000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B00COFFG9E"
   },
   {
    "id": 2021,
@@ -5542,8 +5559,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 975000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 975000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0793NK215"
   },
   {
    "id": 2022,
@@ -5621,8 +5639,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 412000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 412000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0CSSVF9GQ"
   },
   {
    "id": 2024,
@@ -5661,8 +5680,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 412000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 412000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0CSSVF9GQ"
   },
   {
    "id": 2025,
@@ -5701,8 +5721,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 150000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 150000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0BT142P4G"
   },
   {
    "id": 2026,
@@ -5744,8 +5765,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 395000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 395000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B09NCS9SDJ"
   },
   {
    "id": 2027,
@@ -5858,8 +5880,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 199000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 199000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B09PXPZ73D"
   },
   {
    "id": 2030,
@@ -5895,8 +5918,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 263000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 263000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B002UNAI8Y"
   },
   {
    "id": 2031,
@@ -5936,8 +5960,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 1656000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 1656000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B07H2RL2KV"
   },
   {
    "id": 2032,
@@ -6053,8 +6078,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 124000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 124000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0D9QBM2MQ"
   },
   {
    "id": 2035,
@@ -6089,8 +6115,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 89000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 89000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0D9QB5MWP"
   },
   {
    "id": 2036,
@@ -6129,8 +6156,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 354000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 354000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B00MUCP7MM"
   },
   {
    "id": 2037,
@@ -6249,8 +6277,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 304000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 304000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0C85KDQ97"
   },
   {
    "id": 2040,
@@ -6288,8 +6317,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 546000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 546000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B00TRKYNPM"
   },
   {
    "id": 2041,
@@ -6371,8 +6401,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 2898000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 2898000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0FMRP6JGM"
   },
   {
    "id": 2043,
@@ -6481,8 +6512,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 151000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 151000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0B5YTPJTP"
   },
   {
    "id": 2046,
@@ -6521,8 +6553,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 151000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 151000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0B5YTPJTP"
   },
   {
    "id": 2047,
@@ -6561,8 +6594,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 94000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 94000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B002S016T4"
   },
   {
    "id": 2048,
@@ -6604,8 +6638,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 245000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 245000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0GTHBHV57"
   },
   {
    "id": 2049,
@@ -6646,8 +6681,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 169000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 169000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0B5YXM9V1"
   },
   {
    "id": 2050,
@@ -6684,8 +6720,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 466000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 466000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B08J69JVGT"
   },
   {
    "id": 2051,
@@ -6765,8 +6802,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 206000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 206000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B004P10LL8"
   },
   {
    "id": 2053,
@@ -6809,8 +6847,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 169000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 169000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0B5YXM9V1"
   },
   {
    "id": 2054,
@@ -6922,8 +6961,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 775000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 775000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0FM44B3DR"
   },
   {
    "id": 2057,
@@ -6961,8 +7001,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 154000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 154000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0D66SBGP7"
   },
   {
    "id": 2058,
@@ -7036,8 +7077,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 119000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 119000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0B4RRPPSZ"
   },
   {
    "id": 2060,
@@ -7074,8 +7116,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 136000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 136000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0DT3XJRLS"
   },
   {
    "id": 2061,
@@ -7112,8 +7155,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 5485000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 5485000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B08HZZFKVX"
   },
   {
    "id": 2062,
@@ -7151,8 +7195,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 1035000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 1035000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0010MGT70"
   },
   {
    "id": 2063,
@@ -7190,8 +7235,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 256000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 256000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B073GXHY1V"
   },
   {
    "id": 2064,
@@ -7308,8 +7354,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 690000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 690000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B018C13ZFA"
   },
   {
    "id": 2067,
@@ -7346,8 +7393,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 178000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 178000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0747T6JQR"
   },
   {
    "id": 2068,
@@ -7383,8 +7431,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 105000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 105000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B011R1KMG2"
   },
   {
    "id": 2069,
@@ -7425,8 +7474,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 105000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 105000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B011R1KMG2"
   },
   {
    "id": 2070,
@@ -7461,8 +7511,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 105000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 105000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B011R1KMG2"
   },
   {
    "id": 2071,
@@ -7573,8 +7624,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 410000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 410000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0761QFQ45"
   },
   {
    "id": 2074,
@@ -7654,8 +7706,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 70000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 70000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B000FQS5DS"
   },
   {
    "id": 2076,
@@ -7695,8 +7748,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 194000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 194000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0BBQGDY4S"
   },
   {
    "id": 2077,
@@ -7738,8 +7792,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 186000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 186000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B01LCE6JMU"
   },
   {
    "id": 2078,
@@ -7781,8 +7836,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 489000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 489000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0CV7HSP59"
   },
   {
    "id": 2079,
@@ -7825,8 +7881,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 373000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 373000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0DPJN749L"
   },
   {
    "id": 2080,
@@ -7868,8 +7925,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 50000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 50000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B07MZXW8QR"
   },
   {
    "id": 2081,
@@ -7910,8 +7968,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 154000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 154000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B07G1SZMSP"
   },
   {
    "id": 2082,
@@ -7946,8 +8005,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 154000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 154000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B07G1SZMSP"
   },
   {
    "id": 2083,
@@ -7988,8 +8048,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 154000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 154000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B07G1SZMSP"
   },
   {
    "id": 2084,
@@ -8028,8 +8089,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 286000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 286000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B00ST84BI2"
   },
   {
    "id": 2085,
@@ -8070,8 +8132,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 124000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 124000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B00KI9DYFG"
   },
   {
    "id": 2086,
@@ -8107,8 +8170,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 206000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 206000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B00KI9DQHC"
   },
   {
    "id": 2087,
@@ -8257,8 +8321,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 467000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 467000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0CTZLP4BX"
   },
   {
    "id": 2091,
@@ -8296,8 +8361,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 681000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 681000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0CTHP9V6Z"
   },
   {
    "id": 2092,
@@ -8455,8 +8521,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 489000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 489000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0CKKTZXH7"
   },
   {
    "id": 2096,
@@ -8495,8 +8562,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 365000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 365000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B00F4KYU1Q"
   },
   {
    "id": 2097,
@@ -8618,8 +8686,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:17:54Z",
-   "costPrice": 451000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 451000,
+   "supplierUrl": "https://www.e-fujiyakuhin.jp/smp/item/4987973126226.html"
   },
   {
    "id": 2100,
@@ -8737,8 +8806,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 357000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 357000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B001KURFQ6"
   },
   {
    "id": 2103,
@@ -8901,8 +8971,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 448000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 448000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B071R4733Q"
   },
   {
    "id": 2107,
@@ -8945,8 +9016,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 392000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 392000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0B73ZS9SF"
   },
   {
    "id": 2108,
@@ -8985,8 +9057,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 1082000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 1082000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0C1QZNKHY"
   },
   {
    "id": 2109,
@@ -9106,8 +9179,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 1176000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 1176000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B008IBOA5E"
   },
   {
    "id": 2112,
@@ -9150,8 +9224,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 90000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 90000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B00XTZ8PTQ"
   },
   {
    "id": 2113,
@@ -9193,8 +9268,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 373000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 373000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B085CYNRKK"
   },
   {
    "id": 2114,
@@ -9233,8 +9309,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 274000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 274000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B000TKDIWS"
   },
   {
    "id": 2115,
@@ -9277,8 +9354,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 104000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 104000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B00COFFG9E"
   },
   {
    "id": 2116,
@@ -9317,8 +9395,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 38000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 38000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B08JVK6P9G"
   },
   {
    "id": 2117,
@@ -9358,8 +9437,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 813000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 813000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0B6FJKFZZ"
   },
   {
    "id": 2118,
@@ -9439,8 +9519,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 568000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 568000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B09JYN6T6H"
   },
   {
    "id": 2120,
@@ -9480,8 +9561,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 468000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 468000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B01DIIN5HA"
   },
   {
    "id": 2121,
@@ -9522,8 +9604,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 468000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 468000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B01DIIN5HA"
   },
   {
    "id": 2122,
@@ -9565,8 +9648,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 262000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 262000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B004BRU0JY"
   },
   {
    "id": 2123,
@@ -9647,8 +9731,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 346000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 346000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B001EURS0U"
   },
   {
    "id": 2125,
@@ -9686,8 +9771,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 1863000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 1863000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0D7LZJSSC"
   },
   {
    "id": 2126,
@@ -9726,8 +9812,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 1863000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 1863000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0D7LZJSSC"
   },
   {
    "id": 2127,
@@ -9765,8 +9852,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 1863000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 1863000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0D7LZJSSC"
   },
   {
    "id": 2128,
@@ -9804,8 +9892,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 411000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 411000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B003G90UTI"
   },
   {
    "id": 2129,
@@ -9845,8 +9934,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:17:54Z",
-   "costPrice": 346000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 346000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B001EURS0U"
   },
   {
    "id": 2130,
@@ -9887,8 +9977,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 682000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 682000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B005SYWKGA"
   },
   {
    "id": 2131,
@@ -9926,8 +10017,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 623000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 623000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0822DVKDC"
   },
   {
    "id": 2132,
@@ -10041,8 +10133,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 127000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 127000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0GL1VTYJS"
   },
   {
    "id": 2135,
@@ -10084,8 +10177,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:17:54Z",
-   "costPrice": 193000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 193000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B09RPCXNC7"
   },
   {
    "id": 2136,
@@ -10122,8 +10216,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 186000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 186000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B009X2DKZ8"
   },
   {
    "id": 2137,
@@ -10202,8 +10297,9 @@
    "reviewCount": 0,
    "status": "publish",
    "createdAt": "2026-09-08T01:35:19Z",
-   "updatedAt": "2026-09-08T05:18:41Z",
-   "costPrice": 132000
+   "updatedAt": "2026-09-08T05:52:49Z",
+   "costPrice": 132000,
+   "supplierUrl": "https://www.amazon.co.jp/dp/B0GTRC13GN"
   }
  ],
  "pages": [

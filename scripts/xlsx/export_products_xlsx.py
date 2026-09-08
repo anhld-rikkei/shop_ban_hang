@@ -22,7 +22,7 @@ HEADERS = [
     ("ID", 7), ("Tên sản phẩm *", 42), ("Đường dẫn (slug)", 34), ("Danh mục * (tên, cách nhau bằng ;)", 40),
     ("Giá bán (VNĐ) *", 14), ("Giá gốc (VNĐ)", 13), ("Giá vốn (VNĐ)", 13), ("Mã SKU", 12), ("Tồn kho", 9),
     ("Hết hàng (x)", 10), ("Trạng thái", 12), ("Từ khóa (cách nhau bằng ,)", 32),
-    ("Ảnh (URL hoặc /sites/..., mỗi ảnh một dòng)", 60), ("Mô tả ngắn (HTML)", 60), ("Mô tả chi tiết (HTML)", 80), ("Ghi chú", 30),
+    ("Ảnh (URL hoặc /sites/..., mỗi ảnh một dòng)", 60), ("Mô tả ngắn (HTML)", 60), ("Mô tả chi tiết (HTML)", 80), ("Ghi chú", 30), ("Link nhà cung cấp", 50),
 ]
 STATUS = {"publish": "Đang bán", "draft": "Bản nháp"}
 
@@ -45,7 +45,7 @@ for r, p in enumerate(sorted(seed["products"], key=lambda x: x["id"]), 2):
         p["id"], p["name"], p["slug"], "; ".join(cat_name.get(s, s) for s in p.get("categories", [])),
         p.get("price") or None, p.get("regularPrice"), p.get("costPrice"), p.get("sku"), p.get("stock"),
         "x" if p.get("stockStatus") == "outofstock" else None, STATUS.get(p.get("status"), "Bản nháp"),
-        ", ".join(p.get("tags", [])), "\n".join(p.get("images", [])), p.get("shortDescription", ""), p.get("description", ""), None,
+        ", ".join(p.get("tags", [])), "\n".join(p.get("images", [])), p.get("shortDescription", ""), p.get("description", ""), None, p.get("supplierUrl"),
     ]
     for cidx, v in enumerate(row, 1):
         cell = ws.cell(row=r, column=cidx, value=v)
