@@ -12,6 +12,7 @@ set -u
 APP="${1:?app name}"; IMAGE="${2:?image:tag}"; LOG="${3:-/var/log/lienstore-autoupdate.log}"
 ts() { date '+%Y-%m-%d %H:%M:%S'; }
 log() { echo "$(ts) [$APP] $*" | tee -a "$LOG"; }
+oneline() { tr '\n' ' ' | tail -c 400; }
 notify() {
   [ -n "${TELEGRAM_BOT_TOKEN:-}" ] && [ -n "${TELEGRAM_CHAT_ID:-}" ] || return 0
   curl -fsS -m 10 "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" -d chat_id="$TELEGRAM_CHAT_ID" -d text="$1" >/dev/null 2>&1 || true
@@ -30,18 +31,15 @@ digest="$(docker image inspect -f '{{index .RepoDigests 0}}' "$IMAGE" 2>/dev/nul
 version="$(docker image inspect -f '{{index .Config.Labels "org.opencontainers.image.version"}}' "$IMAGE" 2>/dev/null)"
 log "new image for $IMAGE (version=${version:-?} digest=${digest:-?}) → redeploying app"
 
-out1="$(midclt call -job app.redeploy "$APP" 2>&1)"
-if [ $? -eq 0 ]; then
+# TrueNAS 25.04+: app.redeploy; 24.10: app.pull_images with redeploy. Try both, keep the error text for the log.
+if out="$(midclt call -job app.redeploy "$APP" 2>&1)"; then
+  :
+elif out2="$(midclt call -job app.pull_images "$APP" '{"redeploy": true}' 2>&1)"; then
   :
 else
-  out2="$(midclt call -job app.pull_images "$APP" '{"redeploy": true}' 2>&1)"
-  if [ $? -ne 0 ]; then
-    log "redeploy failed. app.redeploy: $(echo "$out1" | tail -c 400 | tr '
-' ' ')"
-    log "                 app.pull_images: $(echo "$out2" | tail -c 400 | tr '
-' ' ')"
-    notify "❌ $APP: redeploy failed for $IMAGE"; exit 1
-  fi
+  log "redeploy failed. app.redeploy → $(printf '%s' "$out" | oneline)"
+  log "                 app.pull_images → $(printf '%s' "$out2" | oneline)"
+  notify "❌ $APP: redeploy failed for $IMAGE"; exit 1
 fi
 
 # wait for the health endpoint of the app (port from the compose ports mapping)
